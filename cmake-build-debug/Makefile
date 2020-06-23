@@ -110,6 +110,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named 160
+
+# Build rule for target.
+160: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 160
+.PHONY : 160
+
+# fast build rule for target.
+160/fast:
+	$(MAKE) -f CMakeFiles\160.dir\build.make CMakeFiles/160.dir/build
+.PHONY : 160/fast
+
+#=============================================================================
 # Target rules for targets named Leetcode
 
 # Build rule for target.
@@ -121,6 +134,33 @@ Leetcode: cmake_check_build_system
 Leetcode/fast:
 	$(MAKE) -f CMakeFiles\Leetcode.dir\build.make CMakeFiles/Leetcode.dir/build
 .PHONY : Leetcode/fast
+
+DataStructure/160.obj: DataStructure/160.cpp.obj
+
+.PHONY : DataStructure/160.obj
+
+# target to build an object file
+DataStructure/160.cpp.obj:
+	$(MAKE) -f CMakeFiles\160.dir\build.make CMakeFiles/160.dir/DataStructure/160.cpp.obj
+.PHONY : DataStructure/160.cpp.obj
+
+DataStructure/160.i: DataStructure/160.cpp.i
+
+.PHONY : DataStructure/160.i
+
+# target to preprocess a source file
+DataStructure/160.cpp.i:
+	$(MAKE) -f CMakeFiles\160.dir\build.make CMakeFiles/160.dir/DataStructure/160.cpp.i
+.PHONY : DataStructure/160.cpp.i
+
+DataStructure/160.s: DataStructure/160.cpp.s
+
+.PHONY : DataStructure/160.s
+
+# target to generate assembly for a file
+DataStructure/160.cpp.s:
+	$(MAKE) -f CMakeFiles\160.dir\build.make CMakeFiles/160.dir/DataStructure/160.cpp.s
+.PHONY : DataStructure/160.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -155,9 +195,13 @@ help:
 	@echo ... all (the default if no target is provided)
 	@echo ... clean
 	@echo ... depend
+	@echo ... 160
 	@echo ... Leetcode
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... DataStructure/160.obj
+	@echo ... DataStructure/160.i
+	@echo ... DataStructure/160.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

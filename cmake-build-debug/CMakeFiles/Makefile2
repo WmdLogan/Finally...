@@ -52,6 +52,7 @@ CMAKE_BINARY_DIR = D:\CLionProjects\Leetcode\cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/160.dir/all
 all: CMakeFiles/Leetcode.dir/all
 
 .PHONY : all
@@ -62,9 +63,37 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/160.dir/clean
 clean: CMakeFiles/Leetcode.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/160.dir
+
+# All Build rule for target.
+CMakeFiles/160.dir/all:
+	$(MAKE) -f CMakeFiles\160.dir\build.make CMakeFiles/160.dir/depend
+	$(MAKE) -f CMakeFiles\160.dir\build.make CMakeFiles/160.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target 160"
+.PHONY : CMakeFiles/160.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/160.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/160.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/160.dir/rule
+
+# Convenience name for target.
+160: CMakeFiles/160.dir/rule
+
+.PHONY : 160
+
+# clean rule for target.
+CMakeFiles/160.dir/clean:
+	$(MAKE) -f CMakeFiles\160.dir\build.make CMakeFiles/160.dir/clean
+.PHONY : CMakeFiles/160.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/Leetcode.dir
@@ -73,7 +102,7 @@ clean: CMakeFiles/Leetcode.dir/clean
 CMakeFiles/Leetcode.dir/all:
 	$(MAKE) -f CMakeFiles\Leetcode.dir\build.make CMakeFiles/Leetcode.dir/depend
 	$(MAKE) -f CMakeFiles\Leetcode.dir\build.make CMakeFiles/Leetcode.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target Leetcode"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=3,4 "Built target Leetcode"
 .PHONY : CMakeFiles/Leetcode.dir/all
 
 # Build rule for subdir invocation for target.
