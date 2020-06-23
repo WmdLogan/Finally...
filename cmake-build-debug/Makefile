@@ -110,19 +110,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named 160
-
-# Build rule for target.
-160: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 160
-.PHONY : 160
-
-# fast build rule for target.
-160/fast:
-	$(MAKE) -f CMakeFiles\160.dir\build.make CMakeFiles/160.dir/build
-.PHONY : 160/fast
-
-#=============================================================================
 # Target rules for targets named Leetcode
 
 # Build rule for target.
@@ -135,32 +122,45 @@ Leetcode/fast:
 	$(MAKE) -f CMakeFiles\Leetcode.dir\build.make CMakeFiles/Leetcode.dir/build
 .PHONY : Leetcode/fast
 
-DataStructure/160.obj: DataStructure/160.cpp.obj
+#=============================================================================
+# Target rules for targets named 206
 
-.PHONY : DataStructure/160.obj
+# Build rule for target.
+206: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 206
+.PHONY : 206
+
+# fast build rule for target.
+206/fast:
+	$(MAKE) -f CMakeFiles\206.dir\build.make CMakeFiles/206.dir/build
+.PHONY : 206/fast
+
+DataStructure/206.obj: DataStructure/206.cpp.obj
+
+.PHONY : DataStructure/206.obj
 
 # target to build an object file
-DataStructure/160.cpp.obj:
-	$(MAKE) -f CMakeFiles\160.dir\build.make CMakeFiles/160.dir/DataStructure/160.cpp.obj
-.PHONY : DataStructure/160.cpp.obj
+DataStructure/206.cpp.obj:
+	$(MAKE) -f CMakeFiles\206.dir\build.make CMakeFiles/206.dir/DataStructure/206.cpp.obj
+.PHONY : DataStructure/206.cpp.obj
 
-DataStructure/160.i: DataStructure/160.cpp.i
+DataStructure/206.i: DataStructure/206.cpp.i
 
-.PHONY : DataStructure/160.i
+.PHONY : DataStructure/206.i
 
 # target to preprocess a source file
-DataStructure/160.cpp.i:
-	$(MAKE) -f CMakeFiles\160.dir\build.make CMakeFiles/160.dir/DataStructure/160.cpp.i
-.PHONY : DataStructure/160.cpp.i
+DataStructure/206.cpp.i:
+	$(MAKE) -f CMakeFiles\206.dir\build.make CMakeFiles/206.dir/DataStructure/206.cpp.i
+.PHONY : DataStructure/206.cpp.i
 
-DataStructure/160.s: DataStructure/160.cpp.s
+DataStructure/206.s: DataStructure/206.cpp.s
 
-.PHONY : DataStructure/160.s
+.PHONY : DataStructure/206.s
 
 # target to generate assembly for a file
-DataStructure/160.cpp.s:
-	$(MAKE) -f CMakeFiles\160.dir\build.make CMakeFiles/160.dir/DataStructure/160.cpp.s
-.PHONY : DataStructure/160.cpp.s
+DataStructure/206.cpp.s:
+	$(MAKE) -f CMakeFiles\206.dir\build.make CMakeFiles/206.dir/DataStructure/206.cpp.s
+.PHONY : DataStructure/206.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -195,13 +195,13 @@ help:
 	@echo ... all (the default if no target is provided)
 	@echo ... clean
 	@echo ... depend
-	@echo ... 160
 	@echo ... Leetcode
+	@echo ... 206
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... DataStructure/160.obj
-	@echo ... DataStructure/160.i
-	@echo ... DataStructure/160.s
+	@echo ... DataStructure/206.obj
+	@echo ... DataStructure/206.i
+	@echo ... DataStructure/206.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
