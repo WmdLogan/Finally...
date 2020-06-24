@@ -4,4 +4,4 @@ project(Leetcode)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Leetcode main.cpp)
-add_executable(206 DataStructure/206.cpp)
+add_executable(21 DataStructure/21.cpp)

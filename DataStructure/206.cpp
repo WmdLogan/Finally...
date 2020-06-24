@@ -13,17 +13,27 @@ struct ListNode {
 
     ListNode(int x) : val(x), next(NULL) {}
 };
+
+static const auto __ = []() // 最大子序列问题
+{
+    ios::sync_with_stdio(false);
+// sync_with_stdio(false)是为了打断iostream输入输出到缓存，可以节约很多时间，使之与scanf相差无几。
+    cin.tie(nullptr);
+// tie是将两个stream板顶的函数，空参数的话返回当前的输出指针，即tie(0)与tie(nullptr)来解决cin与cout的绑定。
+    return nullptr;
+}();
+
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-        ListNode *re = new ListNode(0);
+        ListNode *re = NULL;
         while (head != NULL) {
             ListNode *temp = new ListNode(head->val);
-            temp->next = re->next;
-            re->next = temp;
-            head = head->next;
+            temp->next = re;
+            re = temp;
+            head = head -> next;
         }
-        return re->next;
+        return re;
     }
 };
 int main(){

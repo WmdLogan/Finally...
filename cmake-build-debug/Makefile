@@ -123,44 +123,44 @@ Leetcode/fast:
 .PHONY : Leetcode/fast
 
 #=============================================================================
-# Target rules for targets named 206
+# Target rules for targets named 21
 
 # Build rule for target.
-206: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 206
-.PHONY : 206
+21: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 21
+.PHONY : 21
 
 # fast build rule for target.
-206/fast:
-	$(MAKE) -f CMakeFiles\206.dir\build.make CMakeFiles/206.dir/build
-.PHONY : 206/fast
+21/fast:
+	$(MAKE) -f CMakeFiles\21.dir\build.make CMakeFiles/21.dir/build
+.PHONY : 21/fast
 
-DataStructure/206.obj: DataStructure/206.cpp.obj
+DataStructure/21.obj: DataStructure/21.cpp.obj
 
-.PHONY : DataStructure/206.obj
+.PHONY : DataStructure/21.obj
 
 # target to build an object file
-DataStructure/206.cpp.obj:
-	$(MAKE) -f CMakeFiles\206.dir\build.make CMakeFiles/206.dir/DataStructure/206.cpp.obj
-.PHONY : DataStructure/206.cpp.obj
+DataStructure/21.cpp.obj:
+	$(MAKE) -f CMakeFiles\21.dir\build.make CMakeFiles/21.dir/DataStructure/21.cpp.obj
+.PHONY : DataStructure/21.cpp.obj
 
-DataStructure/206.i: DataStructure/206.cpp.i
+DataStructure/21.i: DataStructure/21.cpp.i
 
-.PHONY : DataStructure/206.i
+.PHONY : DataStructure/21.i
 
 # target to preprocess a source file
-DataStructure/206.cpp.i:
-	$(MAKE) -f CMakeFiles\206.dir\build.make CMakeFiles/206.dir/DataStructure/206.cpp.i
-.PHONY : DataStructure/206.cpp.i
+DataStructure/21.cpp.i:
+	$(MAKE) -f CMakeFiles\21.dir\build.make CMakeFiles/21.dir/DataStructure/21.cpp.i
+.PHONY : DataStructure/21.cpp.i
 
-DataStructure/206.s: DataStructure/206.cpp.s
+DataStructure/21.s: DataStructure/21.cpp.s
 
-.PHONY : DataStructure/206.s
+.PHONY : DataStructure/21.s
 
 # target to generate assembly for a file
-DataStructure/206.cpp.s:
-	$(MAKE) -f CMakeFiles\206.dir\build.make CMakeFiles/206.dir/DataStructure/206.cpp.s
-.PHONY : DataStructure/206.cpp.s
+DataStructure/21.cpp.s:
+	$(MAKE) -f CMakeFiles\21.dir\build.make CMakeFiles/21.dir/DataStructure/21.cpp.s
+.PHONY : DataStructure/21.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -196,12 +196,12 @@ help:
 	@echo ... clean
 	@echo ... depend
 	@echo ... Leetcode
-	@echo ... 206
+	@echo ... 21
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... DataStructure/206.obj
-	@echo ... DataStructure/206.i
-	@echo ... DataStructure/206.s
+	@echo ... DataStructure/21.obj
+	@echo ... DataStructure/21.i
+	@echo ... DataStructure/21.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
