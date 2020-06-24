@@ -1,6 +1,7 @@
 // 206. Reverse Linked List
 // Created by logan on 2020/6/23.
 // Easy
+//83. Remove Duplicates from Sorted List
 
 /**
  * Definition for singly-linked list.*/
@@ -14,17 +15,23 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
-static const auto __ = []() // 最大子序列问题
-{
-    ios::sync_with_stdio(false);
-// sync_with_stdio(false)是为了打断iostream输入输出到缓存，可以节约很多时间，使之与scanf相差无几。
-    cin.tie(nullptr);
-// tie是将两个stream板顶的函数，空参数的话返回当前的输出指针，即tie(0)与tie(nullptr)来解决cin与cout的绑定。
-    return nullptr;
-}();
-
 class Solution {
 public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if (head == nullptr || head->next == nullptr){ return head; }
+        ListNode *pre = head;
+        ListNode *cur = pre->next;
+        while (cur != nullptr) {
+            if (pre->val == cur->val) {
+                pre->next = cur->next;
+                cur = cur->next;
+                continue;
+            }
+            pre = pre->next;
+            cur = cur->next;
+        }
+        return head;
+    }
     ListNode* reverseList(ListNode* head) {
         ListNode *re = NULL;
         while (head != NULL) {
@@ -38,10 +45,10 @@ public:
 };
 int main(){
     ListNode a1(1);
-    ListNode a2(2);
-    ListNode c1(3);
-    ListNode c2(4);
-    ListNode c3(5);
+    ListNode a2(1);
+    ListNode c1(2);
+    ListNode c2(3);
+    ListNode c3(3);
     ListNode b1(5);
     ListNode b2(0);
     ListNode b3(1);

@@ -59,8 +59,8 @@
 					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="21">
-				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/21.exe" prefix_auto="0" extension_auto="0"/>
+			<Target title="206">
+				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/206.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -74,14 +74,14 @@
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 21"/>
+					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 206"/>
 					<CompileFile command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="21/fast">
-				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/21.exe" prefix_auto="0" extension_auto="0"/>
+			<Target title="206/fast">
+				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/206.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -95,7 +95,7 @@
 					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 21/fast"/>
+					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 206/fast"/>
 					<CompileFile command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -122,8 +122,8 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="D:/CLionProjects/Leetcode/DataStructure/21.cpp">
-			<Option target="21"/>
+		<Unit filename="D:/CLionProjects/Leetcode/DataStructure/206.cpp">
+			<Option target="206"/>
 		</Unit>
 		<Unit filename="D:/CLionProjects/Leetcode/main.cpp">
 			<Option target="Leetcode"/>
