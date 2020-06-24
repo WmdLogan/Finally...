@@ -18,53 +18,25 @@ struct ListNode {
 class Solution {
 public:
     ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
-        if (l1 == nullptr && l2 != nullptr) {
-            return l2;
-        } else if (l1 != nullptr && l2 == nullptr) {
-            return l1;
-        } else if (l1 == nullptr && l2 == nullptr) {
-            return nullptr;
-        }
-        //head
-        ListNode *m = nullptr;
-        if (l1->val >= l2->val) {
-            m = new ListNode(l2->val);
-            l2 = l2->next;
-        } else {
-            m = new ListNode(l1->val);
-            l1 = l1->next;
-        }
+        auto *m = new ListNode(0);
         //insert tail
         ListNode *t = m;
         while (l1 != nullptr && l2 != nullptr) {
             if (l1->val >= l2->val) {
-                auto *temp = new ListNode(l2->val);
-                t->next = temp;
-                t = temp;
+                t->next = l2;
                 l2 = l2->next;
             } else {
-                auto *temp = new ListNode(l1->val);
-                t->next = temp;
-                t = temp;
+                t->next = l1;
                 l1 = l1->next;
             }
+            t = t->next;
         }
-        while (l1 != nullptr) {
-            auto *temp = new ListNode(l1->val);
-            t->next = temp;
-            t = temp;
-            l1 = l1->next;
-        }
-        while (l2 != nullptr) {
-            auto *temp = new ListNode(l2->val);
-            t->next = temp;
-            t = temp;
-            l2 = l2->next;
-        }
-        return m;
+        l1 == nullptr ? t->next = l2 : t->next = l1;
+        return m->next;
     }
 };
-int main(){
+
+int main() {
     ListNode a3 = ListNode(4);
     ListNode a2 = ListNode(2, &a3);
     ListNode a1 = ListNode(1, &a2);
