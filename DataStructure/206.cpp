@@ -1,13 +1,14 @@
-// 206. Reverse Linked List
 // Created by logan on 2020/6/23.
-// Easy
-//83. Remove Duplicates from Sorted List
+// 206. Reverse Linked List(Easy)
+// 83. Remove Duplicates from Sorted List(Easy)
+// 19. Remove Nth Node From End of List(Medium)
 
 /**
  * Definition for singly-linked list.*/
 #include <iostream>
 
 using namespace std;
+
 struct ListNode {
     int val;
     ListNode *next;
@@ -17,8 +18,19 @@ struct ListNode {
 
 class Solution {
 public:
-    ListNode* deleteDuplicates(ListNode* head) {
-        if (head == nullptr || head->next == nullptr){ return head; }
+    ListNode *reverseList(ListNode *head) {
+        ListNode *re = NULL;
+        while (head != NULL) {
+            ListNode *temp = new ListNode(head->val);
+            temp->next = re;
+            re = temp;
+            head = head->next;
+        }
+        return re;
+    }
+
+    ListNode *deleteDuplicates(ListNode *head) {
+        if (head == nullptr || head->next == nullptr) { return head; }
         ListNode *pre = head;
         ListNode *cur = pre->next;
         while (cur != nullptr) {
@@ -32,18 +44,32 @@ public:
         }
         return head;
     }
-    ListNode* reverseList(ListNode* head) {
-        ListNode *re = NULL;
-        while (head != NULL) {
-            ListNode *temp = new ListNode(head->val);
-            temp->next = re;
-            re = temp;
-            head = head -> next;
+
+    ListNode *removeNthFromEnd(ListNode *head, int n) {
+        if (n == 0) {
+            return head;
         }
-        return re;
+        ListNode *h = head;
+        ListNode *end = head;
+        while ( end != nullptr )
+        {
+            if (n >= 0) {
+                end = end->next;
+                n--;
+            } else {
+                h = h->next;
+                end = end->next;
+            }
+        }
+        if (n == 0) {
+            return head->next;
+        }
+        h->next = h->next->next;
+        return head;
     }
 };
-int main(){
+
+int main() {
     ListNode a1(1);
     ListNode a2(1);
     ListNode c1(2);
