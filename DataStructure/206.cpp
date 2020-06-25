@@ -76,10 +76,10 @@ public:
         ListNode *cur = head->next;
         pre->next = cur->next;
         cur->next = pre;
-        head = cur;
+        head = cur;//确定头节点
         while (pre->next != nullptr) {
             cur = pre->next;
-            if (cur->next == nullptr) {
+            if (cur->next == nullptr) {//奇数个结点跳出
                 break;
             }
             pre->next = pre->next->next;
