@@ -4,7 +4,7 @@
 // 19. Remove Nth Node From End of List(Medium)
 // 24. Swap Nodes in Pairs(Medium)
 // !!! 445. Add Two Numbers II(Medium) !!!
-// 234. Palindrome Linked List(Easy)
+// 234. Palindrome Linked List(Easy) 快慢指针一次遍历找到链表中点
 
 /**
  * Definition for singly-linked list.*/
@@ -94,7 +94,7 @@ public:
         return head;
     }
 
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+    ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
         stack<int> stack1;
         stack<int> stack2;
         while (l1 && l2) {
@@ -115,7 +115,7 @@ public:
         int a1, a2;
         ListNode *re = nullptr;
         while (!stack1.empty() || !stack2.empty() || pre) {
-            if (stack1.empty()){
+            if (stack1.empty()) {
                 a1 = 0;
             } else {
                 a1 = stack1.top();
@@ -155,7 +155,7 @@ public:
                 half--;
                 new_head = new_head->next;
                 r = r->next;
-            } else{ break;}
+            } else { break; }
         }
         return half == 0;
     }
@@ -174,6 +174,33 @@ public:
             s.pop_front();
         }
         return s.size() <= 1;
+    }
+
+    bool isPalindrome_2(ListNode *head) {
+        if (!head || !head->next) return true;
+        ListNode *slow = head, *fast = head;
+        // 将slow指针移动到链表中间位置
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        // 反转后半部分
+        ListNode *curNode = slow, *nextNode = slow->next;
+        while (nextNode) {
+            ListNode *tmp = nextNode->next;
+            nextNode->next = curNode;
+            curNode = nextNode;
+            nextNode = tmp;
+        }
+        slow->next = nullptr;
+        // 开始比较是否相等
+        while (head && curNode) {
+            if (head->val != curNode->val)
+                return false;
+            head = head->next;
+            curNode = curNode->next;
+        }
+        return true;
     }
 };
 
@@ -196,5 +223,5 @@ int main() {
     b2.next = &b3;
 //    b3.next = &c1;
     Solution a;
-     cout << a.isPalindrome(&a1) << endl;
+    cout << a.isPalindrome(&a1) << endl;
 }
