@@ -55,4 +55,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/Leetcode.dir/DependInfo.cmake"
   "CMakeFiles/206.dir/DependInfo.cmake"
+  "CMakeFiles/21.dir/DependInfo.cmake"
   )

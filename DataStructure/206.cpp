@@ -210,7 +210,7 @@ public:
         vector<ListNode *> result;
         int len = 0;
         struct ListNode* p = root;
-        while (p != nullptr) {                      //记录长度
+        while (p != nullptr) {  //记录长度
             len++;
             p = p->next;
         }
@@ -249,13 +249,13 @@ int main() {
     ListNode b2(0);
     ListNode b3(1);
     a1.next = &a2;
-    a2.next = &c1;
+/*    a2.next = &c1;
     c1.next = &c2;
-    c2.next = &c3;
+    c2.next = &c3;*/
 
     b1.next = &b2;
     b2.next = &b3;
 //    b3.next = &c1;
     Solution a;
-    a.splitListToParts(&a1, 2);
+    a.splitListToParts(&a1, 4);
 }

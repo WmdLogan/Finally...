@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = D:\CLionProjects\Leetcode\cmake-build-debug
 # The main recursive "all" target.
 all: CMakeFiles/Leetcode.dir/all
 all: CMakeFiles/206.dir/all
+all: CMakeFiles/21.dir/all
 
 .PHONY : all
 
@@ -65,6 +66,7 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/Leetcode.dir/clean
 clean: CMakeFiles/206.dir/clean
+clean: CMakeFiles/21.dir/clean
 
 .PHONY : clean
 
@@ -75,7 +77,7 @@ clean: CMakeFiles/206.dir/clean
 CMakeFiles/Leetcode.dir/all:
 	$(MAKE) -f CMakeFiles\Leetcode.dir\build.make CMakeFiles/Leetcode.dir/depend
 	$(MAKE) -f CMakeFiles\Leetcode.dir\build.make CMakeFiles/Leetcode.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=3,4 "Built target Leetcode"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=5,6 "Built target Leetcode"
 .PHONY : CMakeFiles/Leetcode.dir/all
 
 # Build rule for subdir invocation for target.
@@ -121,6 +123,33 @@ CMakeFiles/206.dir/rule: cmake_check_build_system
 CMakeFiles/206.dir/clean:
 	$(MAKE) -f CMakeFiles\206.dir\build.make CMakeFiles/206.dir/clean
 .PHONY : CMakeFiles/206.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/21.dir
+
+# All Build rule for target.
+CMakeFiles/21.dir/all:
+	$(MAKE) -f CMakeFiles\21.dir\build.make CMakeFiles/21.dir/depend
+	$(MAKE) -f CMakeFiles\21.dir\build.make CMakeFiles/21.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=3,4 "Built target 21"
+.PHONY : CMakeFiles/21.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/21.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
+	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/21.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/21.dir/rule
+
+# Convenience name for target.
+21: CMakeFiles/21.dir/rule
+
+.PHONY : 21
+
+# clean rule for target.
+CMakeFiles/21.dir/clean:
+	$(MAKE) -f CMakeFiles\21.dir\build.make CMakeFiles/21.dir/clean
+.PHONY : CMakeFiles/21.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -1,6 +1,6 @@
-// 21. Merge Two Sorted Lists
+// 21. Merge Two Sorted Lists(Easy)
 // Created by logan on 2020/6/24.
-// Easy
+// 328. Odd Even Linked List(Medium)
 
 /*Definition for singly-linked list.*/
 
@@ -34,16 +34,50 @@ public:
         l1 == nullptr ? t->next = l2 : t->next = l1;
         return m->next;
     }
+
+    ListNode *oddEvenList(ListNode *head) {
+        if (!head) {//空链表
+            return head;
+        }
+        ListNode *p = head;
+        ListNode *k_pre = head->next;//1个结点时，k_pre 为 nullptr
+        ListNode *k;
+        while (k_pre) {
+            k = k_pre->next;
+            //取出k结点
+            if (k == nullptr) {//k_pre是最后一个结点
+                break;
+            }
+            k_pre->next = k->next;
+            //k结点插入到p后,p向后移动1个节点
+            k->next = p->next;
+            p->next = k;
+            p = k;
+            k_pre = k_pre->next;
+        }
+        return head;
+    }
 };
 
 int main() {
-    ListNode a3 = ListNode(4);
-    ListNode a2 = ListNode(2, &a3);
-    ListNode a1 = ListNode(1, &a2);
-    ListNode b3 = ListNode(4);
-    ListNode b2 = ListNode(3, &b3);
-    ListNode b1 = ListNode(1, &b2);
-    Solution s;
-    s.mergeTwoLists(&a1, &b1);
+    ListNode *d = nullptr;
+    ListNode a1(1);
+    ListNode a2(2);
+    ListNode c1(3);
+    ListNode c2(4);
+    ListNode c3(5);
+    ListNode b1(9);
+    ListNode b2(0);
+    ListNode b3(1);
+    a1.next = &a2;
+    a2.next = &c1;
+    c1.next = &c2;
+    c2.next = &c3;
+
+    b1.next = &b2;
+    b2.next = &b3;
+//    b3.next = &c1;
+    Solution a;
+    a.oddEvenList(&a1);
     return 0;
 }
