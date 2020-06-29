@@ -5,12 +5,15 @@
 // 24. Swap Nodes in Pairs(Medium)
 // !!! 445. Add Two Numbers II(Medium) !!!
 // 234. Palindrome Linked List(Easy) 快慢指针一次遍历找到链表中点
+// 725. Split Linked List in Parts(Medium)
 
 /**
  * Definition for singly-linked list.*/
 #include <iostream>
 #include <stack>
 #include <deque>
+#include <vector>
+#include <cmath>
 
 using namespace std;
 
@@ -202,26 +205,57 @@ public:
         }
         return true;
     }
+
+    vector<ListNode *> splitListToParts(ListNode *root, int k) {
+        vector<ListNode *> result;
+        int len = 0;
+        struct ListNode* p = root;
+        while (p != nullptr) {                      //记录长度
+            len++;
+            p = p->next;
+        }
+        for (int i = 0; k; i++, k--) {
+            result.push_back(root);
+            int size;
+            if (len % k == 0) {
+                 size = len / k;           //计算每组的大小
+            } else {
+                 size = len / k + 1;
+            }
+            len -= size;                         //更新剩余长度
+            p = root;
+            while ( --size && p != nullptr) {
+                p = p->next;
+            }
+            struct ListNode *tmp = nullptr;         //截断链表
+            if (p != nullptr) {
+                tmp = p->next;
+                p->next = nullptr;
+            }
+            root = tmp;
+        }
+        return result;
+    }
 };
 
 int main() {
     ListNode *d = nullptr;
     ListNode a1(1);
-    ListNode a2(0);
-    ListNode c1(2);
-    ListNode c2(0);
-    ListNode c3(1);
+    ListNode a2(2);
+    ListNode c1(3);
+    ListNode c2(4);
+    ListNode c3(5);
     ListNode b1(9);
     ListNode b2(0);
     ListNode b3(1);
     a1.next = &a2;
-/*    a2.next = &c1;
+    a2.next = &c1;
     c1.next = &c2;
-    c2.next = &c3;*/
+    c2.next = &c3;
 
     b1.next = &b2;
     b2.next = &b3;
 //    b3.next = &c1;
     Solution a;
-    cout << a.isPalindrome(&a1) << endl;
+    a.splitListToParts(&a1, 2);
 }
