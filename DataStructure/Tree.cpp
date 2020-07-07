@@ -4,6 +4,7 @@
 // 110. Balanced Binary Tree (Easy)
 // 543. Diameter of Binary Tree (Easy)
 // 226. Invert Binary Tree (Easy)
+// 617. Merge Two Binary Trees(Easy)
 #include <iostream>
 #include <deque>
 
@@ -81,5 +82,28 @@ public:
             invertTree(root->right);
         }
         return root;
+    }
+    TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2)    {
+        if (t1 == nullptr && t2 == nullptr) {
+            return nullptr;
+        } else if (t1 == nullptr && t2 != nullptr) {
+            return t2;
+        } else if (t1 != nullptr && t2 == nullptr){
+            return t1;
+        }
+        t1->val += t2->val;
+        if (t1->left && t2->left) {
+            mergeTrees(t1->left, t2->left);
+        }
+        if (!t1->left && t2->left) {//t1左子树为空
+            t1->left = t2->left;
+        }
+        if (t1->right && t2->right) {
+            mergeTrees(t1->right, t2->right);
+        }
+        if (!t1->right && t2->right) {//t1右子树为空
+            t1->right = t2->right;
+        }
+        return t1;
     }
 };
