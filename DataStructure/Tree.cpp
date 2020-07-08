@@ -4,7 +4,8 @@
 // 110. Balanced Binary Tree (Easy)
 // 543. Diameter of Binary Tree (Easy)
 // 226. Invert Binary Tree (Easy)
-// 617. Merge Two Binary Trees(Easy)
+// 617. Merge Two Binary Trees (Easy)
+// 112. Path Sum (Easy)
 #include <iostream>
 #include <deque>
 
@@ -69,7 +70,7 @@ public:
     }
 
 public:
-    TreeNode* invertTree(TreeNode* root) {
+    TreeNode *invertTree(TreeNode *root) {
         if (root == nullptr) {
             return nullptr;
         }
@@ -83,12 +84,13 @@ public:
         }
         return root;
     }
-    TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2)    {
+
+    TreeNode *mergeTrees(TreeNode *t1, TreeNode *t2) {
         if (t1 == nullptr && t2 == nullptr) {
             return nullptr;
         } else if (t1 == nullptr && t2 != nullptr) {
             return t2;
-        } else if (t1 != nullptr && t2 == nullptr){
+        } else if (t1 != nullptr && t2 == nullptr) {
             return t1;
         }
         t1->val += t2->val;
@@ -106,4 +108,51 @@ public:
         }
         return t1;
     }
+
+public:
+    int tree_sum = 0;
+
+    bool hasPathSum(TreeNode *root, int sum) {
+        bool left_sum, right_sum;
+        if (root == nullptr) {
+            return false;
+        }
+        tree_sum += root->val;//加上当前节点的val
+        if (!root->left && !root->right) {//叶子节点，判断sum是否相等
+            if (sum == tree_sum) {
+                return true;
+            } else {
+                tree_sum -= root->val;
+                return false;
+            }
+        }
+//没到叶子结点，继续递归
+        left_sum = hasPathSum(root->left, sum);
+        right_sum = hasPathSum(root->right, sum);
+        tree_sum -= root->val;
+        return left_sum || right_sum;
+    }
+    //最优递归：
+/*    bool hasPathSum(TreeNode *root, int sum) {
+        if (root == nullptr) {
+            return false;
+        }
+        if (root->left == nullptr && root->right == nullptr) {
+            return sum == root->val;
+        }
+        return hasPathSum(root->left, sum - root->val) ||
+               hasPathSum(root->right, sum - root->val);
+    }*/
 };
+
+int main() {
+    TreeNode *a = new TreeNode(9);
+    TreeNode *b = new TreeNode(-6);
+    TreeNode *c = new TreeNode(5);
+    TreeNode *root = new TreeNode(8);
+    root->left = a;
+    root->right = b;
+    b->left = c;
+    Solution test;
+    cout << test.hasPathSum(root, 1);
+}
