@@ -1,11 +1,13 @@
 //
 // Created by logan on 2020/7/6.
-//104. Maximum Depth of Binary Tree (Easy)
+// 104. Maximum Depth of Binary Tree (Easy)
 // 110. Balanced Binary Tree (Easy)
 // 543. Diameter of Binary Tree (Easy)
 // 226. Invert Binary Tree (Easy)
 // 617. Merge Two Binary Trees (Easy)
 // 112. Path Sum (Easy)
+// 437. Path Sum III (Easy)
+// 572. Subtree of Another Tree (Easy)
 #include <iostream>
 #include <deque>
 
@@ -21,6 +23,7 @@ struct TreeNode {
 
 class Solution {
 public:
+//104
     int maxDepth(TreeNode *root) {
         if (root == nullptr) return 0;
         deque<TreeNode *> q;
@@ -38,7 +41,7 @@ public:
         }
         return deep;
     }
-
+//110
     bool isBalanced(TreeNode *root) {
         if (!root) return true;
 
@@ -48,6 +51,7 @@ public:
     }
 
 public:
+// 543. Diameter of Binary Tree (Easy)
     int Max;
 
     int depth(TreeNode *rt) {
@@ -70,6 +74,7 @@ public:
     }
 
 public:
+// 226. Invert Binary Tree (Easy)
     TreeNode *invertTree(TreeNode *root) {
         if (root == nullptr) {
             return nullptr;
@@ -85,6 +90,7 @@ public:
         return root;
     }
 
+// 617. Merge Two Binary Trees (Easy)
     TreeNode *mergeTrees(TreeNode *t1, TreeNode *t2) {
         if (t1 == nullptr && t2 == nullptr) {
             return nullptr;
@@ -111,6 +117,7 @@ public:
 
 public:
     int tree_sum = 0;
+// 112. Path Sum (Easy)
 
     bool hasPathSum(TreeNode *root, int sum) {
         bool left_sum, right_sum;
@@ -143,7 +150,37 @@ public:
         return hasPathSum(root->left, sum - root->val) ||
                hasPathSum(root->right, sum - root->val);
     }*/
+
+public:
+// 572. Subtree of Another Tree (Easy)
+
+    int sum_count = 0;
+
+    int pathSum(TreeNode* root, int sum) {
+        if (root == nullptr) {
+            return false;
+        }
+        hasPathSum(root, sum);
+        pathSum(root->left, sum);
+        pathSum(root->right, sum);
+        return sum_count;
+    }
+
+    void pathSum_hasPathSum(TreeNode *root, int sum) {
+        tree_sum += root->val;//加上当前节点的val
+        if (tree_sum == sum) {
+            sum_count++;
+        }
+        if (root->left) {
+            pathSum_hasPathSum(root->left, sum);
+        }
+        if (root->right) {
+            pathSum_hasPathSum(root->right, sum);
+        }
+        tree_sum -= root->val;
+    }
 };
+
 
 int main() {
     TreeNode *a = new TreeNode(9);
