@@ -216,31 +216,16 @@ public:
     }
 
 //101. Symmetric Tree
-deque<int> vec;
-    bool isSymmetric(TreeNode *root) {
-        if (root == nullptr) {
-            return true;
-        }
-        dfs(root->left, 0);
-        dfs(root->right, 1);
-        return vec.empty();
+    bool check(TreeNode *p, TreeNode *q) {
+        if (!p && !q) return true;
+        if (!p || !q) return false;
+        return p->val == q->val && check(p->left, q->right) && check(p->right, q->left);
     }
 
-    void dfs(TreeNode *root, int flag){
-        if (root->left) {
-            dfs(root->left, flag);
-        }
-        if (flag) {
-            if (vec.back() == root->val) {
-                vec.pop_back();
-            }
-        } else {
-            vec.push_back(root->val);
-        }
-        if (root->right) {
-            dfs(root->right, flag);
-        }
+    bool isSymmetric(TreeNode* root) {
+        return check(root, root);
     }
+
 };
 
 
