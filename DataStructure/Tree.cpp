@@ -8,6 +8,7 @@
 // 112. Path Sum (Easy)
 // 437. Path Sum III (Easy)
 // 572. Subtree of Another Tree (Easy)
+// 101. Symmetric Tree (Easy)
 #include <iostream>
 #include <deque>
 
@@ -41,6 +42,7 @@ public:
         }
         return deep;
     }
+
 //110
     bool isBalanced(TreeNode *root) {
         if (!root) return true;
@@ -152,11 +154,10 @@ public:
     }*/
 
 public:
-// 572. Subtree of Another Tree (Easy)
-
+// 437. Path Sum III (Easy)
     int sum_count = 0;
 
-    int pathSum(TreeNode* root, int sum) {
+    int pathSum(TreeNode *root, int sum) {
         if (root == nullptr) {
             return false;
         }
@@ -179,6 +180,67 @@ public:
         }
         tree_sum -= root->val;
     }
+
+// 572. Subtree of Another Tree (Easy)
+    bool traverse(TreeNode *s, TreeNode *t) {//判断t是否为s的子树
+        bool l_result = false;
+        bool r_result = false;
+        if (s && t) {//s和t都存在，判断是否相等
+            if (s->val == t->val) {
+                l_result = traverse(s->left, t->left);
+                r_result = traverse(s->right, t->right);
+                return r_result && l_result;
+            }
+        } else if (!s && !t) {//s和t都不存在,true
+            return true;
+        }
+        return false;
+    }
+
+    bool re = false;
+
+    bool isSubtree(TreeNode *s, TreeNode *t) {
+        bool result = false;
+        if (s == nullptr) {
+            return false;
+        }
+        if (s->val == t->val) {
+            result = traverse(s, t);
+            if (result) {
+                re = true;
+            }
+        }
+        isSubtree(s->left, t);
+        isSubtree(s->right, t);
+        return re;
+    }
+
+//101. Symmetric Tree
+deque<int> vec;
+    bool isSymmetric(TreeNode *root) {
+        if (root == nullptr) {
+            return true;
+        }
+        dfs(root->left, 0);
+        dfs(root->right, 1);
+        return vec.empty();
+    }
+
+    void dfs(TreeNode *root, int flag){
+        if (root->left) {
+            dfs(root->left, flag);
+        }
+        if (flag) {
+            if (vec.back() == root->val) {
+                vec.pop_back();
+            }
+        } else {
+            vec.push_back(root->val);
+        }
+        if (root->right) {
+            dfs(root->right, flag);
+        }
+    }
 };
 
 
@@ -189,7 +251,7 @@ int main() {
     TreeNode *root = new TreeNode(8);
     root->left = a;
     root->right = b;
-    b->left = c;
+    a->left = c;
     Solution test;
-    cout << test.hasPathSum(root, 1);
+    test.dfs(root, 0);
 }
