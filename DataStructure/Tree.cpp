@@ -9,6 +9,8 @@
 // 437. Path Sum III (Easy)
 // 572. Subtree of Another Tree (Easy)
 // 101. Symmetric Tree (Easy)
+// 111. Minimum Depth of Binary Tree (Easy)
+// 404. Sum of Left Leaves (Easy)
 #include <iostream>
 #include <deque>
 
@@ -222,10 +224,53 @@ public:
         return p->val == q->val && check(p->left, q->right) && check(p->right, q->left);
     }
 
-    bool isSymmetric(TreeNode* root) {
+    bool isSymmetric(TreeNode *root) {
         return check(root, root);
     }
 
+//111. Minimum Depth of Binary Tree
+
+    int minDepth(TreeNode *root) {
+        deque<TreeNode *> min_depth;
+        if (root == nullptr) { return 0; }
+        min_depth.push_back(root);
+        int depth = 0;
+        while (1) {
+            depth++;
+            int num = min_depth.size();
+            for (int i = 1; i <= num; i++) {
+                TreeNode *p = min_depth.front();
+                min_depth.pop_front();
+                if (!p->left && !p->right) { return depth; }
+                if (p->right) {
+                    min_depth.push_back(p->right);
+                }
+                if (p->left) {
+                    min_depth.push_back(p->left);
+                }
+            }
+        }
+    }
+
+//404. Sum of Left Leaves
+    int left_sum = 0;
+
+    int sumOfLeftLeaves(TreeNode *root) {
+        if (!root) { return 0; }
+        sumOfLeftLeaves_pre(root);
+        return left_sum;
+    }
+    void sumOfLeftLeaves_pre(TreeNode *root) {
+        if (root->left) {
+            if (!root->left->left && !root->left->right) {
+                left_sum += root->left->val;
+            }
+            sumOfLeftLeaves_pre(root->left);
+        }
+        if (root->right) {
+            sumOfLeftLeaves_pre(root->right);
+        }
+    }
 };
 
 
