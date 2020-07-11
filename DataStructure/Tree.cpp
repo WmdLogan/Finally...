@@ -11,6 +11,7 @@
 // 101. Symmetric Tree (Easy)
 // 111. Minimum Depth of Binary Tree (Easy)
 // 404. Sum of Left Leaves (Easy)
+// 687. Longest Univalue Path (Easy)
 #include <iostream>
 #include <deque>
 
@@ -260,6 +261,7 @@ public:
         sumOfLeftLeaves_pre(root);
         return left_sum;
     }
+
     void sumOfLeftLeaves_pre(TreeNode *root) {
         if (root->left) {
             if (!root->left->left && !root->left->right) {
@@ -270,6 +272,26 @@ public:
         if (root->right) {
             sumOfLeftLeaves_pre(root->right);
         }
+    }
+
+//！！！ 687. Longest Univalue Path  ！！！
+    int help(TreeNode* node, int &ans) {
+        if (node == nullptr) return 0;
+
+        int left = help(node->left, ans);
+        int right = help(node->right, ans);
+
+        left = (node->left != nullptr && node->val == node->left->val) ? left + 1 : 0;
+        right = (node->right != nullptr && node->val == node->right->val) ? right + 1 : 0;
+
+        ans = max(ans, left + right);
+        return max(left, right);
+    }
+
+    int longestUnivaluePath(TreeNode* root) {
+        int ans = 0;
+        help(root, ans);
+        return ans;
     }
 };
 
