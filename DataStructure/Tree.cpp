@@ -12,6 +12,7 @@
 // 111. Minimum Depth of Binary Tree (Easy)
 // 404. Sum of Left Leaves (Easy)
 // 687. Longest Univalue Path (Easy)
+// 337. House Robber III (Medium)
 #include <iostream>
 #include <deque>
 
@@ -275,7 +276,7 @@ public:
     }
 
 //！！！ 687. Longest Univalue Path  ！！！
-    int help(TreeNode* node, int &ans) {
+    int help(TreeNode *node, int &ans) {
         if (node == nullptr) return 0;
 
         int left = help(node->left, ans);
@@ -288,10 +289,27 @@ public:
         return max(left, right);
     }
 
-    int longestUnivaluePath(TreeNode* root) {
+    int longestUnivaluePath(TreeNode *root) {
         int ans = 0;
         help(root, ans);
         return ans;
+    }
+
+//337. House Robber III (Medium)：未通过（动态规划）
+    int rob(TreeNode *root) {
+        if (root == nullptr) return 0;
+
+        int money = root->val;
+        if (root->left != nullptr) {
+            money += (rob(root->left->left) + rob(root->left->right));
+        }
+
+        if (root->right != nullptr) {
+            money += (rob(root->right->left) + rob(root->right->right));
+        }
+
+        return max(money, rob(root->left) + rob(root->right));
+
     }
 };
 
