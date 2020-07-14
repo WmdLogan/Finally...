@@ -14,10 +14,11 @@
 // 687. Longest Univalue Path (Easy)
 // 337. House Robber III (Medium)
 // 671. Second Minimum Node In a Binary Tree (Easy)
+// 637. Average of Levels in Binary Tree (Easy)
 #include <iostream>
 #include <deque>
 #include <set>
-
+#include <vector>
 using namespace std;
 
 struct TreeNode {
@@ -332,6 +333,27 @@ public:
         }
         set<int>::iterator it = s.begin();
         return s.size() > 1 ? *++it : -1;
+    }
+//637. Average of Levels in Binary Tree (Easy)
+    vector<double> averageOfLevels(TreeNode* root) {
+        vector<double> vector;
+        if (root == nullptr) { return vector; }
+        deque<TreeNode *> deque;
+        deque.push_back(root);
+        while (!deque.empty()) {
+            int num = deque.size();
+            double sum = 0.0;
+            for (int i = 0; i < num; ++i) {
+                TreeNode *temp = deque.front();
+                sum += temp->val;
+                deque.pop_front();
+                if (temp->left) deque.push_back(temp->left);
+                if (temp->right) deque.push_back(temp->right);
+            }
+            sum /= num;
+            vector.push_back(sum);
+        }
+        return vector;
     }
 };
 
