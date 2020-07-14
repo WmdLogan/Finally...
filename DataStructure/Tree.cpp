@@ -13,8 +13,10 @@
 // 404. Sum of Left Leaves (Easy)
 // 687. Longest Univalue Path (Easy)
 // 337. House Robber III (Medium)
+// 671. Second Minimum Node In a Binary Tree (Easy)
 #include <iostream>
 #include <deque>
+#include <set>
 
 using namespace std;
 
@@ -311,6 +313,26 @@ public:
         return max(money, rob(root->left) + rob(root->right));
 
     }
+
+//671. Second Minimum Node In a Binary Tree (Easy)
+    int findSecondMinimumValue(TreeNode *root) {
+        set<int> s;
+        if (root == nullptr) { return 0; }
+        deque<TreeNode *> deque;
+        deque.push_back(root);
+        while (!deque.empty()) {
+            int num = deque.size();
+            for (int i = 0; i < num; ++i) {
+                TreeNode *temp = deque.front();
+                s.insert(temp->val);
+                deque.pop_front();
+                if (temp->left) deque.push_back(temp->left);
+                if (temp->right) deque.push_back(temp->right);
+            }
+        }
+        set<int>::iterator it = s.begin();
+        return s.size() > 1 ? *++it : -1;
+    }
 };
 
 
@@ -318,10 +340,10 @@ int main() {
     TreeNode *a = new TreeNode(9);
     TreeNode *b = new TreeNode(-6);
     TreeNode *c = new TreeNode(5);
-    TreeNode *root = new TreeNode(8);
+    TreeNode *root = new TreeNode(5);
     root->left = a;
     root->right = b;
     a->left = c;
     Solution test;
-    test.dfs(root, 0);
+    test.findSecondMinimumValue(root);
 }
