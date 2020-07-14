@@ -16,10 +16,15 @@
 // 671. Second Minimum Node In a Binary Tree (Easy)
 // 637. Average of Levels in Binary Tree (Easy)
 // 513. Find Bottom Left Tree Value (Easy)
+// 144. Binary Tree Preorder Traversal (Medium)
+// 145. Binary Tree Postorder Traversal (Medium)
+// 94. Binary Tree Inorder Traversal (Medium)
 #include <iostream>
 #include <deque>
 #include <set>
 #include <vector>
+#include <stack>
+
 using namespace std;
 
 struct TreeNode {
@@ -335,8 +340,9 @@ public:
         set<int>::iterator it = s.begin();
         return s.size() > 1 ? *++it : -1;
     }
+
 //637. Average of Levels in Binary Tree (Easy)
-    vector<double> averageOfLevels(TreeNode* root) {
+    vector<double> averageOfLevels(TreeNode *root) {
         vector<double> vector;
         if (root == nullptr) { return vector; }
         deque<TreeNode *> deque;
@@ -356,8 +362,9 @@ public:
         }
         return vector;
     }
+
 //513. Find Bottom Left Tree Value (Easy)
-    int findBottomLeftValue(TreeNode* root) {
+    int findBottomLeftValue(TreeNode *root) {
         deque<TreeNode *> deque;
         deque.push_back(root);
         int left;
@@ -375,6 +382,46 @@ public:
         }
         return left;
     }
+
+//144. Binary Tree Preorder Traversal (Medium)
+    vector<int> preorderTraversal(TreeNode *root) {
+        vector<int> res;  //保存结果
+        int num;
+        if (root == nullptr) { return res; }
+        stack<TreeNode *> call;  //调用栈
+        call.push(root);  //首先介入root节点
+        while (!call.empty()) {
+            num = call.size();
+            for (int i = 0; i < num; ++i) {
+                TreeNode *t = call.top();
+                call.pop();  //访问过的节点弹出
+                res.push_back(t->val);
+                if (t->right) call.push(t->right);  //右节点先压栈，最后处理
+                if (t->left) call.push(t->left);
+            }
+        }
+        return res;
+    }
+//145. Binary Tree Postorder Traversal (Medium)
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> res;  //保存结果
+        int num;
+        if (root == nullptr) { return res; }
+        stack<TreeNode *> call;
+        call.push(root);
+        while (!call.empty()) {
+            num = call.size();
+            for (int i = 0; i < num; ++i) {
+                TreeNode *t = call.top();
+                if (t->right) call.push(t->right);
+                if (t->left) call.push(t->left);
+                call.pop();  //访问过的节点弹出
+                res.push_back(t->val);
+            }
+        }
+        return res;
+    }
+// 94. Binary Tree Inorder Traversal (Medium)
 };
 
 
