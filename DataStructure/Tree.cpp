@@ -15,6 +15,7 @@
 // 337. House Robber III (Medium)
 // 671. Second Minimum Node In a Binary Tree (Easy)
 // 637. Average of Levels in Binary Tree (Easy)
+// 513. Find Bottom Left Tree Value (Easy)
 #include <iostream>
 #include <deque>
 #include <set>
@@ -354,6 +355,25 @@ public:
             vector.push_back(sum);
         }
         return vector;
+    }
+//513. Find Bottom Left Tree Value (Easy)
+    int findBottomLeftValue(TreeNode* root) {
+        deque<TreeNode *> deque;
+        deque.push_back(root);
+        int left;
+        while (!deque.empty()) {
+            int num = deque.size();
+            for (int i = 0; i < num; ++i) {
+                TreeNode *temp = deque.front();
+                if (i == 0) {
+                    left = temp->val;
+                }
+                deque.pop_front();
+                if (temp->left) deque.push_back(temp->left);
+                if (temp->right) deque.push_back(temp->right);
+            }
+        }
+        return left;
     }
 };
 
