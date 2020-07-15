@@ -20,6 +20,7 @@
 // 145. Binary Tree Postorder Traversal (Medium)
 // 94. Binary Tree Inorder Traversal (Hard)
 // 669. Trim a Binary Search Tree (Easy)
+// 230. Kth Smallest Element in a BST (Medium)
 #include <iostream>
 #include <deque>
 #include <set>
@@ -462,6 +463,31 @@ public:
         root->right = trimBST(root->right, L, R);
 
         return root;
+    }
+
+//230. Kth Smallest Element in a BST (Medium)
+    int kthSmallest(TreeNode *root, int k) {
+        if (root == nullptr) {
+            return 0;
+        }
+        int result;
+        stack<TreeNode*> call;
+        call.push(root);
+        while (k > 0) {
+            TreeNode *temp = call.top();
+            call.pop();
+            if (temp) {
+                if (temp->right) call.push(temp->right);
+                call.push(temp);
+                call.push(nullptr);
+                if (temp->left) call.push(temp->left);
+            } else {
+                k--;
+                result = call.top()->val;
+                call.pop();
+            }
+        }
+        return result;
     }
 };
 
