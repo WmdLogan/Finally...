@@ -18,7 +18,7 @@
 // 513. Find Bottom Left Tree Value (Easy)
 // 144. Binary Tree Preorder Traversal (Medium)
 // 145. Binary Tree Postorder Traversal (Medium)
-// 94. Binary Tree Inorder Traversal (Medium)
+// 94. Binary Tree Inorder Traversal (Hard)
 #include <iostream>
 #include <deque>
 #include <set>
@@ -402,26 +402,47 @@ public:
         }
         return res;
     }
-//145. Binary Tree Postorder Traversal (Medium)
+//145. Binary Tree Postorder Traversal (Hard)
     vector<int> postorderTraversal(TreeNode* root) {
-        vector<int> res;  //保存结果
-        int num;
-        if (root == nullptr) { return res; }
-        stack<TreeNode *> call;
-        call.push(root);
-        while (!call.empty()) {
-            num = call.size();
-            for (int i = 0; i < num; ++i) {
-                TreeNode *t = call.top();
-                if (t->right) call.push(t->right);
-                if (t->left) call.push(t->left);
-                call.pop();  //访问过的节点弹出
-                res.push_back(t->val);
+        vector<int> res;
+        stack<TreeNode*> call;
+        if(root!=nullptr) call.push(root);
+        while(!call.empty()){
+            TreeNode *t = call.top();
+            call.pop();
+            if(t!=nullptr){
+                call.push(t);  //在右节点之前重新插入该节点，以便在最后处理（访问值）
+                call.push(nullptr); //nullptr跟随t插入，标识已经访问过，还没有被处理
+                if(t->right) call.push(t->right);
+                if(t->left) call.push(t->left);
+            }else{
+                res.push_back(call.top()->val);
+                call.pop();
             }
         }
         return res;
     }
 // 94. Binary Tree Inorder Traversal (Medium)
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> res;
+        stack<TreeNode*> call;
+        if(root!=nullptr) call.push(root);
+        while(!call.empty()){
+            TreeNode *t = call.top();
+            call.pop();
+            if(t!=nullptr){
+                if(t->right) call.push(t->right);
+                call.push(t);  //在左节点之前重新插入该节点，以便在左节点之后处理（访问值）
+                call.push(nullptr); //nullptr跟随t插入，标识已经访问过，还没有被处理
+                if(t->left) call.push(t->left);
+            }else{
+                res.push_back(call.top()->val);
+                call.pop();
+            }
+        }
+        return res;
+    }
+
 };
 
 
