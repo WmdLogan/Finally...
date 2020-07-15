@@ -19,6 +19,7 @@
 // 144. Binary Tree Preorder Traversal (Medium)
 // 145. Binary Tree Postorder Traversal (Medium)
 // 94. Binary Tree Inorder Traversal (Hard)
+// 669. Trim a Binary Search Tree (Easy)
 #include <iostream>
 #include <deque>
 #include <set>
@@ -402,40 +403,21 @@ public:
         }
         return res;
     }
+
 //145. Binary Tree Postorder Traversal (Hard)
-    vector<int> postorderTraversal(TreeNode* root) {
+    vector<int> postorderTraversal(TreeNode *root) {
         vector<int> res;
-        stack<TreeNode*> call;
-        if(root!=nullptr) call.push(root);
-        while(!call.empty()){
+        stack<TreeNode *> call;
+        if (root != nullptr) call.push(root);
+        while (!call.empty()) {
             TreeNode *t = call.top();
             call.pop();
-            if(t!=nullptr){
+            if (t != nullptr) {
                 call.push(t);  //在右节点之前重新插入该节点，以便在最后处理（访问值）
                 call.push(nullptr); //nullptr跟随t插入，标识已经访问过，还没有被处理
-                if(t->right) call.push(t->right);
-                if(t->left) call.push(t->left);
-            }else{
-                res.push_back(call.top()->val);
-                call.pop();
-            }
-        }
-        return res;
-    }
-// 94. Binary Tree Inorder Traversal (Medium)
-    vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> res;
-        stack<TreeNode*> call;
-        if(root!=nullptr) call.push(root);
-        while(!call.empty()){
-            TreeNode *t = call.top();
-            call.pop();
-            if(t!=nullptr){
-                if(t->right) call.push(t->right);
-                call.push(t);  //在左节点之前重新插入该节点，以便在左节点之后处理（访问值）
-                call.push(nullptr); //nullptr跟随t插入，标识已经访问过，还没有被处理
-                if(t->left) call.push(t->left);
-            }else{
+                if (t->right) call.push(t->right);
+                if (t->left) call.push(t->left);
+            } else {
                 res.push_back(call.top()->val);
                 call.pop();
             }
@@ -443,6 +425,44 @@ public:
         return res;
     }
 
+// 94. Binary Tree Inorder Traversal (Medium)
+    vector<int> inorderTraversal(TreeNode *root) {
+        vector<int> res;
+        stack<TreeNode *> call;
+        if (root != nullptr) call.push(root);
+        while (!call.empty()) {
+            TreeNode *t = call.top();
+            call.pop();
+            if (t != nullptr) {
+                if (t->right) call.push(t->right);
+                call.push(t);  //在左节点之前重新插入该节点，以便在左节点之后处理（访问值）
+                call.push(nullptr); //nullptr跟随t插入，标识已经访问过，还没有被处理
+                if (t->left) call.push(t->left);
+            } else {
+                res.push_back(call.top()->val);
+                call.pop();
+            }
+        }
+        return res;
+    }
+
+//669. Trim a Binary Search Tree (Easy)
+    TreeNode *trimBST(TreeNode *root, int L, int R) {
+        if (root == nullptr) {
+            return root;
+        }
+        if (root->val > R) {
+            return trimBST(root->left, L, R); //只处理左子树，相当于剪掉了root及其右子树
+        }
+        if (root->val < L) {
+            return trimBST(root->right, L, R); //只处理右子树，相当于剪掉了root及其左子树
+        }
+
+        root->left = trimBST(root->left, L, R);
+        root->right = trimBST(root->right, L, R);
+
+        return root;
+    }
 };
 
 
