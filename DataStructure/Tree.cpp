@@ -23,6 +23,8 @@
 // 230. Kth Smallest Element in a BST (Medium)
 // 538. Convert BST to Greater Tree (Easy)
 // 235. Lowest Common Ancestor of a Binary Search Tree (Easy)
+// 236. Lowest Common Ancestor of a Binary Tree (Medium)
+// 108. Convert Sorted Array to Binary Search Tree (Easy)
 #include <iostream>
 #include <deque>
 #include <set>
@@ -473,7 +475,7 @@ public:
             return 0;
         }
         int result;
-        stack<TreeNode*> call;
+        stack<TreeNode *> call;
         call.push(root);
         while (k > 0) {
             TreeNode *temp = call.top();
@@ -493,9 +495,9 @@ public:
     }
 
 // 538. Convert BST to Greater Tree (Easy)
-    TreeNode* convertBST(TreeNode* root) {
-        if (root == nullptr){ return root; }
-        stack<TreeNode*> call;
+    TreeNode *convertBST(TreeNode *root) {
+        if (root == nullptr) { return root; }
+        stack<TreeNode *> call;
         call.push(root);
         int last_sum = 0;
         while (!call.empty()) {
@@ -515,14 +517,36 @@ public:
         return root;
     }
 
-//235. Lowest Common Ancestor of a Binary Search Tree (Easy)
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+// 235. Lowest Common Ancestor of a Binary Search Tree (Easy)
+    TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
         if (root == nullptr) return root;
-        while ((root->val > p->val && root->val > q->val) || (root->val < p->val && root->val < q->val)){
+        while ((root->val > p->val && root->val > q->val) || (root->val < p->val && root->val < q->val)) {
             if ((root->val > p->val && root->val > q->val)) root = root->left;
             if ((root->val < p->val && root->val < q->val)) root = root->right;
         }
         return root;
+    }
+
+// 236. Lowest Common Ancestor of a Binary Tree (Medium)
+    TreeNode* ans;
+    bool dfs(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if (root == nullptr) return false;
+        bool lson = dfs(root->left, p, q);
+        bool rson = dfs(root->right, p, q);
+        if ((lson && rson) || ((root->val == p->val || root->val == q->val) && (lson || rson))) {
+            ans = root;
+        }
+        return lson || rson || (root->val == p->val || root->val == q->val);
+    }
+
+    TreeNode *lowestCommonAncestor_bt(TreeNode *root, TreeNode *p, TreeNode *q) {
+        dfs(root, p, q);
+        return ans;
+    }
+
+//108. Convert Sorted Array to Binary Search Tree (Easy)
+    TreeNode* sortedArrayToBST(vector<int>& nums) {
+
     }
 };
 
