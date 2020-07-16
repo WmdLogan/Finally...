@@ -21,6 +21,7 @@
 // 94. Binary Tree Inorder Traversal (Hard)
 // 669. Trim a Binary Search Tree (Easy)
 // 230. Kth Smallest Element in a BST (Medium)
+// 538. Convert BST to Greater Tree (Easy)
 #include <iostream>
 #include <deque>
 #include <set>
@@ -489,6 +490,30 @@ public:
         }
         return result;
     }
+
+// 538. Convert BST to Greater Tree (Easy)
+    TreeNode* convertBST(TreeNode* root) {
+        if (root == nullptr){ return root; }
+        stack<TreeNode*> call;
+        call.push(root);
+        int last_sum = 0;
+        while (!call.empty()) {
+            TreeNode *temp = call.top();
+            call.pop();
+            if (temp) {
+                if (temp->left) call.push(temp->left);
+                call.push(temp);
+                call.push(nullptr);
+                if (temp->right) call.push(temp->right);
+            } else {
+                call.top()->val += last_sum;
+                last_sum = call.top()->val;
+                call.pop();
+            }
+        }
+        return root;
+    }
+
 };
 
 
