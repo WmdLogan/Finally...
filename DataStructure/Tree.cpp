@@ -22,6 +22,7 @@
 // 669. Trim a Binary Search Tree (Easy)
 // 230. Kth Smallest Element in a BST (Medium)
 // 538. Convert BST to Greater Tree (Easy)
+// 235. Lowest Common Ancestor of a Binary Search Tree (Easy)
 #include <iostream>
 #include <deque>
 #include <set>
@@ -514,6 +515,15 @@ public:
         return root;
     }
 
+//235. Lowest Common Ancestor of a Binary Search Tree (Easy)
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if (root == nullptr) return root;
+        while ((root->val > p->val && root->val > q->val) || (root->val < p->val && root->val < q->val)){
+            if ((root->val > p->val && root->val > q->val)) root = root->left;
+            if ((root->val < p->val && root->val < q->val)) root = root->right;
+        }
+        return root;
+    }
 };
 
 
