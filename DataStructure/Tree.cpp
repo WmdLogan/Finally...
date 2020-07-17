@@ -528,8 +528,9 @@ public:
     }
 
 // 236. Lowest Common Ancestor of a Binary Tree (Medium)
-    TreeNode* ans;
-    bool dfs(TreeNode* root, TreeNode* p, TreeNode* q) {
+    TreeNode *ans;
+
+    bool dfs(TreeNode *root, TreeNode *p, TreeNode *q) {
         if (root == nullptr) return false;
         bool lson = dfs(root->left, p, q);
         bool rson = dfs(root->right, p, q);
@@ -545,9 +546,24 @@ public:
     }
 
 //108. Convert Sorted Array to Binary Search Tree (Easy)
-    TreeNode* sortedArrayToBST(vector<int>& nums) {
-
+    TreeNode *sortedArrayToBST(vector<int> &nums) {
+        return helper(nums, 0, nums.size() - 1);
     }
+
+    TreeNode *helper(vector<int> &nums, int left, int right) {
+        if (left > right) {
+            return nullptr;
+        }
+
+        // 总是选择中间位置左边的数字作为根节点
+        int mid = (left + right) / 2;
+
+        TreeNode *root = new TreeNode(nums[mid]);
+        root->left = helper(nums, left, mid - 1);
+        root->right = helper(nums, mid + 1, right);
+        return root;
+    }
+
 };
 
 
