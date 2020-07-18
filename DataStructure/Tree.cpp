@@ -584,16 +584,13 @@ public:
     }
 
 // 653. Two Sum IV - Input is a BST (Easy)
-    deque<int> tree;
-
     bool findTarget(TreeNode *root, int k) {
         if (root == nullptr) return false;
-        InOrderTraverse(root, k);
+        vector<int> tree;
+        InOrderTraverse(root, k, tree);
         int first = 0;
         int last = tree.size() - 1;
-        if (last < 1) return false;
-            int size = last;
-        while (first != last && first >= 0 && last <= size) {
+        while (first != last) {
             int result = tree[first] + tree[last];
             if (result == k) return true;
             else if (result > k) last--;
@@ -602,7 +599,7 @@ public:
         return false;
     }
 
-    void InOrderTraverse(TreeNode *root, int k) {
+    void InOrderTraverse(TreeNode *root, int k, vector<int>& tree) {
         stack<TreeNode *> call;
         call.push(root);
         while (!call.empty()) {
