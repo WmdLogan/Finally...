@@ -25,6 +25,7 @@
 // 235. Lowest Common Ancestor of a Binary Search Tree (Easy)
 // 236. Lowest Common Ancestor of a Binary Tree (Medium)
 // 108. Convert Sorted Array to Binary Search Tree (Easy)
+// 109. Convert Sorted List to Binary Search Tree (Medium)
 #include <iostream>
 #include <deque>
 #include <set>
@@ -563,7 +564,20 @@ public:
         root->right = helper(nums, mid + 1, right);
         return root;
     }
-
+// 109. Convert Sorted List to Binary Search Tree (Medium)
+     struct ListNode {
+             int val;
+             ListNode *next;
+             ListNode(int x) : val(x), next(NULL) {}
+         };
+    TreeNode* sortedListToBST(ListNode* head) {
+        vector<int> nums;
+        while (head) {
+            nums.push_back(head->val);
+            head = head->next;
+        }
+        return helper(nums, 0, nums.size() - 1);
+    }
 };
 
 
