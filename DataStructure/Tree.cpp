@@ -26,6 +26,7 @@
 // 236. Lowest Common Ancestor of a Binary Tree (Medium)
 // 108. Convert Sorted Array to Binary Search Tree (Easy)
 // 109. Convert Sorted List to Binary Search Tree (Medium)
+// 653. Two Sum IV - Input is a BST (Easy)
 #include <iostream>
 #include <deque>
 #include <set>
@@ -564,13 +565,16 @@ public:
         root->right = helper(nums, mid + 1, right);
         return root;
     }
+
 // 109. Convert Sorted List to Binary Search Tree (Medium)
-     struct ListNode {
-             int val;
-             ListNode *next;
-             ListNode(int x) : val(x), next(NULL) {}
-         };
-    TreeNode* sortedListToBST(ListNode* head) {
+    struct ListNode {
+        int val;
+        ListNode *next;
+
+        ListNode(int x) : val(x), next(NULL) {}
+    };
+
+    TreeNode *sortedListToBST(ListNode *head) {
         vector<int> nums;
         while (head) {
             nums.push_back(head->val);
@@ -578,17 +582,57 @@ public:
         }
         return helper(nums, 0, nums.size() - 1);
     }
+
+// 653. Two Sum IV - Input is a BST (Easy)
+    deque<int> tree;
+
+    bool findTarget(TreeNode *root, int k) {
+        if (root == nullptr) return false;
+        InOrderTraverse(root, k);
+        int first = 0;
+        int last = tree.size() - 1;
+        if (last < 1) return false;
+            int size = last;
+        while (first != last && first >= 0 && last <= size) {
+            int result = tree[first] + tree[last];
+            if (result == k) return true;
+            else if (result > k) last--;
+            else first++;
+        }
+        return false;
+    }
+
+    void InOrderTraverse(TreeNode *root, int k) {
+        stack<TreeNode *> call;
+        call.push(root);
+        while (!call.empty()) {
+            TreeNode *temp = call.top();
+            call.pop();
+            if (temp) {
+                if (temp->right) call.push(temp->right);
+                call.push(temp);
+                call.push(nullptr);
+                if (temp->left) call.push(temp->left);
+            } else {
+                int curr = call.top()->val;
+                tree.push_back(curr);
+                call.pop();
+            }
+        }
+    }
 };
 
 
 int main() {
-    TreeNode *a = new TreeNode(9);
-    TreeNode *b = new TreeNode(-6);
-    TreeNode *c = new TreeNode(5);
-    TreeNode *root = new TreeNode(5);
+    TreeNode *a = new TreeNode(1);
+    TreeNode *b = new TreeNode(3);
+    TreeNode *c = new TreeNode(2);
+    TreeNode *d = new TreeNode(4);
+    TreeNode *root = new TreeNode(2);
     root->left = a;
     root->right = b;
-    a->left = c;
+    // a->left = c;
+    //a->right = d;
     Solution test;
-    test.findSecondMinimumValue(root);
+    test.findTarget(root, 1);
 }
