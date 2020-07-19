@@ -27,6 +27,7 @@
 // 108. Convert Sorted Array to Binary Search Tree (Easy)
 // 109. Convert Sorted List to Binary Search Tree (Medium)
 // 653. Two Sum IV - Input is a BST (Easy)
+// 530. Minimum Absolute Difference in BST (Easy)
 #include <iostream>
 #include <deque>
 #include <set>
@@ -599,7 +600,7 @@ public:
         return false;
     }
 
-    void InOrderTraverse(TreeNode *root, int k, vector<int>& tree) {
+    void InOrderTraverse(TreeNode *root, int k, vector<int> &tree) {
         stack<TreeNode *> call;
         call.push(root);
         while (!call.empty()) {
@@ -617,6 +618,29 @@ public:
             }
         }
     }
+
+// 530. Minimum Absolute Difference in BST (Easy)
+    int getMinimumDifference(TreeNode *root) {
+        vector<int> tree;
+        InOrderTraverse(root, tree);
+        vector<int>::iterator it = tree.begin();
+        vector<int>::iterator it_next = it + 1;
+        int min = *it_next - *it;
+        it_next++;
+        while (it_next != tree.end()) {
+            it++;
+            int temp = *it_next - *it;
+            min = min - temp > 0 ? temp : min;
+            it_next++;
+        }
+        return min;
+    }
+
+    void InOrderTraverse(TreeNode *root, vector<int> &tree) {
+        if (root->left) InOrderTraverse(root->left, tree);
+        tree.push_back(root->val);
+        if (root->right) InOrderTraverse(root->right, tree);
+    }
 };
 
 
@@ -631,5 +655,5 @@ int main() {
     // a->left = c;
     //a->right = d;
     Solution test;
-    test.findTarget(root, 1);
+    test.getMinimumDifference(root);
 }
