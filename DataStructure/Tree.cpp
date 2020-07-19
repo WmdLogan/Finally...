@@ -29,11 +29,16 @@
 // 653. Two Sum IV - Input is a BST (Easy)
 // 530. Minimum Absolute Difference in BST (Easy)
 // 501. Find Mode in Binary Search Tree (Easy)
+// 208. Implement Trie (Prefix Tree) (Medium)
+// 677. Map Sum Pairs (Medium)
 #include <iostream>
 #include <deque>
 #include <set>
 #include <vector>
 #include <stack>
+#include <cstring>
+#include <map>
+#include <unordered_map>
 
 using namespace std;
 
@@ -678,6 +683,97 @@ public:
         }
         if (root->right) in_order(root->right);
     }
+
+// 208. Implement Trie (Prefix Tree) (Medium)
+    class Trie {
+    private:
+        bool isEnd;
+        Trie *next[26];
+    public:
+        Trie() {
+            isEnd = false;
+            memset(next, 0, sizeof(next));
+        }
+
+        void insert(string word) {
+            Trie *node = this;
+            for (char c : word) {
+                Trie *temp = node->next[c - 'a'];
+                if (temp == nullptr) {
+                    temp = new Trie();
+                }
+                node = temp;
+            }
+            node->isEnd = true;
+        }
+
+        bool search(string word) {
+            Trie *node = this;
+            for (char c : word) {
+                node = node->next[c - 'a'];
+                if (node == nullptr) {
+                    return false;
+                }
+            }
+            return node->isEnd;
+        }
+
+        bool startsWith(string prefix) {
+            Trie *node = this;
+            for (char c : prefix) {
+                node = node->next[c - 'a'];
+                if (node == nullptr) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    };
+
+// 677. Map Sum Pairs (Medium)
+    class MapSum {
+    public:
+        /** Initialize your data structure here. */
+        MapSum() : value(0) {}
+
+        void insert(string key, int val) {
+            auto p = this;
+            for (auto &c:key) {
+                if (p->child.find(c) == p->child.end()) p->child[c] = new MapSum();
+                p = p->child[c];
+            }
+            p->value = val;
+        }
+
+        int sum(string prefix) {
+            auto p = search(prefix);
+            return sumAll(p);
+        }
+
+    private:
+        int value;
+        unordered_map<char, MapSum *> child;
+
+        MapSum *search(string &prefix) {
+            auto p = this;
+            for (auto &c:prefix) {
+                auto iter = p->child.find(c);
+                if (iter == p->child.end()) return nullptr;
+                p = iter->second;
+            }
+            return p;
+        }
+
+        int sumAll(MapSum *p) {
+            if (!p) return 0;
+            int sum = p->value;
+            for (auto iter = p->child.begin(); iter != p->child.end(); ++iter) {
+                sum += sumAll(iter->second);
+            }
+            return sum;
+        }
+    };
+
 };
 
 
@@ -688,7 +784,7 @@ int main() {
     TreeNode *d = new TreeNode(4);
     TreeNode *root = new TreeNode(2);
     root->left = a;
-   // root->right = b;
+    // root->right = b;
     // a->left = c;
     //a->right = d;
     Solution test;
