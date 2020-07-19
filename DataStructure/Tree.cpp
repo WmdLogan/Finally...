@@ -28,6 +28,7 @@
 // 109. Convert Sorted List to Binary Search Tree (Medium)
 // 653. Two Sum IV - Input is a BST (Easy)
 // 530. Minimum Absolute Difference in BST (Easy)
+// 501. Find Mode in Binary Search Tree (Easy)
 #include <iostream>
 #include <deque>
 #include <set>
@@ -641,6 +642,42 @@ public:
         tree.push_back(root->val);
         if (root->right) InOrderTraverse(root->right, tree);
     }
+
+// 501. Find Mode in Binary Search Tree (Easy)
+    int same_length = 0;
+    int cur_same_length = 0;
+    int last_order;
+    int first_node_flag = 0;
+    vector<int> max_same;
+
+    vector<int> findMode(TreeNode *root) {
+        if (root == nullptr) return max_same;
+        in_order(root);
+        return max_same;
+    }
+
+    void in_order(TreeNode *root) {
+        if (root->left) in_order(root->left);
+        int temp = root->val;
+        if (first_node_flag == 0) {
+            last_order = temp;
+            first_node_flag++;
+        }
+        if (temp == last_order) {
+            same_length++;
+            if (same_length == cur_same_length) max_same.push_back(temp);
+            else if (same_length > cur_same_length) {
+                max_same.clear();
+                max_same.push_back(temp);
+                cur_same_length = same_length;
+            }
+        } else {
+            last_order = temp;
+            same_length = 1;
+            if (1 == cur_same_length) max_same.push_back(temp);
+        }
+        if (root->right) in_order(root->right);
+    }
 };
 
 
@@ -651,9 +688,9 @@ int main() {
     TreeNode *d = new TreeNode(4);
     TreeNode *root = new TreeNode(2);
     root->left = a;
-    root->right = b;
+   // root->right = b;
     // a->left = c;
     //a->right = d;
     Solution test;
-    test.getMinimumDifference(root);
+    test.findMode(root);
 }
