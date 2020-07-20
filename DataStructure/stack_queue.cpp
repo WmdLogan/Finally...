@@ -2,9 +2,13 @@
 // Created by logan on 2020/7/20.
 // 232. Implement Queue using Stacks (Easy)
 // 225. Implement Stack using Queues (Easy)
+// 155. Min Stack (Easy)
+// 20. Valid Parentheses (Easy)
 #include <stack>
 #include <deque>
 #include <vector>
+#include <set>
+#include <map>
 
 using namespace std;
 
@@ -95,3 +99,101 @@ public:
         return deque.empty();
     }
 };
+
+// 155. Min Stack (Easy)
+class MinStack {
+public:
+    stack<int> s;
+    stack<int> stack_min;
+
+    /** initialize your data structure here. */
+    MinStack() {
+
+    }
+
+    void push(int x) {
+        s.push(x);
+        if (stack_min.empty()) stack_min.push(x);
+        else {
+            stack_min.push(min(x, stack_min.top()));
+        }
+    }
+
+    void pop() {
+        s.pop();
+        stack_min.pop();
+    }
+
+    int top() {
+        return s.top();
+    }
+
+    int getMin() {
+        return stack_min.top();
+    }
+};
+
+class Solution {
+// 20. Valid Parentheses (Easy)
+public:
+    bool isValid(string s) {
+        stack<char> pair;
+        for (auto &c:s) {
+            switch (c) {
+                case '{' : pair.push(c);
+                    break;
+                case '[' : pair.push(c);
+                    break;
+                case '(' : pair.push(c);
+                    break;
+                case '}' :
+                    if (pair.empty()) {
+                        pair.push(c);
+                        break;
+                    }
+                    else{
+                        if (pair.top() == '{') {
+                            pair.pop();
+                            break;
+                        } else {
+                            pair.push(c);
+                        }
+                    }
+                case ')' :
+                    if (pair.empty()) {
+                        pair.push(c);
+                        break;
+                    }
+                    else{
+                        if (pair.top() == '(') {
+                            pair.pop();
+                            break;
+                        } else {
+                            pair.push(c);
+                        }
+                    }
+                case ']' :
+                    if (pair.empty()) {
+                        pair.push(c);
+                        break;
+                    }
+                    else{
+                        if (pair.top() == '[') {
+                            pair.pop();
+                            break;
+                        } else {
+                            pair.push(c);
+                        }
+                    }
+                default:
+                    break;
+            }
+        }
+        return pair.empty();
+    }
+};
+int main(){
+    string s = "]";
+    Solution solution;
+    solution.isValid(s);
+}
