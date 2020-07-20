@@ -110,6 +110,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named s_q
+
+# Build rule for target.
+s_q: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 s_q
+.PHONY : s_q
+
+# fast build rule for target.
+s_q/fast:
+	$(MAKE) -f CMakeFiles\s_q.dir\build.make CMakeFiles/s_q.dir/build
+.PHONY : s_q/fast
+
+#=============================================================================
 # Target rules for targets named Leetcode
 
 # Build rule for target.
@@ -242,6 +255,33 @@ DataStructure/Tree.cpp.s:
 	$(MAKE) -f CMakeFiles\Tree.dir\build.make CMakeFiles/Tree.dir/DataStructure/Tree.cpp.s
 .PHONY : DataStructure/Tree.cpp.s
 
+DataStructure/stack_queue.obj: DataStructure/stack_queue.cpp.obj
+
+.PHONY : DataStructure/stack_queue.obj
+
+# target to build an object file
+DataStructure/stack_queue.cpp.obj:
+	$(MAKE) -f CMakeFiles\s_q.dir\build.make CMakeFiles/s_q.dir/DataStructure/stack_queue.cpp.obj
+.PHONY : DataStructure/stack_queue.cpp.obj
+
+DataStructure/stack_queue.i: DataStructure/stack_queue.cpp.i
+
+.PHONY : DataStructure/stack_queue.i
+
+# target to preprocess a source file
+DataStructure/stack_queue.cpp.i:
+	$(MAKE) -f CMakeFiles\s_q.dir\build.make CMakeFiles/s_q.dir/DataStructure/stack_queue.cpp.i
+.PHONY : DataStructure/stack_queue.cpp.i
+
+DataStructure/stack_queue.s: DataStructure/stack_queue.cpp.s
+
+.PHONY : DataStructure/stack_queue.s
+
+# target to generate assembly for a file
+DataStructure/stack_queue.cpp.s:
+	$(MAKE) -f CMakeFiles\s_q.dir\build.make CMakeFiles/s_q.dir/DataStructure/stack_queue.cpp.s
+.PHONY : DataStructure/stack_queue.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -275,6 +315,7 @@ help:
 	@echo ... all (the default if no target is provided)
 	@echo ... clean
 	@echo ... depend
+	@echo ... s_q
 	@echo ... Leetcode
 	@echo ... 206
 	@echo ... 21
@@ -290,6 +331,9 @@ help:
 	@echo ... DataStructure/Tree.obj
 	@echo ... DataStructure/Tree.i
 	@echo ... DataStructure/Tree.s
+	@echo ... DataStructure/stack_queue.obj
+	@echo ... DataStructure/stack_queue.i
+	@echo ... DataStructure/stack_queue.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
