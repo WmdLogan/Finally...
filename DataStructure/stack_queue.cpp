@@ -5,6 +5,8 @@
 // 155. Min Stack (Easy)
 // 20. Valid Parentheses (Easy)
 // 739. Daily Temperatures (Medium)
+// 496. Next Greater Element I
+// 503. Next Greater Element II (Medium)
 #include <stack>
 #include <deque>
 #include <vector>
@@ -194,7 +196,7 @@ public:
     }
 
 // 739. Daily Temperatures (Medium)
-    vector<int> dailyTemperatures(vector<int>& T) {
+    vector<int> dailyTemperatures(vector<int> &T) {
         int n = T.size();
         vector<int> ans(n, 0);
         stack<int> s;
@@ -208,10 +210,58 @@ public:
         }
         return ans;
     }
+
+// 496. Next Greater Element I
+    vector<int> nextGreaterElement(vector<int> &nums1, vector<int> &nums2) {
+        int len = nums1.size();
+        int len_2 = nums2.size();
+        vector<int> ans;
+        map<int, int> num2_map;
+        stack<int> call;
+        for (int i = 0; i < len_2; ++i) {
+            while (!call.empty() && nums2[i] > nums2[call.top()]) {
+                int loc = call.top();
+                num2_map[nums2[loc]] = nums2[i];
+                call.pop();
+            }
+            call.push(i);
+        }
+        while (!call.empty()) {
+            num2_map[nums2[call.top()]] = -1;
+            call.pop();
+        }
+        for (int j = 0; j < len; ++j) {
+            ans.push_back(num2_map[nums1[j]]);
+        }
+        return ans;
+    }
+
+// 503. Next Greater Element II (Medium)
+    vector<int> nextGreaterElements(vector<int> &nums) {
+        int len = nums.size();
+        stack<int> stack;
+        vector<int> ans(len, -1);
+        int j;
+        for (int i = 0; i < 2 * len; i++) {
+            j = i % len;
+            while (!stack.empty() && nums[j] > nums[stack.top()]) {
+                int temp = stack.top();
+                ans[temp] = nums[j];
+                stack.pop();
+            }
+            stack.push(j);
+        }
+        return ans;
+    }
 };
 
 int main() {
     string s = "]";
+    vector<int> vec;
+    vec.push_back(1);
+    vec.push_back(2);
+    vec.push_back(1);
     Solution solution;
-    solution.isValid(s);
+    solution.nextGreaterElements(vec);
+
 }
