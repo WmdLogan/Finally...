@@ -4,6 +4,7 @@
 // 225. Implement Stack using Queues (Easy)
 // 155. Min Stack (Easy)
 // 20. Valid Parentheses (Easy)
+// 739. Daily Temperatures (Medium)
 #include <stack>
 #include <deque>
 #include <vector>
@@ -140,18 +141,20 @@ public:
         stack<char> pair;
         for (auto &c:s) {
             switch (c) {
-                case '{' : pair.push(c);
+                case '{' :
+                    pair.push(c);
                     break;
-                case '[' : pair.push(c);
+                case '[' :
+                    pair.push(c);
                     break;
-                case '(' : pair.push(c);
+                case '(' :
+                    pair.push(c);
                     break;
                 case '}' :
                     if (pair.empty()) {
                         pair.push(c);
                         break;
-                    }
-                    else{
+                    } else {
                         if (pair.top() == '{') {
                             pair.pop();
                             break;
@@ -163,8 +166,7 @@ public:
                     if (pair.empty()) {
                         pair.push(c);
                         break;
-                    }
-                    else{
+                    } else {
                         if (pair.top() == '(') {
                             pair.pop();
                             break;
@@ -176,8 +178,7 @@ public:
                     if (pair.empty()) {
                         pair.push(c);
                         break;
-                    }
-                    else{
+                    } else {
                         if (pair.top() == '[') {
                             pair.pop();
                             break;
@@ -191,8 +192,25 @@ public:
         }
         return pair.empty();
     }
+
+// 739. Daily Temperatures (Medium)
+    vector<int> dailyTemperatures(vector<int>& T) {
+        int n = T.size();
+        vector<int> ans(n, 0);
+        stack<int> s;
+        for (int i = 0; i < n; ++i) {
+            while (!s.empty() && T[i] > T[s.top()]) {
+                int previousIndex = s.top();
+                ans[previousIndex] = i - previousIndex;
+                s.pop();
+            }
+            s.push(i);
+        }
+        return ans;
+    }
 };
-int main(){
+
+int main() {
     string s = "]";
     Solution solution;
     solution.isValid(s);
