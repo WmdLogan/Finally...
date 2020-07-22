@@ -7,6 +7,8 @@
 // 739. Daily Temperatures (Medium)
 // 496. Next Greater Element I
 // 503. Next Greater Element II (Medium)
+// 42. Trapping Rain Water
+// 901. Online Stock Span
 #include <stack>
 #include <deque>
 #include <vector>
@@ -253,6 +255,40 @@ public:
         }
         return ans;
     }
+
+// 42. Trapping Rain Water
+    int trap(vector<int> &height) {
+        int len = height.size();
+        stack<int> call;
+        int water = 0;
+        int i;
+        for (i = 0; i < len; ++i) {
+            while (!call.empty() && height[i] > height[call.top()]) {
+                int top = call.top();
+                call.pop();
+                if (call.empty()) break;
+                int distance = i - call.top() - 1;
+                int high = min(height[call.top()], height[i]) - height[top];
+                water += high * distance;
+            }
+            call.push(i);
+        }
+        return water;
+    }
+// 901. Online Stock Span
+    class StockSpanner {
+    public:
+        stack<int> call;
+        StockSpanner() {
+            vector<int> day;
+        }
+        void count(){
+            
+        }
+        int next(int price) {
+
+        }
+    };
 };
 
 int main() {
