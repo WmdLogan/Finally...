@@ -2,6 +2,9 @@
 // Created by logan on 2020/7/22.
 //
 // 1. Two Sum (Easy)
+// 217. Contains Duplicate (Easy)
+// 594. Longest Harmonious Subsequence (Easy)
+// 128. Longest Consecutive Sequence (Hard)
 #include <stack>
 #include <deque>
 #include <vector>
@@ -14,8 +17,6 @@ using namespace std;
 
 class Solution {
 // 1. Two Sum (Easy)
-// 217. Contains Duplicate (Easy)
-// 594. Longest Harmonious Subsequence (Easy)
 public:
     vector<int> twoSum(vector<int> &nums, int target) {
         vector<pair<int, int>> vec;
@@ -93,11 +94,10 @@ public:
             end = mid;
             int end_next = end + 1;
             while (end_next < len) {
-                if (nums[end] == nums[end_next]){
+                if (nums[end] == nums[end_next]) {
                     end++;
                     end_next++;
-                }
-                else break;
+                } else break;
             }
             if ((nums[end] - nums[start]) == 1) {
                 sum = end - start + 1;
@@ -107,6 +107,30 @@ public:
             mid = end + 1;
         }
         return LHS;
+    }
+
+// 128. Longest Consecutive Sequence (Hard)
+    int longestConsecutive(vector<int> &nums) {
+        if (nums.empty()) return 0;
+        map<int, int> m;
+        int ans = 1;
+        int longest = 1;
+        for (vector<int>::iterator it = nums.begin(); it != nums.end(); it++) {
+            m[*it] = 1;
+        }
+        map<int, int>::iterator m_it = m.begin();
+        int last = m_it->first;
+        m_it++;
+        for (; m_it != m.end(); m_it++) {
+            if ((m_it->first - last) == 1) {
+                ans++;
+            } else {
+                longest = max(longest, ans);
+                ans = 1;
+            }
+            last = m_it->first;
+        }
+        return max(longest, ans);
     }
 };
 

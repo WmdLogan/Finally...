@@ -55,17 +55,6 @@ CMAKE_BINARY_DIR = D:\CLionProjects\Leetcode\cmake-build-debug
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"D:\Program Files\JetBrains\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -76,6 +65,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	"D:\Program Files\JetBrains\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -187,6 +187,19 @@ hash/fast:
 	$(MAKE) -f CMakeFiles\hash.dir\build.make CMakeFiles/hash.dir/build
 .PHONY : hash/fast
 
+#=============================================================================
+# Target rules for targets named string
+
+# Build rule for target.
+string: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 string
+.PHONY : string
+
+# fast build rule for target.
+string/fast:
+	$(MAKE) -f CMakeFiles\string.dir\build.make CMakeFiles/string.dir/build
+.PHONY : string/fast
+
 DataStructure/206.obj: DataStructure/206.cpp.obj
 
 .PHONY : DataStructure/206.obj
@@ -240,6 +253,33 @@ DataStructure/21.s: DataStructure/21.cpp.s
 DataStructure/21.cpp.s:
 	$(MAKE) -f CMakeFiles\21.dir\build.make CMakeFiles/21.dir/DataStructure/21.cpp.s
 .PHONY : DataStructure/21.cpp.s
+
+DataStructure/String.obj: DataStructure/String.cpp.obj
+
+.PHONY : DataStructure/String.obj
+
+# target to build an object file
+DataStructure/String.cpp.obj:
+	$(MAKE) -f CMakeFiles\string.dir\build.make CMakeFiles/string.dir/DataStructure/String.cpp.obj
+.PHONY : DataStructure/String.cpp.obj
+
+DataStructure/String.i: DataStructure/String.cpp.i
+
+.PHONY : DataStructure/String.i
+
+# target to preprocess a source file
+DataStructure/String.cpp.i:
+	$(MAKE) -f CMakeFiles\string.dir\build.make CMakeFiles/string.dir/DataStructure/String.cpp.i
+.PHONY : DataStructure/String.cpp.i
+
+DataStructure/String.s: DataStructure/String.cpp.s
+
+.PHONY : DataStructure/String.s
+
+# target to generate assembly for a file
+DataStructure/String.cpp.s:
+	$(MAKE) -f CMakeFiles\string.dir\build.make CMakeFiles/string.dir/DataStructure/String.cpp.s
+.PHONY : DataStructure/String.cpp.s
 
 DataStructure/Tree.obj: DataStructure/Tree.cpp.obj
 
@@ -359,16 +399,20 @@ help:
 	@echo ... Leetcode
 	@echo ... 206
 	@echo ... 21
-	@echo ... rebuild_cache
 	@echo ... Tree
 	@echo ... hash
 	@echo ... edit_cache
+	@echo ... string
+	@echo ... rebuild_cache
 	@echo ... DataStructure/206.obj
 	@echo ... DataStructure/206.i
 	@echo ... DataStructure/206.s
 	@echo ... DataStructure/21.obj
 	@echo ... DataStructure/21.i
 	@echo ... DataStructure/21.s
+	@echo ... DataStructure/String.obj
+	@echo ... DataStructure/String.i
+	@echo ... DataStructure/String.s
 	@echo ... DataStructure/Tree.obj
 	@echo ... DataStructure/Tree.i
 	@echo ... DataStructure/Tree.s
