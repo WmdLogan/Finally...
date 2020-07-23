@@ -2,6 +2,8 @@
 // Created by logan on 2020/7/22.
 //
 // 242. Valid Anagram (Easy)
+// 409. Longest Palindrome (Easy)
+// 205. Isomorphic Strings (Easy)
 
 #include <stack>
 #include <deque>
@@ -37,42 +39,28 @@ public:
         return true;
     }
 
-};
-
-typedef struct DNode {
-    int data;
-    struct DNode *pre;
-    struct DNode *next;
-} DNode, *DList;
-
-void insertSort(DList &l) {
-    if (l == nullptr || l->next == nullptr) return;
-    DNode *cur = l->next;
-    while (cur) {
-        DNode *next = cur->next;
-        DNode *tmpDNode = cur->pre;
-        while (tmpDNode && tmpDNode->data > cur->data) {
-            tmpDNode = tmpDNode->pre;
-        }
-        if (tmpDNode == nullptr) {
-            cur->pre->next = cur->next;
-            if (cur->next != nullptr) cur->next->pre = cur->pre;
-            l->pre = cur;
-            cur->next = l;
-            cur->pre = nullptr;
-            l = cur;
-
-        } else if (tmpDNode->next != cur) {
-            cur->pre->next = cur->next;
-            if (cur->next != nullptr) cur->next->pre = cur->pre;
-            else {
-                cur->pre = tmpDNode;
-                cur->next = tmpDNode->next;
-                tmpDNode->next->pre = cur;
-                tmpDNode->next = cur;
+// 409. Longest Palindrome (Easy)
+    int longestPalindrome(string s) {
+        int len = s.size();
+        unordered_map<char, int> m;
+        int long_sum = 0;
+        for (char c:s) {
+            m[c]++;
+            if (m[c] % 2 == 0) {
+                long_sum += 2;
             }
         }
-        cur = next;
+        return len > long_sum ? long_sum + 1 : long_sum;
     }
-    return;
-}
+
+// 205. Isomorphic Strings (Easy)
+    bool isIsomorphic(string s, string t) {
+        int len = s.size();
+        for (int i = 0; i < len; i++) {
+            if (s.find(s[i]) != t.find(t[i]))
+                return false;
+        }
+        return true;
+    }
+};
+
