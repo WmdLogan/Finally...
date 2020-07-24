@@ -4,6 +4,9 @@
 // 242. Valid Anagram (Easy)
 // 409. Longest Palindrome (Easy)
 // 205. Isomorphic Strings (Easy)
+// 647. Palindromic Substrings (Medium)
+// 9. Palindrome Number
+// 696. Count Binary Substrings (Easy)
 
 #include <stack>
 #include <deque>
@@ -61,6 +64,54 @@ public:
                 return false;
         }
         return true;
+    }
+// 647. Palindromic Substrings (Medium)
+
+// 9. Palindrome Number
+    bool isPalindrome(int x) {
+        if (x < 0 || (x % 10 == 0 && x != 0)) {
+            return false;
+        }
+
+        int revertedNumber = 0;
+        while (x > revertedNumber) {
+            revertedNumber = revertedNumber * 10 + x % 10;
+            x /= 10;
+        }
+
+        return x == revertedNumber || x == revertedNumber / 10;
+
+    }
+// 696. Count Binary Substrings (Easy)
+    int countBinarySubstrings(string s) {
+/* 方法一
+        int len = s.length();
+        int vec[len];
+        int t = 0;
+        vec[0] = 1;
+        for (int i = 1; i < len; ++i) {
+            if (s[i] != s[i - 1]) {
+                vec[++t] = 1;
+            } else {
+                vec[t]++;
+            }
+        }
+        int ans = 0;
+        for (int j = 1; j <= t; ++j) {
+            ans += min(vec[j - 1], vec[j]);
+        }
+        return ans;*/
+        int ans = 0, prev = 0, cur = 1;
+        for (int i = 1; i < s.length(); ++i) {
+            if (s[i] != s[i - 1]) {
+                ans += min(prev, cur);
+                prev = cur;
+                cur = 1;
+            } else {
+                cur++;
+            }
+        }
+        return ans + min(prev, cur);
     }
 };
 
