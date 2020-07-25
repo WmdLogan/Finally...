@@ -3,6 +3,7 @@
 //
 // 283. Move Zeroes (Easy)
 // 566. Reshape the Matrix (Easy)
+// 485. Max Consecutive Ones (Easy)
 
 #include <stack>
 #include <deque>
@@ -36,8 +37,38 @@ public:
     }
 
 // 566. Reshape the Matrix (Easy)
-    vector<vector<int>> matrixReshape(vector<vector<int>>& nums, int r, int c) {
-
+    vector<vector<int>> matrixReshape(vector<vector<int>> &nums, int r, int c) {
+        int r_ori = nums.size();
+        int c_ori = nums[0].size();
+        int r_count = 0, c_count = 0;
+        if (r * c != r_ori * c_ori) return nums;
+        vector<vector<int>> ans;
+        for (int j = 0; j < r; ++j) {
+            vector<int> vec;
+            for (int i = 0; i < c; ++i) {
+                vec.push_back(nums[r_count][c_count]);
+                c_count++;
+                if (c_count == c_ori){
+                    c_count = 0;
+                    r_count++;
+                }
+            }
+            ans.push_back(vec);
+        }
+        return ans;
+    }
+// 485. Max Consecutive Ones (Easy)
+    int findMaxConsecutiveOnes(vector<int>& nums) {
+        short max_length = 0;
+        short single_length = 0;
+        for (short i = 0; i < nums.size(); ++i) {
+            if (nums[i] == 1) single_length++;
+            else {
+                max_length = max(max_length, single_length);
+                single_length = 0;
+            }
+        }
+        return max(max_length, single_length);
     }
 };
 
