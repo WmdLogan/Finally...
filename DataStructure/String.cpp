@@ -4,6 +4,7 @@
 // 242. Valid Anagram (Easy)
 // 409. Longest Palindrome (Easy)
 // 205. Isomorphic Strings (Easy)
+// 5. Longest Palindromic Substring (Medium)
 // 647. Palindromic Substrings (Medium)
 // 9. Palindrome Number
 // 696. Count Binary Substrings (Easy)
@@ -65,7 +66,43 @@ public:
         }
         return true;
     }
+
+// 5. Longest Palindromic Substring (Medium)
+    string longestPalindrome_5(string s) {
+        int len = s.size();
+        if (s.empty()) return s;
+        bool dp[len][len];
+        int result[2] = {0, 0};
+        int i, j;
+        for (i = 0; i < len; i++) {
+            dp[i][i] = true;
+        }
+        for (i = len - 1; i >= 0; i--) {
+            for (j = i + 1; j < len; j++) {
+                if (s[i] == s[j]) {
+                    if (j - i == 1) {
+                        dp[i][j] = true;
+                    } else {
+                        dp[i][j] = dp[i + 1][j - 1];
+                    }
+                } else {
+                    dp[i][j] = false;
+                }
+                if (dp[i][j]) {
+                    if (result[1] - result[0] <= j - i) {
+                        result[0] = i;
+                        result[1] = j;
+                    }
+                }
+            }
+        }
+        return s.substr(result[0], result[1] - result[0] + 1);
+    }
+
 // 647. Palindromic Substrings (Medium)
+    int countSubstrings(string s) {
+
+    }
 
 // 9. Palindrome Number
     bool isPalindrome(int x) {
@@ -82,6 +119,7 @@ public:
         return x == revertedNumber || x == revertedNumber / 10;
 
     }
+
 // 696. Count Binary Substrings (Easy)
     int countBinarySubstrings(string s) {
 /* 方法一
@@ -115,3 +153,7 @@ public:
     }
 };
 
+int main() {
+    Solution s;
+    s.longestPalindrome_5("abc");
+}
