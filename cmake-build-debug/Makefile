@@ -200,6 +200,19 @@ string/fast:
 	$(MAKE) -f CMakeFiles\string.dir\build.make CMakeFiles/string.dir/build
 .PHONY : string/fast
 
+#=============================================================================
+# Target rules for targets named array
+
+# Build rule for target.
+array: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 array
+.PHONY : array
+
+# fast build rule for target.
+array/fast:
+	$(MAKE) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/build
+.PHONY : array/fast
+
 DataStructure/206.obj: DataStructure/206.cpp.obj
 
 .PHONY : DataStructure/206.obj
@@ -308,6 +321,33 @@ DataStructure/Tree.cpp.s:
 	$(MAKE) -f CMakeFiles\Tree.dir\build.make CMakeFiles/Tree.dir/DataStructure/Tree.cpp.s
 .PHONY : DataStructure/Tree.cpp.s
 
+DataStructure/array.obj: DataStructure/array.cpp.obj
+
+.PHONY : DataStructure/array.obj
+
+# target to build an object file
+DataStructure/array.cpp.obj:
+	$(MAKE) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/DataStructure/array.cpp.obj
+.PHONY : DataStructure/array.cpp.obj
+
+DataStructure/array.i: DataStructure/array.cpp.i
+
+.PHONY : DataStructure/array.i
+
+# target to preprocess a source file
+DataStructure/array.cpp.i:
+	$(MAKE) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/DataStructure/array.cpp.i
+.PHONY : DataStructure/array.cpp.i
+
+DataStructure/array.s: DataStructure/array.cpp.s
+
+.PHONY : DataStructure/array.s
+
+# target to generate assembly for a file
+DataStructure/array.cpp.s:
+	$(MAKE) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/DataStructure/array.cpp.s
+.PHONY : DataStructure/array.cpp.s
+
 DataStructure/hash.obj: DataStructure/hash.cpp.obj
 
 .PHONY : DataStructure/hash.obj
@@ -401,8 +441,9 @@ help:
 	@echo ... 21
 	@echo ... Tree
 	@echo ... hash
-	@echo ... edit_cache
 	@echo ... string
+	@echo ... array
+	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... DataStructure/206.obj
 	@echo ... DataStructure/206.i
@@ -416,6 +457,9 @@ help:
 	@echo ... DataStructure/Tree.obj
 	@echo ... DataStructure/Tree.i
 	@echo ... DataStructure/Tree.s
+	@echo ... DataStructure/array.obj
+	@echo ... DataStructure/array.i
+	@echo ... DataStructure/array.s
 	@echo ... DataStructure/hash.obj
 	@echo ... DataStructure/hash.i
 	@echo ... DataStructure/hash.s
