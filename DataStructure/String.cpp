@@ -101,7 +101,32 @@ public:
 
 // 647. Palindromic Substrings (Medium)
     int countSubstrings(string s) {
-
+        int len = s.size();
+        if (s.empty()) return 0;
+        bool dp[len][len];
+        int ans = 0;
+        int i, j;
+        for (i = 0; i < len; i++) {
+            dp[i][i] = true;
+        }
+        for (i = len - 1; i >= 0; i--) {
+            ans++;
+            for (j = i + 1; j < len; j++) {
+                if (s[i] == s[j]) {
+                    if (j - i == 1) {
+                        dp[i][j] = true;
+                    } else {
+                        dp[i][j] = dp[i + 1][j - 1];
+                    }
+                } else {
+                    dp[i][j] = false;
+                }
+                if (dp[i][j]) {
+                    ans++;
+                }
+            }
+        }
+        return ans;
     }
 
 // 9. Palindrome Number
