@@ -5,6 +5,8 @@
 // 566. Reshape the Matrix (Easy)
 // 485. Max Consecutive Ones (Easy)
 // 240. Search a 2D Matrix II (Medium)
+// 378. Kth Smallest Element in a Sorted Matrix ((Medium))
+// 645. Set Mismatch (Easy)
 
 #include <stack>
 #include <deque>
@@ -38,12 +40,12 @@ public:
     }
 
 // 566. Reshape the Matrix (Easy)
-    vector <vector<int>> matrixReshape(vector <vector<int>> &nums, int r, int c) {
+    vector<vector<int>> matrixReshape(vector<vector<int>> &nums, int r, int c) {
         int r_ori = nums.size();
         int c_ori = nums[0].size();
         int r_count = 0, c_count = 0;
         if (r * c != r_ori * c_ori) return nums;
-        vector <vector<int>> ans;
+        vector<vector<int>> ans;
         for (int j = 0; j < r; ++j) {
             vector<int> vec;
             for (int i = 0; i < c; ++i) {
@@ -74,7 +76,7 @@ public:
     }
 
 // 240. Search a 2D Matrix II (Medium)
-    bool searchMatrix(vector <vector<int>> &matrix, int target) {
+    bool searchMatrix(vector<vector<int>> &matrix, int target) {
         if (matrix.empty()) return false;
         if (matrix[0].empty()) return false;
         int m = matrix.size();
@@ -87,45 +89,96 @@ public:
         }
         return false;
     }
+
+// 378. Kth Smallest Element in a Sorted Matrix ((Medium))
+    int numbers_less_than_or_equal(const vector<vector<int>> &matrix, int m) {
+        int count = 0, i = 0, j = matrix[0].size() - 1;
+        while (i < matrix.size() && j >= 0) {
+            if (matrix[i][j] <= m) {
+                count += j + 1;
+                ++i;
+            } else {
+                --j;
+            }
+        }
+        return count;
+
+    }
+
+    int kthSmallest(vector<vector<int>> &matrix, int k) {
+        if (matrix.empty() || matrix[0].empty())
+            return -1;
+
+        int l = matrix[0][0], r = matrix.back().back();
+        while (l < r) {
+            int m = l + r >> 1;//(l + r)/2
+            if (numbers_less_than_or_equal(matrix, m) >= k)
+                r = m;
+            else
+                l = m + 1;
+        }
+        return l;
+    }
+// 645. Set Mismatch (Easy)
+    vector<int> findErrorNums(vector<int>& nums) {
+        int n = nums.size();
+        int sum = 0, xor1 = 0, xor2 = 0;
+        int dup = -1, mis = 1;
+        vector<int> ans(2);
+        for (int i = 0; i < n; ++i) {
+            sum ^= (i + 1) ^ nums[i];
+        }
+        int t = sum & -sum; //将sum二进制表示下除最靠右的1保留外，其余都置为0
+        for (int i = 1; i < n + 1; ++i) {
+            if (t & i)
+                xor1 ^= i;
+            else
+                xor2 ^= i;
+        }
+        for (int i = 0; i < n; ++i) {
+            if (t & nums[i])
+                xor1 ^= nums[i];
+            else
+                xor2 ^= nums[i];
+        }
+        int count = 0;
+        for (int i = 0; i < n; ++i) {
+            if (nums[i] == xor1)
+                count++;
+        }
+        if (count == 0) {
+            dup = xor2;
+            mis = xor1;
+        }
+        else {
+            dup = xor1;
+            mis = xor2;
+        }
+
+        ans[0] = dup;
+        ans[1] = mis;
+        return ans;
+    }
 };
 
 int main() {
-    vector <vector<int>> matrix;
+    vector<vector<int>> matrix;
     vector<int> vec;
     vec.push_back(1);
-    vec.push_back(2);
-    vec.push_back(3);
-    vec.push_back(4);
     vec.push_back(5);
+    vec.push_back(9);
     matrix.push_back(vec);
     vector<int> vec1;
-    vec1.push_back(6);
-    vec1.push_back(7);
-    vec1.push_back(8);
-    vec1.push_back(9);
     vec1.push_back(10);
+    vec1.push_back(11);
+    vec1.push_back(13);
     matrix.push_back(vec1);
     vector<int> vec2;
-    vec2.push_back(11);
     vec2.push_back(12);
     vec2.push_back(13);
-    vec2.push_back(14);
     vec2.push_back(15);
     matrix.push_back(vec2);
-    vector<int> vec3;
-    vec3.push_back(16);
-    vec3.push_back(17);
-    vec3.push_back(18);
-    vec3.push_back(19);
-    vec3.push_back(20);
-    matrix.push_back(vec3);
-    vector<int> vec4;
-    vec4.push_back(21);
-    vec4.push_back(22);
-    vec4.push_back(23);
-    vec4.push_back(24);
-    vec4.push_back(25);
-    matrix.push_back(vec4);
+
     Solution s;
-    cout << s.searchMatrix(matrix, 19);
+    cout << s.kthSmallest(matrix, 8);
 }
