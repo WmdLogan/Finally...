@@ -6,6 +6,7 @@
 // !!! 445. Add Two Numbers II(Medium) !!!
 // 234. Palindrome Linked List(Easy) 快慢指针一次遍历找到链表中点
 // 725. Split Linked List in Parts(Medium)
+// 142. Linked List Cycle II
 
 /**
  * Definition for singly-linked list.*/
@@ -235,6 +236,24 @@ public:
             root = tmp;
         }
         return result;
+    }
+// 142. Linked List Cycle II
+    ListNode *detectCycle(ListNode *head) {
+        ListNode *fast = head;
+        ListNode *slow = head;
+        while (fast && fast->next) {
+            fast = fast->next->next;
+            slow = slow->next;
+            if (fast == slow) break;
+        }
+        if (fast == nullptr) return nullptr;
+        if (fast->next == nullptr) return nullptr;
+        fast = head;
+        while (fast != slow) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        return fast;
     }
 };
 
