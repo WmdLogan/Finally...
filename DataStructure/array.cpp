@@ -7,6 +7,9 @@
 // 240. Search a 2D Matrix II (Medium)
 // 378. Kth Smallest Element in a Sorted Matrix ((Medium))
 // 645. Set Mismatch (Easy)
+// 287. Find the Duplicate Number (Medium)
+// 667. Beautiful Arrangement II (Medium)
+// 697. Degree of an Array (Easy)
 
 #include <stack>
 #include <deque>
@@ -119,8 +122,9 @@ public:
         }
         return l;
     }
+
 // 645. Set Mismatch (Easy)
-    vector<int> findErrorNums(vector<int>& nums) {
+    vector<int> findErrorNums(vector<int> &nums) {
         int n = nums.size();
         int sum = 0, xor1 = 0, xor2 = 0;
         int dup = -1, mis = 1;
@@ -152,8 +156,7 @@ public:
         if (count == 0) {
             dup = xor2;
             mis = xor1;
-        }
-        else {
+        } else {
             dup = xor1;
             mis = xor2;
         }
@@ -162,26 +165,80 @@ public:
         ans[1] = mis;
         return ans;
     }
+
+// 287. Find the Duplicate Number (Medium)
+    int findDuplicate(vector<int> &nums) {
+        int slow = 0, fast = 0;
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+        slow = 0;
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
+    }
+
+// 667. Beautiful Arrangement II (Medium)
+    vector<int> constructArray(int n, int k) {
+        vector<int> v(n);
+        v[0] = 1;
+//1, k+1, 2, k, 3, k-1, ...., k/2, k/2+1
+        for (int i = 1, interval = k; i <= k; i++, interval--) {
+            v[i] = (i % 2 == 1 ? v[i - 1] + interval : v[i - 1] - interval);
+        }
+        for (int i = k + 1; i < n; i++) {
+            v[i] = i + 1;
+        }
+        return v;
+    }
+
+// 697. Degree of an Array (Easy)
+    int findShortestSubArray(vector<int> &nums) {
+        int len = nums.size();
+        unordered_map<int, int> left;
+        unordered_map<int, int> right;
+        unordered_map<int, int> du;
+        for (int i = 0; i < len; ++i) {
+            if (left.count(nums[i]) == 0) {
+                left[nums[i]] = i;
+            }
+            right[nums[i]] = i;
+            du[nums[i]]++;
+        }
+        int max_du = 1;
+        unordered_map<int, int>::iterator it = du.begin();
+        while (it != du.end()) {
+            max_du = max(max_du, it->second);
+            it++;
+        }
+        int ans = len;
+        unordered_map<int, int>::iterator left_it = left.begin();
+        unordered_map<int, int>::iterator right_it = right.begin();
+        while (left_it != left.end()) {
+            if (du[left_it->first] == max_du) {
+                ans = min(ans, right_it->second - left_it->second + 1);
+            }
+            left_it++;
+            right_it++;
+        }
+        return ans;
+    }
+
 };
 
 int main() {
-    vector<vector<int>> matrix;
     vector<int> vec;
     vec.push_back(1);
-    vec.push_back(5);
-    vec.push_back(9);
-    matrix.push_back(vec);
-    vector<int> vec1;
-    vec1.push_back(10);
-    vec1.push_back(11);
-    vec1.push_back(13);
-    matrix.push_back(vec1);
-    vector<int> vec2;
-    vec2.push_back(12);
-    vec2.push_back(13);
-    vec2.push_back(15);
-    matrix.push_back(vec2);
+    vec.push_back(2);
+    vec.push_back(2);
+    vec.push_back(3);
+    vec.push_back(1);
+    vec.push_back(4);
+    vec.push_back(2);
 
     Solution s;
-    cout << s.kthSmallest(matrix, 8);
+    cout << s.findShortestSubArray(vec);
 }
