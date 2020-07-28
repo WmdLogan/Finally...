@@ -125,16 +125,19 @@ public:
         int sum = 0, xor1 = 0, xor2 = 0;
         int dup = -1, mis = 1;
         vector<int> ans(2);
+//得到sum = dup ^ mis
         for (int i = 0; i < n; ++i) {
             sum ^= (i + 1) ^ nums[i];
         }
         int t = sum & -sum; //将sum二进制表示下除最靠右的1保留外，其余都置为0
+// sum中为1的位即是dup和mis不同的位置，通过最靠右的1来将nums分成两组，一组包含dup不包含mis，另一组包含mis不包含dup
         for (int i = 1; i < n + 1; ++i) {
             if (t & i)
                 xor1 ^= i;
             else
                 xor2 ^= i;
         }
+//xor1和xor2一个为^三次的数（dup），一个为^一次的数（mis）
         for (int i = 0; i < n; ++i) {
             if (t & nums[i])
                 xor1 ^= nums[i];
