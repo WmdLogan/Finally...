@@ -10,6 +10,7 @@
 // 287. Find the Duplicate Number (Medium)
 // 667. Beautiful Arrangement II (Medium)
 // 697. Degree of an Array (Easy)
+// 766. Toeplitz Matrix (Easy)
 
 #include <stack>
 #include <deque>
@@ -226,7 +227,33 @@ public:
         }
         return ans;
     }
-
+// 766. Toeplitz Matrix (Easy)
+    bool isToeplitzMatrix(vector<vector<int>>& matrix) {
+        int row = matrix.size();
+        int col = matrix[0].size();
+        int i, j, k, first;
+        for (i = 0; i < row; ++i) {
+            k = i + 1;
+            j = 1;
+            first = matrix[i][0];
+            while (k < row && j < col) {
+                if (matrix[k][j] != first) return false;
+                k++;
+                j++;
+            }
+        }
+        for (i = 1; i < col; ++i) {
+            k = 1;
+            j = i + 1;
+            first = matrix[0][i];
+            while (k < row && j < col) {
+                if (matrix[k][j] != first) return false;
+                k++;
+                j++;
+            }
+        }
+        return true;
+    }
 };
 
 int main() {
