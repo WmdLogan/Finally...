@@ -11,6 +11,8 @@
 // 667. Beautiful Arrangement II (Medium)
 // 697. Degree of an Array (Easy)
 // 766. Toeplitz Matrix (Easy)
+// 565. Array Nesting (Medium)
+// 769. Max Chunks To Make Sorted (Medium)
 
 #include <stack>
 #include <deque>
@@ -227,8 +229,9 @@ public:
         }
         return ans;
     }
+
 // 766. Toeplitz Matrix (Easy)
-    bool isToeplitzMatrix(vector<vector<int>>& matrix) {
+    bool isToeplitzMatrix(vector<vector<int>> &matrix) {
         int row = matrix.size();
         int col = matrix[0].size();
         int i, j, k, first;
@@ -254,18 +257,50 @@ public:
         }
         return true;
     }
+
+    // 565. Array Nesting (Medium)
+    int arrayNesting(vector<int> &nums) {
+        int ans = 0;
+        int count = 0;
+        int len = nums.size();
+        int first;
+        for (int i = 0; i < len; ++i) {
+            if (nums[i] != 30000) {
+                count = 0;
+                first = nums[nums[i]];
+                while (nums[first] != 30000) {
+                    count++;
+                     int temp = nums[first];
+                    nums[first] = 30000;
+                    first = temp;
+                }
+                ans = max(ans, count);
+                nums[i] = 30000;
+            }
+        }
+        return ans;
+    }
+// 769. Max Chunks To Make Sorted (Medium)
+    int maxChunksToSorted(vector<int>& arr) {
+        int ans = 0, max_n = 0;
+        for (int i = 0; i < arr.size(); ++i) {
+            max_n = max(max_n, arr[i]);
+            if (max_n == i) ans++;
+        }
+        return ans;
+    }
 };
 
 int main() {
     vector<int> vec;
     vec.push_back(1);
-    vec.push_back(2);
-    vec.push_back(2);
-    vec.push_back(3);
-    vec.push_back(1);
+    vec.push_back(0);
     vec.push_back(4);
+    vec.push_back(3);
     vec.push_back(2);
+    vec.push_back(6);
+    vec.push_back(5);
 
     Solution s;
-    cout << s.findShortestSubArray(vec);
+    cout << s.maxChunksToSorted(vec);
 }
