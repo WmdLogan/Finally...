@@ -6,14 +6,7 @@
 // 210. Course Schedule II (Medium)
 // 684. Redundant Connection (Medium)
 #include <stack>
-#include <deque>
 #include <vector>
-#include <set>
-#include <map>
-#include <algorithm>
-#include <iostream>
-#include <string>
-#include <unordered_map>
 #include <queue>
 
 using namespace std;

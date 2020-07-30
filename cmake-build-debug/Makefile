@@ -130,56 +130,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named s_q
+# Target rules for targets named hash
 
 # Build rule for target.
-s_q: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 s_q
-.PHONY : s_q
+hash: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 hash
+.PHONY : hash
 
 # fast build rule for target.
-s_q/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\s_q.dir\build.make CMakeFiles/s_q.dir/build
-.PHONY : s_q/fast
+hash/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\hash.dir\build.make CMakeFiles/hash.dir/build
+.PHONY : hash/fast
 
 #=============================================================================
-# Target rules for targets named Leetcode
+# Target rules for targets named List
 
 # Build rule for target.
-Leetcode: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Leetcode
-.PHONY : Leetcode
+List: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 List
+.PHONY : List
 
 # fast build rule for target.
-Leetcode/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Leetcode.dir\build.make CMakeFiles/Leetcode.dir/build
-.PHONY : Leetcode/fast
-
-#=============================================================================
-# Target rules for targets named 206
-
-# Build rule for target.
-206: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 206
-.PHONY : 206
-
-# fast build rule for target.
-206/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\206.dir\build.make CMakeFiles/206.dir/build
-.PHONY : 206/fast
-
-#=============================================================================
-# Target rules for targets named 21
-
-# Build rule for target.
-21: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 21
-.PHONY : 21
-
-# fast build rule for target.
-21/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\21.dir\build.make CMakeFiles/21.dir/build
-.PHONY : 21/fast
+List/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/build
+.PHONY : List/fast
 
 #=============================================================================
 # Target rules for targets named Tree
@@ -195,17 +169,43 @@ Tree/fast:
 .PHONY : Tree/fast
 
 #=============================================================================
-# Target rules for targets named hash
+# Target rules for targets named graph
 
 # Build rule for target.
-hash: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 hash
-.PHONY : hash
+graph: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 graph
+.PHONY : graph
 
 # fast build rule for target.
-hash/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\hash.dir\build.make CMakeFiles/hash.dir/build
-.PHONY : hash/fast
+graph/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/build
+.PHONY : graph/fast
+
+#=============================================================================
+# Target rules for targets named stack_queue
+
+# Build rule for target.
+stack_queue: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 stack_queue
+.PHONY : stack_queue
+
+# fast build rule for target.
+stack_queue/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\stack_queue.dir\build.make CMakeFiles/stack_queue.dir/build
+.PHONY : stack_queue/fast
+
+#=============================================================================
+# Target rules for targets named bit
+
+# Build rule for target.
+bit: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 bit
+.PHONY : bit
+
+# fast build rule for target.
+bit/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/build
+.PHONY : bit/fast
 
 #=============================================================================
 # Target rules for targets named string
@@ -233,72 +233,32 @@ array/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/build
 .PHONY : array/fast
 
-#=============================================================================
-# Target rules for targets named graph
+DataStructure/Bit.obj: DataStructure/Bit.cpp.obj
 
-# Build rule for target.
-graph: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 graph
-.PHONY : graph
-
-# fast build rule for target.
-graph/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/build
-.PHONY : graph/fast
-
-DataStructure/206.obj: DataStructure/206.cpp.obj
-
-.PHONY : DataStructure/206.obj
+.PHONY : DataStructure/Bit.obj
 
 # target to build an object file
-DataStructure/206.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\206.dir\build.make CMakeFiles/206.dir/DataStructure/206.cpp.obj
-.PHONY : DataStructure/206.cpp.obj
+DataStructure/Bit.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/DataStructure/Bit.cpp.obj
+.PHONY : DataStructure/Bit.cpp.obj
 
-DataStructure/206.i: DataStructure/206.cpp.i
+DataStructure/Bit.i: DataStructure/Bit.cpp.i
 
-.PHONY : DataStructure/206.i
-
-# target to preprocess a source file
-DataStructure/206.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\206.dir\build.make CMakeFiles/206.dir/DataStructure/206.cpp.i
-.PHONY : DataStructure/206.cpp.i
-
-DataStructure/206.s: DataStructure/206.cpp.s
-
-.PHONY : DataStructure/206.s
-
-# target to generate assembly for a file
-DataStructure/206.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\206.dir\build.make CMakeFiles/206.dir/DataStructure/206.cpp.s
-.PHONY : DataStructure/206.cpp.s
-
-DataStructure/21.obj: DataStructure/21.cpp.obj
-
-.PHONY : DataStructure/21.obj
-
-# target to build an object file
-DataStructure/21.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\21.dir\build.make CMakeFiles/21.dir/DataStructure/21.cpp.obj
-.PHONY : DataStructure/21.cpp.obj
-
-DataStructure/21.i: DataStructure/21.cpp.i
-
-.PHONY : DataStructure/21.i
+.PHONY : DataStructure/Bit.i
 
 # target to preprocess a source file
-DataStructure/21.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\21.dir\build.make CMakeFiles/21.dir/DataStructure/21.cpp.i
-.PHONY : DataStructure/21.cpp.i
+DataStructure/Bit.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/DataStructure/Bit.cpp.i
+.PHONY : DataStructure/Bit.cpp.i
 
-DataStructure/21.s: DataStructure/21.cpp.s
+DataStructure/Bit.s: DataStructure/Bit.cpp.s
 
-.PHONY : DataStructure/21.s
+.PHONY : DataStructure/Bit.s
 
 # target to generate assembly for a file
-DataStructure/21.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\21.dir\build.make CMakeFiles/21.dir/DataStructure/21.cpp.s
-.PHONY : DataStructure/21.cpp.s
+DataStructure/Bit.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/DataStructure/Bit.cpp.s
+.PHONY : DataStructure/Bit.cpp.s
 
 DataStructure/Graph.obj: DataStructure/Graph.cpp.obj
 
@@ -326,6 +286,33 @@ DataStructure/Graph.s: DataStructure/Graph.cpp.s
 DataStructure/Graph.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/DataStructure/Graph.cpp.s
 .PHONY : DataStructure/Graph.cpp.s
+
+DataStructure/List.obj: DataStructure/List.cpp.obj
+
+.PHONY : DataStructure/List.obj
+
+# target to build an object file
+DataStructure/List.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/DataStructure/List.cpp.obj
+.PHONY : DataStructure/List.cpp.obj
+
+DataStructure/List.i: DataStructure/List.cpp.i
+
+.PHONY : DataStructure/List.i
+
+# target to preprocess a source file
+DataStructure/List.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/DataStructure/List.cpp.i
+.PHONY : DataStructure/List.cpp.i
+
+DataStructure/List.s: DataStructure/List.cpp.s
+
+.PHONY : DataStructure/List.s
+
+# target to generate assembly for a file
+DataStructure/List.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/DataStructure/List.cpp.s
+.PHONY : DataStructure/List.cpp.s
 
 DataStructure/String.obj: DataStructure/String.cpp.obj
 
@@ -441,7 +428,7 @@ DataStructure/stack_queue.obj: DataStructure/stack_queue.cpp.obj
 
 # target to build an object file
 DataStructure/stack_queue.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\s_q.dir\build.make CMakeFiles/s_q.dir/DataStructure/stack_queue.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\stack_queue.dir\build.make CMakeFiles/stack_queue.dir/DataStructure/stack_queue.cpp.obj
 .PHONY : DataStructure/stack_queue.cpp.obj
 
 DataStructure/stack_queue.i: DataStructure/stack_queue.cpp.i
@@ -450,7 +437,7 @@ DataStructure/stack_queue.i: DataStructure/stack_queue.cpp.i
 
 # target to preprocess a source file
 DataStructure/stack_queue.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\s_q.dir\build.make CMakeFiles/s_q.dir/DataStructure/stack_queue.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\stack_queue.dir\build.make CMakeFiles/stack_queue.dir/DataStructure/stack_queue.cpp.i
 .PHONY : DataStructure/stack_queue.cpp.i
 
 DataStructure/stack_queue.s: DataStructure/stack_queue.cpp.s
@@ -459,35 +446,8 @@ DataStructure/stack_queue.s: DataStructure/stack_queue.cpp.s
 
 # target to generate assembly for a file
 DataStructure/stack_queue.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\s_q.dir\build.make CMakeFiles/s_q.dir/DataStructure/stack_queue.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\stack_queue.dir\build.make CMakeFiles/stack_queue.dir/DataStructure/stack_queue.cpp.s
 .PHONY : DataStructure/stack_queue.cpp.s
-
-main.obj: main.cpp.obj
-
-.PHONY : main.obj
-
-# target to build an object file
-main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Leetcode.dir\build.make CMakeFiles/Leetcode.dir/main.cpp.obj
-.PHONY : main.cpp.obj
-
-main.i: main.cpp.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Leetcode.dir\build.make CMakeFiles/Leetcode.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Leetcode.dir\build.make CMakeFiles/Leetcode.dir/main.cpp.s
-.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -497,24 +457,23 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... 206
-	@echo ... 21
-	@echo ... Leetcode
+	@echo ... List
 	@echo ... Tree
 	@echo ... array
+	@echo ... bit
 	@echo ... graph
 	@echo ... hash
-	@echo ... s_q
+	@echo ... stack_queue
 	@echo ... string
-	@echo ... DataStructure/206.obj
-	@echo ... DataStructure/206.i
-	@echo ... DataStructure/206.s
-	@echo ... DataStructure/21.obj
-	@echo ... DataStructure/21.i
-	@echo ... DataStructure/21.s
+	@echo ... DataStructure/Bit.obj
+	@echo ... DataStructure/Bit.i
+	@echo ... DataStructure/Bit.s
 	@echo ... DataStructure/Graph.obj
 	@echo ... DataStructure/Graph.i
 	@echo ... DataStructure/Graph.s
+	@echo ... DataStructure/List.obj
+	@echo ... DataStructure/List.i
+	@echo ... DataStructure/List.s
 	@echo ... DataStructure/String.obj
 	@echo ... DataStructure/String.i
 	@echo ... DataStructure/String.s
@@ -530,9 +489,6 @@ help:
 	@echo ... DataStructure/stack_queue.obj
 	@echo ... DataStructure/stack_queue.i
 	@echo ... DataStructure/stack_queue.s
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
 .PHONY : help
 
 

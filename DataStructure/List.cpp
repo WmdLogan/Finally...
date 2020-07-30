@@ -7,6 +7,10 @@
 // 234. Palindrome Linked List(Easy) 快慢指针一次遍历找到链表中点
 // 725. Split Linked List in Parts(Medium)
 // 142. Linked List Cycle II
+// 160. Intersection of Two Linked Lists
+// 21. Merge Two Sorted Lists(Easy)
+// 328. Odd Even Linked List(Medium)
+
 
 /**
  * Definition for singly-linked list.*/
@@ -254,6 +258,58 @@ public:
             slow = slow->next;
         }
         return fast;
+    }
+// 160. Intersection of Two Linked Lists
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode* l1 = headA;
+        ListNode* l2 = headB;
+        while (l1 != l2) {
+            l1 = (l1 == NULL) ? headB : l1->next;
+            l2 = (l2 == NULL) ? headA : l2->next;
+        }
+        return l1;
+    }
+
+// 21. Merge Two Sorted Lists(Easy)
+    ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
+        auto *m = new ListNode(0);
+        //insert tail
+        ListNode *t = m;
+        while (l1 != nullptr && l2 != nullptr) {
+            if (l1->val >= l2->val) {
+                t->next = l2;
+                l2 = l2->next;
+            } else {
+                t->next = l1;
+                l1 = l1->next;
+            }
+            t = t->next;
+        }
+        l1 == nullptr ? t->next = l2 : t->next = l1;
+        return m->next;
+    }
+// 328. Odd Even Linked List(Medium)
+    ListNode *oddEvenList(ListNode *head) {
+        if (!head) {//空链表
+            return head;
+        }
+        ListNode *p = head;
+        ListNode *k_pre = head->next;//1个结点时，k_pre 为 nullptr
+        ListNode *k;
+        while (k_pre) {
+            k = k_pre->next;
+            //取出k结点
+            if (k == nullptr) {//k_pre是最后一个结点
+                break;
+            }
+            k_pre->next = k->next;
+            //k结点插入到p后,p向后移动1个节点
+            k->next = p->next;
+            p->next = k;
+            p = k;
+            k_pre = k_pre->next;
+        }
+        return head;
     }
 };
 

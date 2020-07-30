@@ -72,15 +72,14 @@ CMAKE_BINARY_DIR = D:\CLionProjects\Leetcode\cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/s_q.dir/all
-all: CMakeFiles/Leetcode.dir/all
-all: CMakeFiles/206.dir/all
-all: CMakeFiles/21.dir/all
-all: CMakeFiles/Tree.dir/all
 all: CMakeFiles/hash.dir/all
+all: CMakeFiles/List.dir/all
+all: CMakeFiles/Tree.dir/all
+all: CMakeFiles/graph.dir/all
+all: CMakeFiles/stack_queue.dir/all
+all: CMakeFiles/bit.dir/all
 all: CMakeFiles/string.dir/all
 all: CMakeFiles/array.dir/all
-all: CMakeFiles/graph.dir/all
 
 .PHONY : all
 
@@ -90,152 +89,16 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/s_q.dir/clean
-clean: CMakeFiles/Leetcode.dir/clean
-clean: CMakeFiles/206.dir/clean
-clean: CMakeFiles/21.dir/clean
-clean: CMakeFiles/Tree.dir/clean
 clean: CMakeFiles/hash.dir/clean
+clean: CMakeFiles/List.dir/clean
+clean: CMakeFiles/Tree.dir/clean
+clean: CMakeFiles/graph.dir/clean
+clean: CMakeFiles/stack_queue.dir/clean
+clean: CMakeFiles/bit.dir/clean
 clean: CMakeFiles/string.dir/clean
 clean: CMakeFiles/array.dir/clean
-clean: CMakeFiles/graph.dir/clean
 
 .PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/s_q.dir
-
-# All Build rule for target.
-CMakeFiles/s_q.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\s_q.dir\build.make CMakeFiles/s_q.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\s_q.dir\build.make CMakeFiles/s_q.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=15,16 "Built target s_q"
-.PHONY : CMakeFiles/s_q.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/s_q.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/s_q.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/s_q.dir/rule
-
-# Convenience name for target.
-s_q: CMakeFiles/s_q.dir/rule
-
-.PHONY : s_q
-
-# clean rule for target.
-CMakeFiles/s_q.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\s_q.dir\build.make CMakeFiles/s_q.dir/clean
-.PHONY : CMakeFiles/s_q.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/Leetcode.dir
-
-# All Build rule for target.
-CMakeFiles/Leetcode.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Leetcode.dir\build.make CMakeFiles/Leetcode.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Leetcode.dir\build.make CMakeFiles/Leetcode.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=5,6 "Built target Leetcode"
-.PHONY : CMakeFiles/Leetcode.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/Leetcode.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Leetcode.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/Leetcode.dir/rule
-
-# Convenience name for target.
-Leetcode: CMakeFiles/Leetcode.dir/rule
-
-.PHONY : Leetcode
-
-# clean rule for target.
-CMakeFiles/Leetcode.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Leetcode.dir\build.make CMakeFiles/Leetcode.dir/clean
-.PHONY : CMakeFiles/Leetcode.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/206.dir
-
-# All Build rule for target.
-CMakeFiles/206.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\206.dir\build.make CMakeFiles/206.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\206.dir\build.make CMakeFiles/206.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target 206"
-.PHONY : CMakeFiles/206.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/206.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/206.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/206.dir/rule
-
-# Convenience name for target.
-206: CMakeFiles/206.dir/rule
-
-.PHONY : 206
-
-# clean rule for target.
-CMakeFiles/206.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\206.dir\build.make CMakeFiles/206.dir/clean
-.PHONY : CMakeFiles/206.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/21.dir
-
-# All Build rule for target.
-CMakeFiles/21.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\21.dir\build.make CMakeFiles/21.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\21.dir\build.make CMakeFiles/21.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=3,4 "Built target 21"
-.PHONY : CMakeFiles/21.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/21.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/21.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/21.dir/rule
-
-# Convenience name for target.
-21: CMakeFiles/21.dir/rule
-
-.PHONY : 21
-
-# clean rule for target.
-CMakeFiles/21.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\21.dir\build.make CMakeFiles/21.dir/clean
-.PHONY : CMakeFiles/21.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/Tree.dir
-
-# All Build rule for target.
-CMakeFiles/Tree.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tree.dir\build.make CMakeFiles/Tree.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tree.dir\build.make CMakeFiles/Tree.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=7,8 "Built target Tree"
-.PHONY : CMakeFiles/Tree.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/Tree.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Tree.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/Tree.dir/rule
-
-# Convenience name for target.
-Tree: CMakeFiles/Tree.dir/rule
-
-.PHONY : Tree
-
-# clean rule for target.
-CMakeFiles/Tree.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tree.dir\build.make CMakeFiles/Tree.dir/clean
-.PHONY : CMakeFiles/Tree.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/hash.dir
@@ -244,7 +107,7 @@ CMakeFiles/Tree.dir/clean:
 CMakeFiles/hash.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\hash.dir\build.make CMakeFiles/hash.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\hash.dir\build.make CMakeFiles/hash.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=13,14 "Built target hash"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=11,12 "Built target hash"
 .PHONY : CMakeFiles/hash.dir/all
 
 # Build rule for subdir invocation for target.
@@ -265,13 +128,148 @@ CMakeFiles/hash.dir/clean:
 .PHONY : CMakeFiles/hash.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/List.dir
+
+# All Build rule for target.
+CMakeFiles/List.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target List"
+.PHONY : CMakeFiles/List.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/List.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/List.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/List.dir/rule
+
+# Convenience name for target.
+List: CMakeFiles/List.dir/rule
+
+.PHONY : List
+
+# clean rule for target.
+CMakeFiles/List.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/clean
+.PHONY : CMakeFiles/List.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Tree.dir
+
+# All Build rule for target.
+CMakeFiles/Tree.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tree.dir\build.make CMakeFiles/Tree.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tree.dir\build.make CMakeFiles/Tree.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=3,4 "Built target Tree"
+.PHONY : CMakeFiles/Tree.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Tree.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Tree.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/Tree.dir/rule
+
+# Convenience name for target.
+Tree: CMakeFiles/Tree.dir/rule
+
+.PHONY : Tree
+
+# clean rule for target.
+CMakeFiles/Tree.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tree.dir\build.make CMakeFiles/Tree.dir/clean
+.PHONY : CMakeFiles/Tree.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/graph.dir
+
+# All Build rule for target.
+CMakeFiles/graph.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=9,10 "Built target graph"
+.PHONY : CMakeFiles/graph.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/graph.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/graph.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/graph.dir/rule
+
+# Convenience name for target.
+graph: CMakeFiles/graph.dir/rule
+
+.PHONY : graph
+
+# clean rule for target.
+CMakeFiles/graph.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/clean
+.PHONY : CMakeFiles/graph.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/stack_queue.dir
+
+# All Build rule for target.
+CMakeFiles/stack_queue.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\stack_queue.dir\build.make CMakeFiles/stack_queue.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\stack_queue.dir\build.make CMakeFiles/stack_queue.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=13,14 "Built target stack_queue"
+.PHONY : CMakeFiles/stack_queue.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/stack_queue.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/stack_queue.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/stack_queue.dir/rule
+
+# Convenience name for target.
+stack_queue: CMakeFiles/stack_queue.dir/rule
+
+.PHONY : stack_queue
+
+# clean rule for target.
+CMakeFiles/stack_queue.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\stack_queue.dir\build.make CMakeFiles/stack_queue.dir/clean
+.PHONY : CMakeFiles/stack_queue.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/bit.dir
+
+# All Build rule for target.
+CMakeFiles/bit.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=7,8 "Built target bit"
+.PHONY : CMakeFiles/bit.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/bit.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/bit.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/bit.dir/rule
+
+# Convenience name for target.
+bit: CMakeFiles/bit.dir/rule
+
+.PHONY : bit
+
+# clean rule for target.
+CMakeFiles/bit.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/clean
+.PHONY : CMakeFiles/bit.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/string.dir
 
 # All Build rule for target.
 CMakeFiles/string.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\string.dir\build.make CMakeFiles/string.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\string.dir\build.make CMakeFiles/string.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=17,18 "Built target string"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=15,16 "Built target string"
 .PHONY : CMakeFiles/string.dir/all
 
 # Build rule for subdir invocation for target.
@@ -298,7 +296,7 @@ CMakeFiles/string.dir/clean:
 CMakeFiles/array.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=9,10 "Built target array"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=5,6 "Built target array"
 .PHONY : CMakeFiles/array.dir/all
 
 # Build rule for subdir invocation for target.
@@ -317,33 +315,6 @@ array: CMakeFiles/array.dir/rule
 CMakeFiles/array.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/clean
 .PHONY : CMakeFiles/array.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/graph.dir
-
-# All Build rule for target.
-CMakeFiles/graph.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=11,12 "Built target graph"
-.PHONY : CMakeFiles/graph.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/graph.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/graph.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/graph.dir/rule
-
-# Convenience name for target.
-graph: CMakeFiles/graph.dir/rule
-
-.PHONY : graph
-
-# clean rule for target.
-CMakeFiles/graph.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/clean
-.PHONY : CMakeFiles/graph.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
