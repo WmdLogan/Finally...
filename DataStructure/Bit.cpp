@@ -2,8 +2,12 @@
 // Created by logan on 2020/7/30.
 //
 // 461. Hamming Distance (Easy)
+// 136. Single Number (Easy)
+// 268. Missing Number (Easy)
+// 260. Single Number III (Medium)
 
 #include <iostream>
+#include <vector>
 using namespace std;
 
 class Solution {
@@ -28,4 +32,24 @@ public:
         return distance;
 
     }
+// 136. Single Number (Easy)
+    int singleNumber(vector<int>& nums) {
+        int ans = 0;
+        for (int i = 0; i < nums.size(); ++i) {
+            ans ^= nums[i];
+        }
+        return ans;
+    }
+
+// 268. Missing Number (Easy)
+    int missingNumber(vector<int>& nums) {
+        int len = nums.size();
+        int ans = len;
+        for (int i = 0; i < len; ++i) {
+            ans ^= i;
+            ans ^= nums[i];
+        }
+        return ans;
+    }
+// 260. Single Number III (Medium)
 };
