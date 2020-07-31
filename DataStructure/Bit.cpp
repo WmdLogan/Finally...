@@ -6,7 +6,8 @@
 // 268. Missing Number (Easy)
 // 260. Single Number III (Medium)
 // 190. Reverse Bits (Easy)
-
+// 231. Power of Two (Easy)
+// 342. Power of Four (Easy)
 #include <iostream>
 #include <vector>
 #include <map>
@@ -77,5 +78,15 @@ public:
         n = ((n & 0xaaaaaaaa) >> 1) | ((n & 0x55555555) << 1);
         return n;
     }
-
+// 231. Power of Two (Easy)
+    bool isPowerOfTwo(int n) {
+        if (n == 0) return false;
+        long x = n;
+        return (x & (x - 1)) == 0;
+    }
+// 342. Power of Four (Easy)
+    bool isPowerOfFour(int num) {
+        if (num <= 0) return false;
+        return (num & (num - 1)) == 0 && num % 3 == 1;
+    }
 };
