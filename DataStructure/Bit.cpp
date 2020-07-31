@@ -8,6 +8,7 @@
 // 190. Reverse Bits (Easy)
 // 231. Power of Two (Easy)
 // 342. Power of Four (Easy)
+// 693. Binary Number with Alternating Bits (Easy)
 #include <iostream>
 #include <vector>
 #include <map>
@@ -18,15 +19,15 @@ class Solution {
 public:
 // 461. Hamming Distance (Easy)
     int hammingDistance(int x, int y) {
-    /*    int x_y = x ^ y;
-        int distance = 0;
-        while (x_y != 0) {
-            if (x_y % 2 == 1)
-                distance += 1;
-            x_y = x_y >> 1;
-        }
-        return distance;*/
-        int x_y = x ^ y;
+        /*    int x_y = x ^ y;
+            int distance = 0;
+            while (x_y != 0) {
+                if (x_y % 2 == 1)
+                    distance += 1;
+                x_y = x_y >> 1;
+            }
+            return distance;*/
+        int x_y = x ^y;
         int distance = 0;
         while (x_y != 0) {
             distance += 1;
@@ -36,8 +37,9 @@ public:
         return distance;
 
     }
+
 // 136. Single Number (Easy)
-    int singleNumber(vector<int>& nums) {
+    int singleNumber(vector<int> &nums) {
         int ans = 0;
         for (int i = 0; i < nums.size(); ++i) {
             ans ^= nums[i];
@@ -46,7 +48,7 @@ public:
     }
 
 // 268. Missing Number (Easy)
-    int missingNumber(vector<int>& nums) {
+    int missingNumber(vector<int> &nums) {
         int len = nums.size();
         int ans = len;
         for (int i = 0; i < len; ++i) {
@@ -55,8 +57,9 @@ public:
         }
         return ans;
     }
+
 // 260. Single Number III (Medium)
-    vector<int> singleNumber_t(vector<int>& nums) {
+    vector<int> singleNumber_t(vector<int> &nums) {
         int ans = 0;
         for (auto e :nums) {
             ans ^= e;
@@ -64,11 +67,12 @@ public:
         ans &= -ans;
         vector<int> re(2, 0);
         for (auto e :nums) {
-           if ( (e & ans) == 0) re[0] ^= e;
-           else re[1] ^= e;
+            if ((e & ans) == 0) re[0] ^= e;
+            else re[1] ^= e;
         }
         return re;
     }
+
 // 190. Reverse Bits (Easy)
     uint32_t reverseBits(uint32_t n) {
         n = (n >> 16) | (n << 16);
@@ -78,15 +82,28 @@ public:
         n = ((n & 0xaaaaaaaa) >> 1) | ((n & 0x55555555) << 1);
         return n;
     }
+
 // 231. Power of Two (Easy)
     bool isPowerOfTwo(int n) {
         if (n == 0) return false;
         long x = n;
         return (x & (x - 1)) == 0;
     }
+
 // 342. Power of Four (Easy)
     bool isPowerOfFour(int num) {
         if (num <= 0) return false;
-        return (num & (num - 1)) == 0 && num % 3 == 1;
+        return (num & (num - 1)) == 0 && (num & 0xaaaaaaaa) == 0;
+    }
+
+// 693. Binary Number with Alternating Bits (Easy)
+    bool hasAlternatingBits(int n) {
+        n = (n ^ (n >> 1));
+        return (n & ((long) n + 1)) == 0;
     }
 };
+
+int main() {
+    Solution s;
+    s.hasAlternatingBits(4);
+}
