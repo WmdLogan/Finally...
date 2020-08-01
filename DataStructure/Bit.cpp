@@ -11,9 +11,12 @@
 // 693. Binary Number with Alternating Bits (Easy)
 // 476. Number Complement (Easy)
 // 371. Sum of Two Integers (Easy)
+// 318. Maximum Product of Word Lengths (Medium)
+// 338. Counting Bits (Medium)
 #include <iostream>
 #include <vector>
 #include <map>
+#include <unordered_map>
 
 using namespace std;
 
@@ -117,19 +120,72 @@ public:
         long res = num ^(tmp - 1);
         return res;
     }
+
 // 371. Sum of Two Integers (Easy)
     int getSum(int a, int b) {
         while (b) {
-            auto carry = ((unsigned int)(a & b)) << 1;
+            auto carry = ((unsigned int) (a & b)) << 1;
             a ^= b;
             b = carry;
         }
         return a;
     }
+
+// 318. Maximum Product of Word Lengths (Medium)
+    int maxProduct(vector<string> &words) {
+        int len = words.size();
+// 每个字符串的掩码数组
+        vector<int> mask(len, 0);
+//每个字符串的长度数组
+        vector<int> s_len(len, 0);
+        int i = 0;
+        for (auto str : words) {
+            s_len[i] = str.size();//每个字符串的长度
+            for (auto c:str) {//构造每个字符串的掩码
+                int loc = (int) c - (int) 'a';
+                mask[i] |= 1 << loc;
+            }
+            i++;
+        }
+//&掩码，为0说明没有公共字母，算长度乘积
+        int ans = 0;
+        for (i = 0; i < len; i++) {
+            for (int j = i + 1; j < len; j++) {
+                if ((mask[i] & mask[j]) == 0) {
+                    ans = max(ans, s_len[i] * s_len[j]);
+                }
+            }
+        }
+        return ans;
+    }
+
+// 338. Counting Bits (Medium)
+    vector<int> countBits(int num) {
+        vector<int> ret(num + 1, 0);
+        for (int i = 1; i <= num; i++) {
+            ret[i] = ret[i & (i - 1)] + 1;
+        }
+        return ret;
+    }
+
+    int one_number(int n) {
+        int sum = 0;
+        while (n != 0) {
+            sum++;
+            n &= (n - 1);
+        }
+        return sum;
+    }
+
+
 };
 
 int main() {
     Solution s;
-    cout << s.getSum(-9, 2);
+    vector<string> vector;
+    vector.push_back("abcde");
+    vector.push_back("fghij");
+
+    cout << s.maxProduct(vector);
 
 }
