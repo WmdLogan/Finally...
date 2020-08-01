@@ -9,6 +9,8 @@
 // 231. Power of Two (Easy)
 // 342. Power of Four (Easy)
 // 693. Binary Number with Alternating Bits (Easy)
+// 476. Number Complement (Easy)
+// 371. Sum of Two Integers (Easy)
 #include <iostream>
 #include <vector>
 #include <map>
@@ -101,9 +103,33 @@ public:
         n = (n ^ (n >> 1));
         return (n & ((long) n + 1)) == 0;
     }
+
+// 476. Number Complement (Easy)
+    int findComplement(int num) {
+        long x = num;
+        int count = 1;
+        while (x >> 1 > 0) {
+            count++;
+            x = x >> 1;
+        }
+
+        long tmp = 1 << count;
+        long res = num ^(tmp - 1);
+        return res;
+    }
+// 371. Sum of Two Integers (Easy)
+    int getSum(int a, int b) {
+        while (b) {
+            auto carry = ((unsigned int)(a & b)) << 1;
+            a ^= b;
+            b = carry;
+        }
+        return a;
+    }
 };
 
 int main() {
     Solution s;
-    s.hasAlternatingBits(4);
+    cout << s.getSum(-9, 2);
+
 }
