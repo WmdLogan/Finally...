@@ -11,3 +11,5 @@ add_executable(string DataStructure/String.cpp)
 add_executable(array DataStructure/array.cpp)
 add_executable(graph DataStructure/Graph.cpp)
 add_executable(bit DataStructure/Bit.cpp)
+add_executable(double_pointer Algorithm/double_pointer.cpp)
+

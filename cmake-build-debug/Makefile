@@ -233,6 +233,46 @@ array/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/build
 .PHONY : array/fast
 
+#=============================================================================
+# Target rules for targets named double_pointer
+
+# Build rule for target.
+double_pointer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 double_pointer
+.PHONY : double_pointer
+
+# fast build rule for target.
+double_pointer/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\double_pointer.dir\build.make CMakeFiles/double_pointer.dir/build
+.PHONY : double_pointer/fast
+
+Algorithm/double_pointer.obj: Algorithm/double_pointer.cpp.obj
+
+.PHONY : Algorithm/double_pointer.obj
+
+# target to build an object file
+Algorithm/double_pointer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\double_pointer.dir\build.make CMakeFiles/double_pointer.dir/Algorithm/double_pointer.cpp.obj
+.PHONY : Algorithm/double_pointer.cpp.obj
+
+Algorithm/double_pointer.i: Algorithm/double_pointer.cpp.i
+
+.PHONY : Algorithm/double_pointer.i
+
+# target to preprocess a source file
+Algorithm/double_pointer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\double_pointer.dir\build.make CMakeFiles/double_pointer.dir/Algorithm/double_pointer.cpp.i
+.PHONY : Algorithm/double_pointer.cpp.i
+
+Algorithm/double_pointer.s: Algorithm/double_pointer.cpp.s
+
+.PHONY : Algorithm/double_pointer.s
+
+# target to generate assembly for a file
+Algorithm/double_pointer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\double_pointer.dir\build.make CMakeFiles/double_pointer.dir/Algorithm/double_pointer.cpp.s
+.PHONY : Algorithm/double_pointer.cpp.s
+
 DataStructure/Bit.obj: DataStructure/Bit.cpp.obj
 
 .PHONY : DataStructure/Bit.obj
@@ -461,10 +501,14 @@ help:
 	@echo ... Tree
 	@echo ... array
 	@echo ... bit
+	@echo ... double_pointer
 	@echo ... graph
 	@echo ... hash
 	@echo ... stack_queue
 	@echo ... string
+	@echo ... Algorithm/double_pointer.obj
+	@echo ... Algorithm/double_pointer.i
+	@echo ... Algorithm/double_pointer.s
 	@echo ... DataStructure/Bit.obj
 	@echo ... DataStructure/Bit.i
 	@echo ... DataStructure/Bit.s
