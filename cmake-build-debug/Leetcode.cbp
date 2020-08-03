@@ -17,6 +17,48 @@
 					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="sort">
+				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/sort.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 sort"/>
+					<CompileFile command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sort/fast">
+				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/sort.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 sort/fast"/>
+					<CompileFile command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="hash">
 				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/hash.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
@@ -416,6 +458,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="D:/CLionProjects/Leetcode/Algorithm/Sort.cpp">
+			<Option target="sort"/>
+		</Unit>
 		<Unit filename="D:/CLionProjects/Leetcode/Algorithm/double_pointer.cpp">
 			<Option target="double_pointer"/>
 		</Unit>

@@ -130,6 +130,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named sort
+
+# Build rule for target.
+sort: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 sort
+.PHONY : sort
+
+# fast build rule for target.
+sort/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sort.dir\build.make CMakeFiles/sort.dir/build
+.PHONY : sort/fast
+
+#=============================================================================
 # Target rules for targets named hash
 
 # Build rule for target.
@@ -245,6 +258,33 @@ double_pointer: cmake_check_build_system
 double_pointer/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\double_pointer.dir\build.make CMakeFiles/double_pointer.dir/build
 .PHONY : double_pointer/fast
+
+Algorithm/Sort.obj: Algorithm/Sort.cpp.obj
+
+.PHONY : Algorithm/Sort.obj
+
+# target to build an object file
+Algorithm/Sort.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sort.dir\build.make CMakeFiles/sort.dir/Algorithm/Sort.cpp.obj
+.PHONY : Algorithm/Sort.cpp.obj
+
+Algorithm/Sort.i: Algorithm/Sort.cpp.i
+
+.PHONY : Algorithm/Sort.i
+
+# target to preprocess a source file
+Algorithm/Sort.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sort.dir\build.make CMakeFiles/sort.dir/Algorithm/Sort.cpp.i
+.PHONY : Algorithm/Sort.cpp.i
+
+Algorithm/Sort.s: Algorithm/Sort.cpp.s
+
+.PHONY : Algorithm/Sort.s
+
+# target to generate assembly for a file
+Algorithm/Sort.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\sort.dir\build.make CMakeFiles/sort.dir/Algorithm/Sort.cpp.s
+.PHONY : Algorithm/Sort.cpp.s
 
 Algorithm/double_pointer.obj: Algorithm/double_pointer.cpp.obj
 
@@ -504,8 +544,12 @@ help:
 	@echo ... double_pointer
 	@echo ... graph
 	@echo ... hash
+	@echo ... sort
 	@echo ... stack_queue
 	@echo ... string
+	@echo ... Algorithm/Sort.obj
+	@echo ... Algorithm/Sort.i
+	@echo ... Algorithm/Sort.s
 	@echo ... Algorithm/double_pointer.obj
 	@echo ... Algorithm/double_pointer.i
 	@echo ... Algorithm/double_pointer.s
