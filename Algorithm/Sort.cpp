@@ -4,6 +4,7 @@
 // 215. Kth Largest Element in an Array (Medium)
 // 451. Sort Characters By Frequency (Medium)
 // 347. Top K Frequent Elements (Medium)
+// 75. Sort Colors (Medium)
 #include <iostream>
 #include <vector>
 #include <map>
@@ -81,25 +82,43 @@ public:
     };
 
 // 347. Top K Frequent Elements (Medium)
-
     vector<int> topKFrequent(vector<int> &nums, int k) {
-        unordered_map<int,int> map;
-        for(int i : nums) map[i] ++; //遍历
-        priority_queue< pair<int,int>, vector< pair<int,int> >, greater< pair<int,int> > > q; //最小堆
-        for(auto it : map)
-            if(q.size() == k) { //队列满了
-                if(it.second > q.top().first) { //堆排
+        unordered_map<int, int> map;
+        for (int i : nums) map[i]++; //遍历
+        priority_queue<pair<int, int>, vector<pair<int, int> >, greater<pair<int, int> > > q; //最小堆
+        for (auto it : map)
+            if (q.size() == k) { //队列满了
+                if (it.second > q.top().first) { //堆排
                     q.pop();
                     q.push(make_pair(it.second, it.first));
                 }
-            }
-            else q.push(make_pair(it.second, it.first));
+            } else q.push(make_pair(it.second, it.first));
         vector<int> res;
-        while(q.size()) { //将优先队列中k个高频元素存入vector
+        while (q.size()) { //将优先队列中k个高频元素存入vector
             res.push_back(q.top().second);
             q.pop();
         }
         return vector<int>(res.rbegin(), res.rend());
+    }
+
+// 75. Sort Colors (Medium)
+    void swap_color(vector<int> &add, int i, int j) {
+        int a = add[i];
+        add[i] = add[j];
+        add[j] = a;
+    }
+
+    void sortColors(vector<int> &nums) {//三向切分快速排序
+        int zero = -1, one = 0, two = nums.size();
+        while (one < two) {
+            if (nums[one] == 0) {//小于切分元素
+                swap_color(nums, ++zero, one++);
+            } else if (nums[one] == 2) {//大于切分元素
+                swap_color(nums, --two, one);
+            } else {//等于切分元素
+                ++one;
+            }
+        }
     }
 };
 
