@@ -8,5 +8,6 @@ D:/CLionProjects/Leetcode/cmake-build-debug/CMakeFiles/bit.dir
 D:/CLionProjects/Leetcode/cmake-build-debug/CMakeFiles/string.dir
 D:/CLionProjects/Leetcode/cmake-build-debug/CMakeFiles/array.dir
 D:/CLionProjects/Leetcode/cmake-build-debug/CMakeFiles/double_pointer.dir
+D:/CLionProjects/Leetcode/cmake-build-debug/CMakeFiles/greed.dir
 D:/CLionProjects/Leetcode/cmake-build-debug/CMakeFiles/edit_cache.dir
 D:/CLionProjects/Leetcode/cmake-build-debug/CMakeFiles/rebuild_cache.dir

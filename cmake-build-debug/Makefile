@@ -259,6 +259,46 @@ double_pointer/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\double_pointer.dir\build.make CMakeFiles/double_pointer.dir/build
 .PHONY : double_pointer/fast
 
+#=============================================================================
+# Target rules for targets named greed
+
+# Build rule for target.
+greed: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 greed
+.PHONY : greed
+
+# fast build rule for target.
+greed/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\greed.dir\build.make CMakeFiles/greed.dir/build
+.PHONY : greed/fast
+
+Algorithm/Greedy.obj: Algorithm/Greedy.cpp.obj
+
+.PHONY : Algorithm/Greedy.obj
+
+# target to build an object file
+Algorithm/Greedy.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\greed.dir\build.make CMakeFiles/greed.dir/Algorithm/Greedy.cpp.obj
+.PHONY : Algorithm/Greedy.cpp.obj
+
+Algorithm/Greedy.i: Algorithm/Greedy.cpp.i
+
+.PHONY : Algorithm/Greedy.i
+
+# target to preprocess a source file
+Algorithm/Greedy.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\greed.dir\build.make CMakeFiles/greed.dir/Algorithm/Greedy.cpp.i
+.PHONY : Algorithm/Greedy.cpp.i
+
+Algorithm/Greedy.s: Algorithm/Greedy.cpp.s
+
+.PHONY : Algorithm/Greedy.s
+
+# target to generate assembly for a file
+Algorithm/Greedy.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\greed.dir\build.make CMakeFiles/greed.dir/Algorithm/Greedy.cpp.s
+.PHONY : Algorithm/Greedy.cpp.s
+
 Algorithm/Sort.obj: Algorithm/Sort.cpp.obj
 
 .PHONY : Algorithm/Sort.obj
@@ -543,10 +583,14 @@ help:
 	@echo ... bit
 	@echo ... double_pointer
 	@echo ... graph
+	@echo ... greed
 	@echo ... hash
 	@echo ... sort
 	@echo ... stack_queue
 	@echo ... string
+	@echo ... Algorithm/Greedy.obj
+	@echo ... Algorithm/Greedy.i
+	@echo ... Algorithm/Greedy.s
 	@echo ... Algorithm/Sort.obj
 	@echo ... Algorithm/Sort.i
 	@echo ... Algorithm/Sort.s

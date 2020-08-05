@@ -13,4 +13,5 @@ add_executable(graph DataStructure/Graph.cpp)
 add_executable(bit DataStructure/Bit.cpp)
 add_executable(double_pointer Algorithm/double_pointer.cpp)
 add_executable(sort Algorithm/Sort.cpp)
+add_executable(greed Algorithm/Greedy.cpp)
 
