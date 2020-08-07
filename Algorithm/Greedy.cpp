@@ -10,10 +10,13 @@
 // 605. Can Place Flowers (Easy)
 // 392. Is Subsequence (Medium)
 // 665. Non-decreasing Array (Easy)
+// 53. Maximum Subarray (Easy)
+// 763. Partition Labels (Medium)
 #include <vector>
 #include <algorithm>
 #include <list>
 #include <iostream>
+#include <unordered_map>
 
 using namespace std;
 
@@ -178,11 +181,39 @@ public:
         return true;
     }
 
+// 53. Maximum Subarray (Easy)
+    int maxSubArray(vector<int>& nums) {
+        int ans = nums[0];
+        int cur = nums[0];
+        int len = nums.size();
+        for (int i = 1; i < len; ++i) {
+            cur = max(nums[i], nums[i] + cur);
+            ans = max(ans, cur);
+        }
+        return ans;
+    }
 
+// 763. Partition Labels (Medium)
+    vector<int> partitionLabels(string S) {
+        vector<int> last(26);//字母最后一次出现的下标
+        for (int i = 0; i < S.length(); ++i)
+            last[S[i] - 'a'] = i;
+
+        int j = 0, anchor = 0;//当前区间首尾
+        vector<int> ans;
+        for (int i = 0; i < S.length(); ++i) {
+            j = max(j, last[S[i] - 'a']);//获得当前字母最后一次出现的位置
+            if (i == j) {//当前字母到达了最后一次出现的位置
+                ans.push_back(i - anchor + 1);
+                anchor = i + 1;
+            }
+        }
+        return ans;
+    }
 };
 
 int main() {
-    vector<int> a = {4, 2, 3};
+    string s = "ababcbacadefegdehijhklij";
     Solution solution;
-    cout << solution.checkPossibility(a);
+    solution.partitionLabels(s);
 }
