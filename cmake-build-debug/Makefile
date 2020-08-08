@@ -272,6 +272,46 @@ greed/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\greed.dir\build.make CMakeFiles/greed.dir/build
 .PHONY : greed/fast
 
+#=============================================================================
+# Target rules for targets named binary_search
+
+# Build rule for target.
+binary_search: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 binary_search
+.PHONY : binary_search
+
+# fast build rule for target.
+binary_search/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\binary_search.dir\build.make CMakeFiles/binary_search.dir/build
+.PHONY : binary_search/fast
+
+Algorithm/BinarySearch.obj: Algorithm/BinarySearch.cpp.obj
+
+.PHONY : Algorithm/BinarySearch.obj
+
+# target to build an object file
+Algorithm/BinarySearch.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\binary_search.dir\build.make CMakeFiles/binary_search.dir/Algorithm/BinarySearch.cpp.obj
+.PHONY : Algorithm/BinarySearch.cpp.obj
+
+Algorithm/BinarySearch.i: Algorithm/BinarySearch.cpp.i
+
+.PHONY : Algorithm/BinarySearch.i
+
+# target to preprocess a source file
+Algorithm/BinarySearch.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\binary_search.dir\build.make CMakeFiles/binary_search.dir/Algorithm/BinarySearch.cpp.i
+.PHONY : Algorithm/BinarySearch.cpp.i
+
+Algorithm/BinarySearch.s: Algorithm/BinarySearch.cpp.s
+
+.PHONY : Algorithm/BinarySearch.s
+
+# target to generate assembly for a file
+Algorithm/BinarySearch.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\binary_search.dir\build.make CMakeFiles/binary_search.dir/Algorithm/BinarySearch.cpp.s
+.PHONY : Algorithm/BinarySearch.cpp.s
+
 Algorithm/Greedy.obj: Algorithm/Greedy.cpp.obj
 
 .PHONY : Algorithm/Greedy.obj
@@ -580,6 +620,7 @@ help:
 	@echo ... List
 	@echo ... Tree
 	@echo ... array
+	@echo ... binary_search
 	@echo ... bit
 	@echo ... double_pointer
 	@echo ... graph
@@ -588,6 +629,9 @@ help:
 	@echo ... sort
 	@echo ... stack_queue
 	@echo ... string
+	@echo ... Algorithm/BinarySearch.obj
+	@echo ... Algorithm/BinarySearch.i
+	@echo ... Algorithm/BinarySearch.s
 	@echo ... Algorithm/Greedy.obj
 	@echo ... Algorithm/Greedy.i
 	@echo ... Algorithm/Greedy.s
