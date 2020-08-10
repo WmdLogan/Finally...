@@ -65,4 +65,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/double_pointer.dir/DependInfo.cmake"
   "CMakeFiles/greed.dir/DependInfo.cmake"
   "CMakeFiles/binary_search.dir/DependInfo.cmake"
+  "CMakeFiles/divide_conquer.dir/DependInfo.cmake"
   )

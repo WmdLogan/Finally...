@@ -285,6 +285,19 @@ binary_search/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\binary_search.dir\build.make CMakeFiles/binary_search.dir/build
 .PHONY : binary_search/fast
 
+#=============================================================================
+# Target rules for targets named divide_conquer
+
+# Build rule for target.
+divide_conquer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 divide_conquer
+.PHONY : divide_conquer
+
+# fast build rule for target.
+divide_conquer/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\divide_conquer.dir\build.make CMakeFiles/divide_conquer.dir/build
+.PHONY : divide_conquer/fast
+
 Algorithm/BinarySearch.obj: Algorithm/BinarySearch.cpp.obj
 
 .PHONY : Algorithm/BinarySearch.obj
@@ -311,6 +324,33 @@ Algorithm/BinarySearch.s: Algorithm/BinarySearch.cpp.s
 Algorithm/BinarySearch.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\binary_search.dir\build.make CMakeFiles/binary_search.dir/Algorithm/BinarySearch.cpp.s
 .PHONY : Algorithm/BinarySearch.cpp.s
+
+Algorithm/DevideConquer.obj: Algorithm/DevideConquer.cpp.obj
+
+.PHONY : Algorithm/DevideConquer.obj
+
+# target to build an object file
+Algorithm/DevideConquer.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\divide_conquer.dir\build.make CMakeFiles/divide_conquer.dir/Algorithm/DevideConquer.cpp.obj
+.PHONY : Algorithm/DevideConquer.cpp.obj
+
+Algorithm/DevideConquer.i: Algorithm/DevideConquer.cpp.i
+
+.PHONY : Algorithm/DevideConquer.i
+
+# target to preprocess a source file
+Algorithm/DevideConquer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\divide_conquer.dir\build.make CMakeFiles/divide_conquer.dir/Algorithm/DevideConquer.cpp.i
+.PHONY : Algorithm/DevideConquer.cpp.i
+
+Algorithm/DevideConquer.s: Algorithm/DevideConquer.cpp.s
+
+.PHONY : Algorithm/DevideConquer.s
+
+# target to generate assembly for a file
+Algorithm/DevideConquer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\divide_conquer.dir\build.make CMakeFiles/divide_conquer.dir/Algorithm/DevideConquer.cpp.s
+.PHONY : Algorithm/DevideConquer.cpp.s
 
 Algorithm/Greedy.obj: Algorithm/Greedy.cpp.obj
 
@@ -622,6 +662,7 @@ help:
 	@echo ... array
 	@echo ... binary_search
 	@echo ... bit
+	@echo ... divide_conquer
 	@echo ... double_pointer
 	@echo ... graph
 	@echo ... greed
@@ -632,6 +673,9 @@ help:
 	@echo ... Algorithm/BinarySearch.obj
 	@echo ... Algorithm/BinarySearch.i
 	@echo ... Algorithm/BinarySearch.s
+	@echo ... Algorithm/DevideConquer.obj
+	@echo ... Algorithm/DevideConquer.i
+	@echo ... Algorithm/DevideConquer.s
 	@echo ... Algorithm/Greedy.obj
 	@echo ... Algorithm/Greedy.i
 	@echo ... Algorithm/Greedy.s

@@ -10,5 +10,6 @@ D:/CLionProjects/Leetcode/cmake-build-debug/CMakeFiles/array.dir
 D:/CLionProjects/Leetcode/cmake-build-debug/CMakeFiles/double_pointer.dir
 D:/CLionProjects/Leetcode/cmake-build-debug/CMakeFiles/greed.dir
 D:/CLionProjects/Leetcode/cmake-build-debug/CMakeFiles/binary_search.dir
+D:/CLionProjects/Leetcode/cmake-build-debug/CMakeFiles/divide_conquer.dir
 D:/CLionProjects/Leetcode/cmake-build-debug/CMakeFiles/edit_cache.dir
 D:/CLionProjects/Leetcode/cmake-build-debug/CMakeFiles/rebuild_cache.dir
