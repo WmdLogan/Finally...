@@ -15,5 +15,6 @@ add_executable(double_pointer Algorithm/double_pointer.cpp)
 add_executable(sort Algorithm/Sort.cpp)
 add_executable(greed Algorithm/Greedy.cpp)
 add_executable(binary_search Algorithm/BinarySearch.cpp)
+add_executable(search Algorithm/Search.cpp)
 add_executable(divide_conquer Algorithm/DevideConquer.cpp)
 

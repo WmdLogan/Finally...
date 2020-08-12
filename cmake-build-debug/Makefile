@@ -286,6 +286,19 @@ binary_search/fast:
 .PHONY : binary_search/fast
 
 #=============================================================================
+# Target rules for targets named search
+
+# Build rule for target.
+search: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 search
+.PHONY : search
+
+# fast build rule for target.
+search/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\search.dir\build.make CMakeFiles/search.dir/build
+.PHONY : search/fast
+
+#=============================================================================
 # Target rules for targets named divide_conquer
 
 # Build rule for target.
@@ -378,6 +391,33 @@ Algorithm/Greedy.s: Algorithm/Greedy.cpp.s
 Algorithm/Greedy.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\greed.dir\build.make CMakeFiles/greed.dir/Algorithm/Greedy.cpp.s
 .PHONY : Algorithm/Greedy.cpp.s
+
+Algorithm/Search.obj: Algorithm/Search.cpp.obj
+
+.PHONY : Algorithm/Search.obj
+
+# target to build an object file
+Algorithm/Search.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\search.dir\build.make CMakeFiles/search.dir/Algorithm/Search.cpp.obj
+.PHONY : Algorithm/Search.cpp.obj
+
+Algorithm/Search.i: Algorithm/Search.cpp.i
+
+.PHONY : Algorithm/Search.i
+
+# target to preprocess a source file
+Algorithm/Search.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\search.dir\build.make CMakeFiles/search.dir/Algorithm/Search.cpp.i
+.PHONY : Algorithm/Search.cpp.i
+
+Algorithm/Search.s: Algorithm/Search.cpp.s
+
+.PHONY : Algorithm/Search.s
+
+# target to generate assembly for a file
+Algorithm/Search.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\search.dir\build.make CMakeFiles/search.dir/Algorithm/Search.cpp.s
+.PHONY : Algorithm/Search.cpp.s
 
 Algorithm/Sort.obj: Algorithm/Sort.cpp.obj
 
@@ -667,6 +707,7 @@ help:
 	@echo ... graph
 	@echo ... greed
 	@echo ... hash
+	@echo ... search
 	@echo ... sort
 	@echo ... stack_queue
 	@echo ... string
@@ -679,6 +720,9 @@ help:
 	@echo ... Algorithm/Greedy.obj
 	@echo ... Algorithm/Greedy.i
 	@echo ... Algorithm/Greedy.s
+	@echo ... Algorithm/Search.obj
+	@echo ... Algorithm/Search.i
+	@echo ... Algorithm/Search.s
 	@echo ... Algorithm/Sort.obj
 	@echo ... Algorithm/Sort.i
 	@echo ... Algorithm/Sort.s

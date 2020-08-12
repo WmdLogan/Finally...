@@ -84,6 +84,7 @@ all: CMakeFiles/array.dir/all
 all: CMakeFiles/double_pointer.dir/all
 all: CMakeFiles/greed.dir/all
 all: CMakeFiles/binary_search.dir/all
+all: CMakeFiles/search.dir/all
 all: CMakeFiles/divide_conquer.dir/all
 
 .PHONY : all
@@ -106,6 +107,7 @@ clean: CMakeFiles/array.dir/clean
 clean: CMakeFiles/double_pointer.dir/clean
 clean: CMakeFiles/greed.dir/clean
 clean: CMakeFiles/binary_search.dir/clean
+clean: CMakeFiles/search.dir/clean
 clean: CMakeFiles/divide_conquer.dir/clean
 
 .PHONY : clean
@@ -117,7 +119,7 @@ clean: CMakeFiles/divide_conquer.dir/clean
 CMakeFiles/sort.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sort.dir\build.make CMakeFiles/sort.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sort.dir\build.make CMakeFiles/sort.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=21,22 "Built target sort"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=23,24 "Built target sort"
 .PHONY : CMakeFiles/sort.dir/all
 
 # Build rule for subdir invocation for target.
@@ -252,7 +254,7 @@ CMakeFiles/graph.dir/clean:
 CMakeFiles/stack_queue.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\stack_queue.dir\build.make CMakeFiles/stack_queue.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\stack_queue.dir\build.make CMakeFiles/stack_queue.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=23,24 "Built target stack_queue"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=25,26 "Built target stack_queue"
 .PHONY : CMakeFiles/stack_queue.dir/all
 
 # Build rule for subdir invocation for target.
@@ -306,7 +308,7 @@ CMakeFiles/bit.dir/clean:
 CMakeFiles/string.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\string.dir\build.make CMakeFiles/string.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\string.dir\build.make CMakeFiles/string.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=25,26 "Built target string"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=27,28 "Built target string"
 .PHONY : CMakeFiles/string.dir/all
 
 # Build rule for subdir invocation for target.
@@ -433,6 +435,33 @@ binary_search: CMakeFiles/binary_search.dir/rule
 CMakeFiles/binary_search.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\binary_search.dir\build.make CMakeFiles/binary_search.dir/clean
 .PHONY : CMakeFiles/binary_search.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/search.dir
+
+# All Build rule for target.
+CMakeFiles/search.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\search.dir\build.make CMakeFiles/search.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\search.dir\build.make CMakeFiles/search.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=21,22 "Built target search"
+.PHONY : CMakeFiles/search.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/search.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/search.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/search.dir/rule
+
+# Convenience name for target.
+search: CMakeFiles/search.dir/rule
+
+.PHONY : search
+
+# clean rule for target.
+CMakeFiles/search.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\search.dir\build.make CMakeFiles/search.dir/clean
+.PHONY : CMakeFiles/search.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/divide_conquer.dir
