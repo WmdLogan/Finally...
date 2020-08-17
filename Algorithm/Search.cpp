@@ -13,6 +13,7 @@
 // 93. Restore IP Addresses(Medium)
 // 79. Word Search (Medium)
 // 257. Binary Tree Paths (Easy)
+// 46. Permutations (Medium)
 #include <vector>
 #include <queue>
 #include <iostream>
@@ -538,6 +539,32 @@ private:
         if (root == nullptr) return tree_path;
         find_tree_path(root);
         return tree_path;
+    }
+
+// 46. Permutations (Medium)
+    vector<vector<int>> permute_ans;
+
+    void swap(vector<int> &nums,int i,int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+    void permute_dfs(vector<int> &nums, int change_loc, int size) {
+        if (change_loc == nums.size()) {
+            permute_ans.push_back(nums);
+            return;
+        }
+
+        for (int i = change_loc; i < size; i++) {
+            swap(nums, i, change_loc);//交换结点
+            permute_dfs(nums, change_loc + 1, size);
+            swap(nums, change_loc, i);//交换结点
+        }
+    }
+    vector<vector<int>> permute(vector<int>& nums) {
+        int size = nums.size();
+        permute_dfs(nums, 0, size);
+        return permute_ans;
     }
 };
 
