@@ -11,11 +11,14 @@
 // 417. Pacific Atlantic Water Flow (Medium)
 // 17. Letter Combinations of a Phone Number (Medium)
 // 93. Restore IP Addresses(Medium)
+// 79. Word Search (Medium)
+// 257. Binary Tree Paths (Easy)
 #include <vector>
 #include <queue>
 #include <iostream>
 #include <unordered_set>
 #include <unordered_map>
+#include <string>
 
 using namespace std;
 
@@ -131,7 +134,7 @@ public:
         beginQ.push(beginWord);
         endQ.push(endWord);
 
-        int depth = biDirectionBfs( wordset, beginQ, endQ, begintoend, endtobegin);
+        int depth = biDirectionBfs(wordset, beginQ, endQ, begintoend, endtobegin);
 
         return depth;
     }
@@ -191,7 +194,7 @@ public:
     }
 
 // 695. Max Area of Island (Medium)
-    int area(vector<vector<int>>& grid, int r, int c) {
+    int area(vector<vector<int>> &grid, int r, int c) {
         if (!(0 <= r && r < grid.size()
               && 0 <= c && c < grid[0].size())) {
             return 0;
@@ -207,7 +210,7 @@ public:
                + area(grid, r, c + 1);
     }
 
-    int maxAreaOfIsland(vector<vector<int>>& grid) {
+    int maxAreaOfIsland(vector<vector<int>> &grid) {
         if (grid.empty() || grid[0].empty()) {
             return 0;
         }
@@ -254,7 +257,7 @@ public:
 
 
 // 547. Friend Circles (Medium)
-    void dfs(vector<vector<int>> &M, vector<int> &visited, int i){
+    void dfs(vector<vector<int>> &M, vector<int> &visited, int i) {
         for (int j = 0; j < M.size(); j++) {
             if (M[i][j] == 1 && visited[j] == 0) {
                 visited[j] = 1;
@@ -262,7 +265,8 @@ public:
             }
         }
     }
-    int findCircleNum(vector<vector<int>>& M) {
+
+    int findCircleNum(vector<vector<int>> &M) {
         vector<int> visited(M.size(), 0);
         int count = 0;
         for (int i = 0; i < M.size(); i++) {
@@ -277,7 +281,7 @@ public:
 // 130. Surrounded Regions (Medium)
     int n, m;
 
-    void dfs(vector<vector<char>>& board, int x, int y) {
+    void dfs(vector<vector<char>> &board, int x, int y) {
         if (x < 0 || x >= n || y < 0 || y >= m || board[x][y] != 'O') {
             return;
         }
@@ -288,7 +292,7 @@ public:
         dfs(board, x, y - 1);
     }
 
-    void solve(vector<vector<char>>& board) {
+    void solve(vector<vector<char>> &board) {
         n = board.size();
         if (n == 0) {
             return;
@@ -374,8 +378,14 @@ public:
 // 17. Letter Combinations of a Phone Number (Medium)
     //1. 用map记录每个数字按键对应的所有字母
     unordered_map<char, string> M = {
-            {'2', "abc"}, {'3', "def"}, {'4', "ghi"}, {'5', "jkl"}, {'6', "mno"},
-            {'7', "pqrs"}, {'8', "tuv"}, {'9', "wxyz"}
+            {'2', "abc"},
+            {'3', "def"},
+            {'4', "ghi"},
+            {'5', "jkl"},
+            {'6', "mno"},
+            {'7', "pqrs"},
+            {'8', "tuv"},
+            {'9', "wxyz"}
     };
     //2. 存储最终结果和临时结果的变量
     vector<string> ans;
@@ -385,7 +395,7 @@ public:
     //每一个digits[index]数字对应临时结果current[index]的一位字母
     void DFS(int index, string digits) {
         //出口
-        if(index == digits.size()) {
+        if (index == digits.size()) {
             ans.push_back(current);
             return;
         }
@@ -393,7 +403,7 @@ public:
         //对于当前输入的第index号数字(digits[index])，
         //枚举其对应的所有字母(M[digits[index]][i])
         string letters = M[digits[index]];
-        for(int i = 0; i < letters.size(); i++) {
+        for (int i = 0; i < letters.size(); i++) {
             current.push_back(letters[i]);     //临时结果压入一个字母
             DFS(index + 1, digits);         //以在当前位置压入该字母这一“情况”为前提，构造此“分支”的后续结果
             current.pop_back();             //状态还原，例如临时结果从 "ab" -> "a"，下一次循环尝试"ac"
@@ -401,18 +411,138 @@ public:
     }
 
     vector<string> letterCombinations(string digits) {
-        if(digits.size() == 0)  return ans;
+        if (digits.size() == 0) return ans;
 
         DFS(0, digits);
         return ans;
     }
 
 // 93. Restore IP Addresses(Medium)
+private:
+    static constexpr int SEG_COUNT = 4;
+
+private:
+    vector<int> segments;//网段
+
+public:
+    void dfs(const string &s, int segId, int segStart) {
+        // 如果找到了 4 段 IP 地址并且遍历完了字符串，那么就是一种答案
+        if (segId == SEG_COUNT) {
+            if (segStart == s.size()) {//遍历完字符串了
+                string ipAddr;
+                for (int i = 0; i < SEG_COUNT; ++i) {
+                    ipAddr += to_string(segments[i]);//每段数字的网段转换成字符串
+                    if (i != SEG_COUNT - 1) {
+                        ipAddr += ".";
+                    }
+                }
+                ans.push_back(move(ipAddr));
+            }
+            return;
+        }
+
+        // 如果还没有找到 4 段 IP 地址就已经遍历完了字符串，那么提前回溯
+        if (segStart == s.size()) {
+            return;
+        }
+
+        // 由于不能有前导零，如果当前数字为 0，那么这一段 IP 地址只能为 0
+        if (s[segStart] == '0') {
+            segments[segId] = 0;
+            dfs(s, segId + 1, segStart + 1);
+        }
+
+        // 一般情况，枚举每一种可能性并递归
+        int addr = 0;
+        for (int segEnd = segStart; segEnd < s.size(); ++segEnd) {
+            addr = addr * 10 + (s[segEnd] - '0');//更新网段地址
+            if (addr > 0 && addr <= 0xFF) {//小于256且不为零
+                segments[segId] = addr;
+                dfs(s, segId + 1, segEnd + 1);
+            } else {
+                break;
+            }
+        }
+    }
+
+    vector<string> restoreIpAddresses(string s) {
+        segments.resize(SEG_COUNT);
+        dfs(s, 0, 0);
+        return ans;
+    }
+
+// 79. Word Search (Medium)
+    bool exist(vector<vector<char>> &board, string word) {
+        for (int i = 0; i < board.size(); i++) {
+            for (int j = 0; j < board[0].size(); j++) {
+                if (backtrack(board, word, 0, i, j)) { // 从二维表格的每一个格子出发
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+private:
+    bool backtrack(vector<vector<char>> &board, string &word, int wordIndex, int x, int y) {
+        if (board[x][y] != word[wordIndex]) { // 当前位的字母不相等，此路不通
+            return false;
+        }
+        if (word.size() - 1 == wordIndex) { // 最后一个字母也相等, 返回成功
+            return true;
+        }
+        char tmp = board[x][y];
+        board[x][y] = 0; // 避免该位重复使用
+        wordIndex++;
+        if ((x > 0 && backtrack(board, word, wordIndex, x - 1, y)) // 往上走
+            || (y > 0 && backtrack(board, word, wordIndex, x, y - 1)) // 往左走
+            || (x < board.size() - 1 && backtrack(board, word, wordIndex, x + 1, y)) // 往下走
+            || (y < board[0].size() - 1 && backtrack(board, word, wordIndex, x, y + 1))) { // 往右走
+            return true; // 其中一条能走通，就算成功
+        }
+        //精髓!!!!!
+        board[x][y] = tmp; // 如果都不通，则回溯上一状态
+        return false;
+    }
+
+// 257. Binary Tree Paths (Easy)
+    struct TreeNode {
+        int val;
+        TreeNode *left;
+        TreeNode *right;
+
+        TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+    };
+
+    vector<string> tree_path;
+    string one_path;
+
+    void find_tree_path(TreeNode *root) {
+        string temp_path = one_path;
+        if (!one_path.empty()) one_path += "->";
+        one_path += to_string(root->val);
+        //到叶子结点，返回路径，回溯
+        if (root->left == nullptr && root->right == nullptr) {
+            tree_path.push_back(one_path);
+            //弹出当前结点
+            one_path = temp_path;
+            return;
+        }
+        if (root->left) find_tree_path(root->left);
+        if (root->right) find_tree_path(root->right);
+        //弹出当前结点
+        one_path = temp_path;
+    }
+
+    vector<string> binaryTreePaths(TreeNode *root) {
+        if (root == nullptr) return tree_path;
+        find_tree_path(root);
+        return tree_path;
+    }
 };
 
 int main() {
     Solution s;
+    s.restoreIpAddresses("25525511135");
 
-    vector<string> ans = {"hot", "dot", "dog", "lot", "log", "cog"};
-    cout << s.ladderLength("hit", "cog", ans);
 }
