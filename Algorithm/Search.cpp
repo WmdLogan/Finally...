@@ -17,6 +17,8 @@
 // 47. Permutations II (Medium)
 // 77. Combinations (Medium)
 // 78. Subsets (Medium)
+// 39. Combination Sum (Medium)
+
 
 #include <vector>
 #include <queue>
@@ -630,13 +632,34 @@ public:
     }
 
 // 77. Combinations (Medium)
-    vector<vector<int>> combine(int n, int k) {
-//1 ~ n范围内的k个数的组合
+    vector<vector<int>> res;
 
+    vector<vector<int>> combine(int n, int k) {
+        if (k <= 0 || n <= 0) return res;
+        vector<int> track;
+        backtrack(n, k, 1, track);
+        return res;
     }
 
+    void backtrack(int n, int k, int start, vector<int> &track) {
+        // 到达树的底部
+        if (k == track.size()) {
+            res.push_back(track);
+            return;
+        }
+        // 注意 i 从 start 开始递增
+        for (int i = start; i <= n; i++) {
+            // 做选择
+            track.push_back(i);
+            backtrack(n, k, i + 1, track);
+            // 撤销选择
+            track.pop_back();
+        }
+    }
+
+
 // 78. Subsets (Medium)
-    vector<vector<int>> subsets(vector<int>& nums) {
+    vector<vector<int>> subsets(vector<int> &nums) {
 // base case，返回一个空集
         if (nums.empty()) return {{}};
 // 把最后一个元素拿出来
@@ -644,7 +667,7 @@ public:
         nums.pop_back();
 // 先递归算出前面元素的所有子集
         vector<vector<int>> res = subsets(nums);
-
+//subsets(A[1,...,n,j]) = subsets(A[1,...n]) + subsets(A[1,,,n]).pushback(j)
         int size = res.size();
         for (int i = 0; i < size; i++) {
             // 然后在之前的结果之上追加
@@ -654,11 +677,32 @@ public:
         return res;
     }
 
+// 39. Combination Sum (Medium)
+    vector<vector<int>> com_ans;
+
+    void com_dfs(int target, vector<int> &cur, int cur_num, vector<int> &candidates) {
+        if (0 == target) {//等于，存入答案
+            com_ans.push_back(cur);
+            return;
+        }
+        for (int i = cur_num; i < candidates.size() && target >= candidates[i] ; i++) {
+            cur.push_back(candidates[i]);
+            com_dfs(target - candidates[i], cur, i, candidates);
+            cur.pop_back();
+        }
+    }
+
+    vector<vector<int>> combinationSum(vector<int> &candidates, int target) {
+        sort(candidates.begin(), candidates.end());
+        vector<int> cur;
+        com_dfs(target, cur, 0, candidates);
+        return com_ans;
+    }
 };
 
 int main() {
     Solution s;
-    vector<int> test = {1, 2, 3, 4, 5};
-    s.subsets(test);
+    vector<int> test = {2, 3, 5};
+    s.combinationSum(test, 7);
 
 }
