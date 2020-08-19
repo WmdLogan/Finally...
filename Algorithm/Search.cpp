@@ -18,6 +18,7 @@
 // 77. Combinations (Medium)
 // 78. Subsets (Medium)
 // 39. Combination Sum (Medium)
+// 40. Combination Sum II (Medium)
 
 
 #include <vector>
@@ -685,7 +686,7 @@ public:
             com_ans.push_back(cur);
             return;
         }
-        for (int i = cur_num; i < candidates.size() && target >= candidates[i] ; i++) {
+        for (int i = cur_num; i < candidates.size() && target >= candidates[i]; i++) {
             cur.push_back(candidates[i]);
             com_dfs(target - candidates[i], cur, i, candidates);
             cur.pop_back();
@@ -698,11 +699,34 @@ public:
         com_dfs(target, cur, 0, candidates);
         return com_ans;
     }
+
+// 40. Combination Sum II (Medium)
+    vector<vector<int>> com2_ans;
+
+    void com2_dfs(int target, vector<int> &cur, int cur_num, vector<int> &candidates) {
+        if (0 == target) {//等于，存入答案
+            com2_ans.push_back(cur);
+            return;
+        }
+        for (int i = cur_num; i < candidates.size() && target >= candidates[i]; ++i) {
+            if (i > cur_num && candidates[i] == candidates[i - 1]) continue; //剪枝2
+            cur.push_back(candidates[i]);
+            com2_dfs(target - candidates[i], cur, i+1, candidates);
+            cur.pop_back();
+        }
+    }
+
+    vector<vector<int>> combinationSum2(vector<int> &candidates, int target) {
+        sort(candidates.begin(), candidates.end());
+        vector<int> cur;
+        com2_dfs(target, cur, 0, candidates);
+        return com2_ans;
+    }
 };
 
 int main() {
     Solution s;
-    vector<int> test = {2, 3, 5};
-    s.combinationSum(test, 7);
+    vector<int> test = {1, 2, 2, 5, 2};
+    s.combinationSum2(test, 5);
 
 }
