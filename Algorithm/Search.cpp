@@ -14,12 +14,18 @@
 // 79. Word Search (Medium)
 // 257. Binary Tree Paths (Easy)
 // 46. Permutations (Medium)
+// 47. Permutations II (Medium)
+// 77. Combinations (Medium)
+// 78. Subsets (Medium)
+
 #include <vector>
 #include <queue>
 #include <iostream>
 #include <unordered_set>
 #include <unordered_map>
 #include <string>
+#include <unordered_set>
+#include <algorithm>
 
 using namespace std;
 
@@ -148,7 +154,8 @@ public:
         while (!beginQ.empty() && !endQ.empty()) {  //任何一个队列为空，都是线索断了的意思，所以要用&&
             int flag_begintoend = 1;
             if (beginQ.size() > endQ.size()) { //这里选择一个较短的队列进行搜索
-                swap(beginQ, endQ); //交换的意义在于，后面代码我们只准备用一个队列变量来进行搜索，所以要把较短的队列统一到beginQ上，便于后面做搜索，当然也可以重新写个bfs函数，就不需要交换了。
+                std::swap(beginQ,
+                          endQ); //交换的意义在于，后面代码我们只准备用一个队列变量来进行搜索，所以要把较短的队列统一到beginQ上，便于后面做搜索，当然也可以重新写个bfs函数，就不需要交换了。
                 flag_begintoend = 0; //flag用于判断下方代码while使用的BeginQ是真的BeginQ，还是假的BeginQ
             } else {
                 flag_begintoend = 1;
@@ -188,7 +195,7 @@ public:
             }
             //最后还是需要还原队列对应关系
             if (!flag_begintoend) {
-                swap(beginQ, endQ);
+                std::swap(beginQ, endQ);
             }
         }
         return 0;
@@ -543,12 +550,14 @@ private:
 
 // 46. Permutations (Medium)
     vector<vector<int>> permute_ans;
+    vector<bool> isvisited;
 
-    void swap(vector<int> &nums,int i,int j){
+    void swap(vector<int> &nums, int i, int j) {
         int temp = nums[i];
         nums[i] = nums[j];
         nums[j] = temp;
     }
+
     void permute_dfs(vector<int> &nums, int change_loc, int size) {
         if (change_loc == nums.size()) {
             permute_ans.push_back(nums);
@@ -556,20 +565,100 @@ private:
         }
 
         for (int i = change_loc; i < size; i++) {
+            if (i != 0 && nums[i] == nums[i - 1] && isvisited[i - 1] == 1) continue;
+            isvisited[i] = 1;
             swap(nums, i, change_loc);//交换结点
             permute_dfs(nums, change_loc + 1, size);
             swap(nums, change_loc, i);//交换结点
         }
     }
-    vector<vector<int>> permute(vector<int>& nums) {
+
+    vector<vector<int>> permute(vector<int> &nums) {
+        sort(nums.begin(), nums.end());
         int size = nums.size();
+        isvisited.resize(nums.size(), 0);
         permute_dfs(nums, 0, size);
         return permute_ans;
     }
+
+// 47. Permutations II (Medium)
+public:
+    vector<vector<int> > result;
+
+    void func(vector<int> &nums, vector<int> &current, vector<int> &freq, int n) {
+        //freq：记录排序后每个元素的个数数组
+        //nums：去重且排好序的nums
+        if (current.size() == n)//完成一次排列
+            result.push_back(current);
+        else {
+            for (int i = 0; i < nums.size(); i++) {
+                if (freq[i]) {
+                    current.push_back(nums[i]);
+                    freq[i]--;
+                    func(nums, current, freq, n);
+                    freq[i]++;
+                    current.pop_back();
+                }
+            }
+        }
+    }
+
+    vector<vector<int>> permuteUnique(vector<int> &nums) {
+        if (nums.size() == 0)
+            return {};
+        else if (nums.size() == 1)
+            return {{nums[0]}};
+        else {
+            sort(nums.begin(), nums.end());
+            vector<int> freq;//记录排序后每个元素的个数数组
+            vector<int> temp;//去重且排好序的nums
+            temp.push_back(nums[0]);
+            freq.push_back(1);
+            for (int i = 1; i < nums.size(); i++) {
+                if (nums[i] == temp[temp.size() - 1])//nums[i]比较的是重构数组里面的最后一个元素！
+                {
+                    freq[freq.size() - 1]++;//freq数组的最后一个元素的次数++
+                } else {
+                    temp.push_back(nums[i]);
+                    freq.push_back(1);
+                }
+            }
+            vector<int> current;
+            func(temp, current, freq, nums.size());
+            return result;
+        }
+    }
+
+// 77. Combinations (Medium)
+    vector<vector<int>> combine(int n, int k) {
+//1 ~ n范围内的k个数的组合
+
+    }
+
+// 78. Subsets (Medium)
+    vector<vector<int>> subsets(vector<int>& nums) {
+// base case，返回一个空集
+        if (nums.empty()) return {{}};
+// 把最后一个元素拿出来
+        int n = nums.back();
+        nums.pop_back();
+// 先递归算出前面元素的所有子集
+        vector<vector<int>> res = subsets(nums);
+
+        int size = res.size();
+        for (int i = 0; i < size; i++) {
+            // 然后在之前的结果之上追加
+            res.push_back(res[i]);
+            res.back().push_back(n);
+        }
+        return res;
+    }
+
 };
 
 int main() {
     Solution s;
-    s.restoreIpAddresses("25525511135");
+    vector<int> test = {1, 2, 3, 4, 5};
+    s.subsets(test);
 
 }
