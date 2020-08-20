@@ -19,6 +19,9 @@
 // 78. Subsets (Medium)
 // 39. Combination Sum (Medium)
 // 40. Combination Sum II (Medium)
+// 216. Combination Sum III (Medium)
+// 90. Subsets II (Medium)
+// 131. Palindrome Partitioning (Medium)
 
 
 #include <vector>
@@ -29,6 +32,7 @@
 #include <string>
 #include <unordered_set>
 #include <algorithm>
+#include <stack>
 
 using namespace std;
 
@@ -711,7 +715,7 @@ public:
         for (int i = cur_num; i < candidates.size() && target >= candidates[i]; ++i) {
             if (i > cur_num && candidates[i] == candidates[i - 1]) continue; //剪枝2
             cur.push_back(candidates[i]);
-            com2_dfs(target - candidates[i], cur, i+1, candidates);
+            com2_dfs(target - candidates[i], cur, i + 1, candidates);
             cur.pop_back();
         }
     }
@@ -722,11 +726,86 @@ public:
         com2_dfs(target, cur, 0, candidates);
         return com2_ans;
     }
+
+// 216. Combination Sum III (Medium)
+    vector<vector<int>> com3_ans;
+
+    void com3_dfs(int target, vector<int> &cur, int cur_num, int k) {
+        if (0 == target && k == 0) {//等于，存入答案
+            com3_ans.push_back(cur);
+            return;
+        }
+        for (int i = cur_num; i < 10 && target >= i && k > 0; i++) {
+            cur.push_back(i);
+            if (target - i < i + 1) {
+                com3_dfs(target - i, cur, i + 1, k - 1);
+            }
+            cur.pop_back();
+        }
+    }
+
+    vector<vector<int>> combinationSum3(int k, int n) {
+        vector<int> cur;
+        com3_dfs(n, cur, 1, k);
+        return com3_ans;
+    }
+
+// 90. Subsets II (Medium)
+    vector<vector<int>> subset_ans;
+
+    void subset_dfs(vector<int> &nums, vector<int> cur, int cur_num) {
+        subset_ans.push_back(cur);
+        for (int i = cur_num; i < nums.size(); ++i) {
+            if (i > cur_num && nums[i - 1] == nums[i]) continue;
+            cur.push_back(nums[i]);
+            subset_dfs(nums, cur, i + 1);
+            cur.pop_back();
+        }
+    }
+
+    vector<vector<int>> subsetsWithDup(vector<int> &nums) {
+        sort(nums.begin(), nums.end());
+        vector<int> cur;
+        subset_dfs(nums, cur, 0);
+        return subset_ans;
+    }
+
+// 131. Palindrome Partitioning (Medium)
+    vector<vector<string>> p_res;
+    int size;
+
+    bool check(const string &s, int i, int j) {//判断s[i...j]是不是回文字符串
+        if (j <= i) return true;
+        if (s[i++] == s[j--]) return check(s, i, j);
+        else return false;
+    }
+
+    void backtrack(const string &s, int ps, vector<string> &temp) {
+        if (ps >= size) {
+            p_res.push_back(temp);
+            return;
+        }
+        for (int i = ps; i < size; ++i) {
+            if (check(s, ps, i)) {//是回文字符串
+                temp.push_back(s.substr(ps, i - ps + 1));
+                backtrack(s, i + 1, temp);
+                temp.pop_back();
+            }
+        }
+    }
+
+    vector<vector<string>> partition(const string &s) {
+        size = s.size();
+        if (size == 0) return p_res;
+        vector<string> temp;
+        backtrack(s, 0, temp);
+        return p_res;
+    }
 };
 
 int main() {
     Solution s;
     vector<int> test = {1, 2, 2, 5, 2};
-    s.combinationSum2(test, 5);
+    s.partition("aab");
 
 }
