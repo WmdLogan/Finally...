@@ -311,6 +311,19 @@ divide_conquer/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\divide_conquer.dir\build.make CMakeFiles/divide_conquer.dir/build
 .PHONY : divide_conquer/fast
 
+#=============================================================================
+# Target rules for targets named dp
+
+# Build rule for target.
+dp: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 dp
+.PHONY : dp
+
+# fast build rule for target.
+dp/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\dp.dir\build.make CMakeFiles/dp.dir/build
+.PHONY : dp/fast
+
 Algorithm/BinarySearch.obj: Algorithm/BinarySearch.cpp.obj
 
 .PHONY : Algorithm/BinarySearch.obj
@@ -364,6 +377,33 @@ Algorithm/DevideConquer.s: Algorithm/DevideConquer.cpp.s
 Algorithm/DevideConquer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\divide_conquer.dir\build.make CMakeFiles/divide_conquer.dir/Algorithm/DevideConquer.cpp.s
 .PHONY : Algorithm/DevideConquer.cpp.s
+
+Algorithm/Dynamic_program.obj: Algorithm/Dynamic_program.cpp.obj
+
+.PHONY : Algorithm/Dynamic_program.obj
+
+# target to build an object file
+Algorithm/Dynamic_program.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\dp.dir\build.make CMakeFiles/dp.dir/Algorithm/Dynamic_program.cpp.obj
+.PHONY : Algorithm/Dynamic_program.cpp.obj
+
+Algorithm/Dynamic_program.i: Algorithm/Dynamic_program.cpp.i
+
+.PHONY : Algorithm/Dynamic_program.i
+
+# target to preprocess a source file
+Algorithm/Dynamic_program.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\dp.dir\build.make CMakeFiles/dp.dir/Algorithm/Dynamic_program.cpp.i
+.PHONY : Algorithm/Dynamic_program.cpp.i
+
+Algorithm/Dynamic_program.s: Algorithm/Dynamic_program.cpp.s
+
+.PHONY : Algorithm/Dynamic_program.s
+
+# target to generate assembly for a file
+Algorithm/Dynamic_program.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\dp.dir\build.make CMakeFiles/dp.dir/Algorithm/Dynamic_program.cpp.s
+.PHONY : Algorithm/Dynamic_program.cpp.s
 
 Algorithm/Greedy.obj: Algorithm/Greedy.cpp.obj
 
@@ -704,6 +744,7 @@ help:
 	@echo ... bit
 	@echo ... divide_conquer
 	@echo ... double_pointer
+	@echo ... dp
 	@echo ... graph
 	@echo ... greed
 	@echo ... hash
@@ -717,6 +758,9 @@ help:
 	@echo ... Algorithm/DevideConquer.obj
 	@echo ... Algorithm/DevideConquer.i
 	@echo ... Algorithm/DevideConquer.s
+	@echo ... Algorithm/Dynamic_program.obj
+	@echo ... Algorithm/Dynamic_program.i
+	@echo ... Algorithm/Dynamic_program.s
 	@echo ... Algorithm/Greedy.obj
 	@echo ... Algorithm/Greedy.i
 	@echo ... Algorithm/Greedy.s
