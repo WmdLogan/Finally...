@@ -4,6 +4,8 @@
 // 70. Climbing Stairs (Easy)
 // 198. House Robber (Easy)
 // 213. House Robber II (Medium)
+// 64. Minimum Path Sum (Medium)
+// 62. Unique Paths (Medium)
 #include <iostream>
 #include <vector>
 
@@ -44,7 +46,7 @@ public:
                    rob_range(nums, 1, size - 1));
     }
 
-    int rob_range(vector<int> &nums, int start, int end){
+    int rob_range(vector<int> &nums, int start, int end) {
         int dp_i_1 = 0, dp_i_2 = 0;
         int dp_i = 0;
         for (int i = end; i >= start; i--) {
@@ -53,5 +55,43 @@ public:
             dp_i_1 = dp_i;
         }
         return dp_i;
+    }
+
+// 64. Minimum Path Sum (Medium)
+    int minPathSum(vector<vector<int>> &grid) {
+//dp[i][j] = max(dp[i-1][j],dp[i][j-1]
+        if (grid.size() == 0 || grid[0].size() == 0) {
+            return 0;
+        }
+        int rows = grid.size(), columns = grid[0].size();
+        auto dp = vector<vector<int> >(rows, vector<int>(columns));
+        dp[0][0] = grid[0][0];
+        for (int i = 1; i < rows; i++) {//每行第一个元素只能由上方的元素得到
+            dp[i][0] = dp[i - 1][0] + grid[i][0];
+        }
+        for (int j = 1; j < columns; j++) {//每列第一个元素只能由左方的元素得到
+            dp[0][j] = dp[0][j - 1] + grid[0][j];
+        }
+        for (int i = 1; i < rows; i++) {
+            for (int j = 1; j < columns; j++) {
+                dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
+            }
+        }
+        return dp[rows - 1][columns - 1];
+    }
+
+// 62. Unique Paths (Medium)
+    int uniquePaths(int m, int n) {
+        //dp[i][j] = dp[i-1][j] + dp[i][j-1]
+        if (m == 0 || n == 0) {
+            return 1;
+        }
+        auto dp = vector<vector<int> >(m, vector<int>(n, 1));
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+            }
+        }
+        return dp[m - 1][n - 1];
     }
 };
