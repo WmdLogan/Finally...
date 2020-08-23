@@ -6,6 +6,10 @@
 // 213. House Robber II (Medium)
 // 64. Minimum Path Sum (Medium)
 // 62. Unique Paths (Medium)
+// 413. Arithmetic Slices (Medium)
+// 343. Integer Break (Medim)
+
+
 #include <iostream>
 #include <vector>
 
@@ -93,5 +97,32 @@ public:
             }
         }
         return dp[m - 1][n - 1];
+    }
+
+// 413. Arithmetic Slices (Medium)
+    int numberOfArithmeticSlices(vector<int> &A) {
+        int dp = 0;
+        int sum = 0;
+        for (int i = 2; i < A.size(); i++) {
+            if (A[i] - A[i - 1] == A[i - 1] - A[i - 2]) {
+                dp = 1 + dp;
+                sum += dp;
+            } else
+                dp = 0;
+        }
+        return sum;
+
+    }
+
+// 343. Integer Break (Medim)
+    int integerBreak(int n) {
+        vector<int> dp(n + 1);
+        dp[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            for (int j = 1; j <= i - 1; j++) {
+                dp[i] = max(dp[i], max(j * dp[i - j], j * (i - j)));
+            }
+        }
+        return dp[n];
     }
 };
