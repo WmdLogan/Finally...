@@ -8,10 +8,15 @@
 // 62. Unique Paths (Medium)
 // 413. Arithmetic Slices (Medium)
 // 343. Integer Break (Medim)
+// 279. Perfect Squares (Medium)
+// 91. Decode Ways (Medium)
+// 300. Longest Increasing Subsequence (Medium)
+// 646. Maximum Length of Pair Chain (Medium)
 
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -125,4 +130,53 @@ public:
         }
         return dp[n];
     }
+
+// 279. Perfect Squares (Medium)
+    int numSquares_dp(int n) {
+        vector<int> result(n + 1, 0x7FFFFFFF); // 每个数的最优解都存在result数组里
+        result[0] = 0;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; i - j * j >= 0; j++) {  // 观察比N小的数，且符合N = IxI + N'的数值
+                result[i] = min(result[i], result[i - j * j] + 1); // 把最优解（最小值）+ 1 写入result
+            }
+        }
+        return result[n];
+    }
+
+// 91. Decode Ways (Medium)
+    int numDecodings(string s) {
+        if (s[0] == '0') return 0;
+        int pre = 1, curr = 1;//dp[-1] = dp[0] = 1 ,pre=dp[i-2],curr=de[i-1]
+        for (int i = 1; i < s.size(); i++) {
+            int tmp = curr;//tmp = dp[i-1] , pre = dp[i-2]
+            if (s[i] == '0')
+                if (s[i - 1] == '1' || s[i - 1] == '2') curr = pre;
+                else return 0;
+            else if (s[i - 1] == '1' || (s[i - 1] == '2' && s[i] >= '1' && s[i] <= '6'))
+                curr = curr + pre;
+//            else curr = curr
+            pre = tmp;//dp[i-2] = dp[i-1]
+        }
+        return curr;
+    }
+
+// 300. Longest Increasing Subsequence (Medium)
+    int lengthOfLIS(vector<int> &nums) {
+        vector<int> tails(nums.size());//tails[k]代表长度为k+1的子序列尾部元素的值
+        int res = 0;
+        for (int num : nums) {
+            int i = 0, j = res;
+            while (i < j) {
+                int m = (i + j) / 2;
+                if (tails[m] < num) i = m + 1;
+                else j = m;
+            }
+            tails[i] = num;
+            if (res == j) res++;//长度+1
+        }
+        return res;
+    }
+
+// 646. Maximum Length of Pair Chain (Medium)
+
 };

@@ -81,18 +81,7 @@ public:
         return -1;
     }
 
-// 279. Perfect Squares (Medium)
-//动态规划
-    int numSquares_dp(int n) {
-        vector<int> result(n + 1, 0x7FFFFFFF); // 每个数的最优解都存在result数组里
-        result[0] = 0;
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; i - j * j >= 0; j++) {  // 观察比N小的数，且符合N = IxI + N'的数值
-                result[i] = min(result[i], result[i - j * j] + 1); // 把最优解（最小值）+ 1 写入result
-            }
-        }
-        return result[n];
-    }
+
 //将此题目抽象为，要从n走到0，每次跨越的距离只能为平方数，求最少的跨越次数。很自然用标准的BFS去解决
     /*返回小于n的平方序列: 1, 4, 9...*/
     vector<int> getSquares(int n) {
@@ -104,7 +93,7 @@ public:
     }
 
     int numSquares(int n) {
-        vector<int> squares = getSquares(n);
+        vector<int> squares = getSquares(n);  /*返回小于n的平方序列: 1, 4, 9...*/
         vector<bool> visited(n + 1);    //记录已访问过的节点
         queue<int> q;
 
@@ -119,7 +108,7 @@ public:
                 q.pop();
                 /*每次跨越的间隔为平方数*/
                 for (int num: squares) {
-                    int next = curr - num;
+                    int next = curr - num;//减去平方数
                     if (next < 0) {
                         break;
                     }
