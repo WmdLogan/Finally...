@@ -12,7 +12,9 @@
 // 91. Decode Ways (Medium)
 // 300. Longest Increasing Subsequence (Medium)
 // 646. Maximum Length of Pair Chain (Medium)
-
+// 376. Wiggle Subsequence (Medium)
+// 1143. Longest Common Subsequence
+// 416. Partition Equal Subset Sum (Medium)
 
 #include <iostream>
 #include <vector>
@@ -196,4 +198,78 @@ public:
         return res;
     }
 
+    //解法2：动态规划+二分法，时间复杂度O(nlogn)，空间复杂度O(n)
+    int findLongestChain_2(vector<vector<int>> &pairs) {
+        if (pairs.empty())return 0;
+        sort(pairs.begin(), pairs.end(), [](const auto &a, const auto &b) {
+            return (a[0] < b[0]) || (a[0] == b[0] && a[1] < b[1]);
+        });
+        vector<vector<int>> dp;
+        for (auto &p:pairs) {
+            //二分法寻找大于等于p[0]的最小值dp[i][1]
+            int left = 0, right = dp.size();
+            while (left < right) {//进入while循环区间内至少有2个元素，退出循环的极值只有0或size
+                int mid = left + ((right - left) >> 1);
+                if (dp[mid][1] >= p[0]) right = mid;
+                else left = mid + 1;
+            }
+            //dp[size-1][1]<p[0]，则更新最长数对链的长度
+            if (left >= dp.size()) dp.emplace_back(p);
+                //dp[left][1]大于（等于）p[0]同时也大于p[1]，那么我们更新dp[left]为p，这样可以将left变小，以便形成最长的数对链
+            else if (dp[left][1] > p[1]) dp[left] = p;
+        }
+        return dp.size();
+    }
+
+// 376. Wiggle Subsequence (Medium)
+    int wiggleMaxLength(vector<int> &nums) {
+        int size = nums.size();
+        if (size < 2) return size;
+        int pre = nums[0], cur;
+        int i = 1;
+        int length = 1;//序列长度
+        for (; i < size; i++) {//确定前两个不相等的数
+            if (nums[i] != pre) {
+                cur = nums[i];
+                i++;
+                length++;
+                break;
+            }
+        }
+        for (; i < size; i++) {
+            if ((pre > cur && nums[i] > cur) || (pre < cur && nums[i] < cur)) {//上一个是升序,当前是降序，符合
+                pre = cur;
+                length++;
+            }
+            cur = nums[i];
+        }
+        return length;
+    }
+
+// 1143. Longest Common Subsequence
+    int longestCommonSubsequence(string text1, string text2) {
+        int n1 = text1.length(), n2 = text2.length();
+        vector<int> temp(n2 + 1, 0);
+        vector<vector<int>> dp(n1 + 1, temp);
+        for (int i = 1; i <= n1; i++) {
+            for (int j = 1; j <= n2; j++) {
+                if (text1[i - 1] == text2[j - 1]) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+        return dp[n1][n2];
+    }
+
+// 416. Partition Equal Subset Sum (Medium)
+
+    bool canPartition(vector<int>& nums) {
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        return sum;
+    }
 };
