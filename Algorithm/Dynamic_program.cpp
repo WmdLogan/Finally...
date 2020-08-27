@@ -4,6 +4,7 @@
 // 70. Climbing Stairs (Easy)
 // 198. House Robber (Easy)
 // 213. House Robber II (Medium)
+// 337. House Robber III (Medium)
 // 64. Minimum Path Sum (Medium)
 // 62. Unique Paths (Medium)
 // 413. Arithmetic Slices (Medium)
@@ -41,7 +42,7 @@ public:
         //pre2 = dp[i-2], pre1 = dp[i-1]
         int pre2 = 0, pre1 = 0;
         for (int i = 0; i < nums.size(); i++) {
-            int cur = max(pre2 + nums[i], pre1);
+            int cur = max(pre2 + nums[i], pre1);//（选当前的不选上一个，不选当前的）
             pre2 = pre1;
             pre1 = cur;
         }
@@ -67,6 +68,37 @@ public:
         }
         return dp_i;
     }
+
+// 337. House Robber III (Medium)
+    struct TreeNode {
+        int val;
+        TreeNode *left;
+        TreeNode *right;
+
+        TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+    };
+
+    struct SubtreeStatus {
+        int selected;
+        int notSelected;
+    };
+
+    SubtreeStatus dfs(TreeNode *o) {
+        if (!o) {
+            return {0, 0};
+        }
+        auto l = dfs(o->left);
+        auto r = dfs(o->right);
+        int selected = o->val + l.notSelected + r.notSelected;
+        int notSelected = max(l.selected, l.notSelected) + max(r.selected, r.notSelected);
+        return {selected, notSelected};
+    }
+
+    int rob(TreeNode *o) {
+        auto rootStatus = dfs(o);
+        return max(rootStatus.selected, rootStatus.notSelected);
+    }
+
 
 // 64. Minimum Path Sum (Medium)
     int minPathSum(vector<vector<int>> &grid) {
@@ -265,7 +297,7 @@ public:
 
 // 416. Partition Equal Subset Sum (Medium)
 
-    bool canPartition(vector<int>& nums) {
+    bool canPartition(vector<int> &nums) {
         int sum = 0;
         for (int num : nums) {
             sum += num;
