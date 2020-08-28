@@ -16,6 +16,7 @@
 // 376. Wiggle Subsequence (Medium)
 // 1143. Longest Common Subsequence
 // 416. Partition Equal Subset Sum (Medium)
+// 494. Target Sum (Medium)
 
 #include <iostream>
 #include <vector>
@@ -296,12 +297,76 @@ public:
     }
 
 // 416. Partition Equal Subset Sum (Medium)
-
+// 输入一个集合，返回是否能够分割成和相等的两个子集
     bool canPartition(vector<int> &nums) {
-        int sum = 0;
-        for (int num : nums) {
-            sum += num;
+        int sum = 0, n = nums.size();
+        for (int num : nums) sum += num;
+        if (sum % 2 != 0) return false;
+        sum = sum / 2;
+        vector<bool> dp(sum + 1, false);
+        // base case
+        dp[0] = true;
+
+        for (int i = 0; i < n; i++)
+            for (int j = sum; j >= 0; j--)
+                if (j - nums[i] >= 0)
+                    dp[j] = dp[j] || dp[j - nums[i]];
+//dp[j]相当于dp[i-1][j]，状态压缩
+        return dp[sum];
+    }
+
+
+//0-1背包
+    int knapsack(int W, int N, vector<int> &wt, vector<int> &val) {
+        // vector 全填入 0，base case 已初始化
+        //dp[N][W]表示前N个物品，当前背包的容量为W，这种情况下可以装的最大价值
+        vector<vector<int>> dp(N + 1, vector<int>(W + 1, 0));
+        for (int i = 1; i <= N; i++) {
+            for (int w = 1; w <= W; w++) {
+                if (w - wt[i - 1] < 0) {
+                    // 当前背包容量装不下，只能选择不装入背包
+                    dp[i][w] = dp[i - 1][w];
+                } else {
+                    // 装入或者不装入背包，择优
+                    dp[i][w] = max(dp[i - 1][w - wt[i - 1]] + val[i - 1],
+                                   dp[i - 1][w]);
+                }
+            }
         }
-        return sum;
+        return dp[N][W];
+    }
+
+// 494. Target Sum (Medium)
+    int findTargetSumWays(vector<int> nums, int S) {
+//   2 * sum(正数) = target + sum(nums)
+// 因此只要找到一个子集，令它们都取正号，并且和等于 (target + sum(nums))/2，就证明存在解。
+        int sum = 0;
+        for (int i:nums) {
+            sum += i;
+        }
+        // 背包容量为整数，sum+S为奇数的话不满足要求
+        if ((sum % 2) != (S % 2)) {
+            return 0;
+        }
+        // 目标和不可能大于总和
+        if (S > sum) {
+            return 0;
+        }
+        int len = (sum + S) / 2;
+        vector<int> dp(len + 1);
+        dp[0] = 1;
+
+        for (int num:nums) {
+            for (int i = len; i >= num; --i) {
+                dp[i] += dp[i - num];
+            }
+        }
+
+        return dp[len];
     }
 };
+int main(){
+    vector<int> nums = {1, 1, 1, 1, 1};
+    Solution s;
+    s.findTargetSumWays(nums, 3);
+}
