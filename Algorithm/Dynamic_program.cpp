@@ -18,10 +18,14 @@
 // 416. Partition Equal Subset Sum (Medium)
 // 494. Target Sum (Medium)
 // 474. Ones and Zeroes (Medium)
+// 322. Coin Change (Medium)
+// 139. Word Break (Medium)
 
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <climits>
+#include <cstring>
 
 using namespace std;
 
@@ -367,7 +371,7 @@ public:
     }
 
 // 474. Ones and Zeroes (Medium)
-    int findMaxForm(vector<string>& strs, int m, int n) {
+    int findMaxForm(vector<string> &strs, int m, int n) {
         int S = strs.size();
         vector<vector<int> > dp(m + 1, vector<int>(n + 1, 0));
         for (int l = 0; l < S; ++l) {
@@ -386,11 +390,87 @@ public:
         return dp[m][n];
     }
 
+// 322. Coin Change (Medium)
+//dp法
+    int coinChange(vector<int> &coins, int amount) {
+        // 数组的定义：当目标金额为 i 时，至少需要 dp[i] 枚凑出。
+        // 数组大小为 amount + 1，初始值也为 amount + 1
+        vector<int> dp(amount + 1, amount + 1);
+        // base case
+        dp[0] = 0;
+        // 外层 for 循环在遍历所有状态的所有取值
+        for (int i = 0; i <= amount; i++) {
+            // 内层 for 循环在求所有选择的最小值
+            for (int coin : coins) {
+                // 子问题无解，跳过
+                if (i - coin < 0) continue;
+                dp[i] = min(dp[i], 1 + dp[i - coin]);
+            }
+        }
+        return (dp[amount] == amount + 1) ? -1 : dp[amount];
+    }
 
+//贪心法
+    void coinChange(vector<int> &coins, int amount, int c_index, int count, int &ans) {
+        if (amount == 0) {
+            ans = min(ans, count);
+            return;
+        }
+        if (c_index == coins.size()) return;
+
+        for (int k = amount / coins[c_index]; k >= 0 && k + count < ans; k--) {
+            coinChange(coins, amount - k * coins[c_index], c_index + 1, count + k, ans);
+        }
+    }
+
+    int coinChange_greedy(vector<int> &coins, int amount) {
+        if (amount == 0) return 0;
+        sort(coins.rbegin(), coins.rend());
+        int ans = amount + 1;
+        coinChange(coins, amount, 0, 0, ans);
+        return ans == amount + 1 ? -1 : ans;
+    }
+
+// 518. Coin Change 2 (Medium)
+//完全背包问题
+    int change(int amount, vector<int> &coins) {
+        vector<int> dp(amount + 1, 0);
+        dp[0] = 1;
+        for (int coin : coins) {
+            for (int i = 1; i <= amount; i++) {
+                // 子问题无解，跳过
+                if (i - coin < 0) continue;
+                dp[i] += dp[i - coin];
+            }
+        }
+        return dp[amount];
+    }
+
+// 139. Word Break (Medium)
+    bool wordBreak(string s, vector<string> &wordDict) {
+        int validEnd = 0;//记录所有最大的新词开头字母（最大的待匹配位置）
+// i - 1 个字符是上一个词（已匹配中）的结尾字母，第 i 个字符是一个新词（待匹配）的开头字母
+        vector<bool> dp(s.size() + 1, false);
+        dp[0] = true;//0为true，代表一个新词的开始
+        for (int i = 0; i < s.size(); i++) {
+            if (i == validEnd + 1) return false;//如果当前字符已经超过了所有新词开头字母，必然匹配不中
+            if (!dp[i]) continue;//false说明字符串当前位置之前未完全匹配中，剪枝
+            for (auto &word : wordDict) {//因为单词可重复，所以每次匹配都遍历整个词典
+                int newEnd = i + word.size();//已匹配中长度 + 待匹配单词长度
+                if (newEnd > s.size()) continue;//长度超过字符串长度，剪枝
+                if (memcmp(&s[i], &word[0], word.size()) == 0) {//比较当前单词与字符串当前匹配位置是否相同
+                    dp[newEnd] = true;
+                    validEnd = max(validEnd, newEnd);//更新最大的新词开头字母
+                }
+            }
+        }
+        return dp.back();
+    }
 
 };
-int main(){
-    vector<int> nums = {1, 1, 1, 1, 1};
+
+int main() {
+    vector<string> nums = {"cats", "dog", "sand", "and", "cat"};
     Solution s;
-    s.findTargetSumWays(nums, 3);
+    s.wordBreak( "catsandog",nums);
 }
