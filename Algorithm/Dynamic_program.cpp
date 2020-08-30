@@ -20,6 +20,8 @@
 // 474. Ones and Zeroes (Medium)
 // 322. Coin Change (Medium)
 // 139. Word Break (Medium)
+// 377. Combination Sum IV (Medium)
+// 309. Best Time to Buy and Sell Stock with Cooldown(Medium)
 
 #include <iostream>
 #include <vector>
@@ -467,10 +469,29 @@ public:
         return dp.back();
     }
 
+// 377. Combination Sum IV (Medium)
+// 涉及顺序的完全背包。
+    int combinationSum4(vector<int> &nums, int target) {
+        int N = nums.size();
+        vector<unsigned long long> dp(target + 1, 0);
+        dp[0] = 1;
+        for (int i = 1; i <= target; i++) {
+            for (int j = 0; j < N; j++) {
+                dp[i] += ((i - nums[j] >= 0) ? dp[i - nums[j]] : 0);//当i==nums[j]时，以nums[j]为结尾的所有排列就一个啊，所以可知直接使dp[0]=1实现这一目的
+            }
+        }
+        return dp[target];
+
+    }
+
+// 309. Best Time to Buy and Sell Stock with Cooldown(Medium)
+    int maxProfit(vector<int>& prices) {
+
+    }
 };
 
 int main() {
-    vector<string> nums = {"cats", "dog", "sand", "and", "cat"};
+    vector<int> nums = {3, 33, 333};
     Solution s;
-    s.wordBreak( "catsandog",nums);
+    cout << s.combinationSum4(nums, 10000);
 }
