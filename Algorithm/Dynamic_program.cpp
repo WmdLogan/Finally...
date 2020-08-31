@@ -477,7 +477,8 @@ public:
         dp[0] = 1;
         for (int i = 1; i <= target; i++) {
             for (int j = 0; j < N; j++) {
-                dp[i] += ((i - nums[j] >= 0) ? dp[i - nums[j]] : 0);//当i==nums[j]时，以nums[j]为结尾的所有排列就一个啊，所以可知直接使dp[0]=1实现这一目的
+                dp[i] += ((i - nums[j] >= 0) ? dp[i - nums[j]]
+                                             : 0);//当i==nums[j]时，以nums[j]为结尾的所有排列就一个啊，所以可知直接使dp[0]=1实现这一目的
             }
         }
         return dp[target];
@@ -485,8 +486,20 @@ public:
     }
 
 // 309. Best Time to Buy and Sell Stock with Cooldown(Medium)
-    int maxProfit(vector<int>& prices) {
-
+    int maxProfit(vector<int> &prices) {
+//每天结束有三种状态：无股票非冷冻期、有股票、冷冻期
+//dp[i][0] 表示第i天结束，处于可以买入的状态的收益的最大值
+//dp[i][1] 表示第i天结束，手中有股票的状态的收益的最大值
+//dp[i][2] 表示第i天结束，处于冷冻期的收益的最大值
+        int n = prices.size();
+        vector<vector<int>> dp(n + 1, vector<int>(3, -2e9));
+        dp[0][0] = 0;
+        for (int i = 0; i < n; i++) {
+            dp[i + 1][0] = max(dp[i][0], dp[i][2]);
+            dp[i + 1][1] = max(dp[i][0] - prices[i], dp[i][1]);
+            dp[i + 1][2] = dp[i][1] + prices[i];
+        }
+        return max(dp[n][0], dp[n][2]);
     }
 };
 
