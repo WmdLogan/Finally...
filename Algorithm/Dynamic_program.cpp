@@ -495,8 +495,11 @@ public:
         vector<vector<int>> dp(n + 1, vector<int>(3, -2e9));
         dp[0][0] = 0;
         for (int i = 0; i < n; i++) {
+            //根据状态0/2。今天休息（状态不变）、卖了股票（转移至状态1）。
             dp[i + 1][0] = max(dp[i][0], dp[i][2]);
+            //今天休息（根据状态1）、今天买入（根据状态0）。
             dp[i + 1][1] = max(dp[i][0] - prices[i], dp[i][1]);
+            //根据状态1。卖出，无条件转移至状态0
             dp[i + 1][2] = dp[i][1] + prices[i];
         }
         return max(dp[n][0], dp[n][2]);
