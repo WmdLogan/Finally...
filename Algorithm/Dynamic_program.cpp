@@ -22,6 +22,7 @@
 // 139. Word Break (Medium)
 // 377. Combination Sum IV (Medium)
 // 309. Best Time to Buy and Sell Stock with Cooldown(Medium)
+// 714. Best Time to Buy and Sell Stock with Transaction Fee (Medium)
 
 #include <iostream>
 #include <vector>
@@ -503,6 +504,20 @@ public:
             dp[i + 1][2] = dp[i][1] + prices[i];
         }
         return max(dp[n][0], dp[n][2]);
+    }
+
+// 714. Best Time to Buy and Sell Stock with Transaction Fee (Medium)
+    int maxProfit(vector<int>& prices, int fee) {
+// 状态1：无股票
+// 状态2：有股票
+        int n = prices.size();
+        vector<vector<int>> dp(n + 1, vector<int>(2, -2e9));
+        dp[0][0] = 0;
+        for (int i = 0; i < n; i++) {
+            dp[i + 1][0] = max(dp[i][0], dp[i][1] + prices[i] - fee);
+            dp[i + 1][1] = max(dp[i][0] - prices[i], dp[i][1]);
+        }
+        return dp[n][0];
     }
 };
 
