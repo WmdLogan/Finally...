@@ -511,13 +511,12 @@ public:
 // 状态1：无股票
 // 状态2：有股票
         int n = prices.size();
-        vector<vector<int>> dp(n + 1, vector<int>(2, -2e9));
-        dp[0][0] = 0;
+        int dp_0 = 0, dp_1 = -50001;
         for (int i = 0; i < n; i++) {
-            dp[i + 1][0] = max(dp[i][0], dp[i][1] + prices[i] - fee);
-            dp[i + 1][1] = max(dp[i][0] - prices[i], dp[i][1]);
+            dp_0 = max(dp_0, dp_1 + prices[i] - fee);
+            dp_1 = max(dp_0 - prices[i], dp_1);
         }
-        return dp[n][0];
+        return dp_0;
     }
 };
 
