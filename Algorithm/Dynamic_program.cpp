@@ -23,6 +23,8 @@
 // 377. Combination Sum IV (Medium)
 // 309. Best Time to Buy and Sell Stock with Cooldown(Medium)
 // 714. Best Time to Buy and Sell Stock with Transaction Fee (Medium)
+// 123. Best Time to Buy and Sell Stock III (Hard)
+// 188. Best Time to Buy and Sell Stock IV (Hard)
 
 #include <iostream>
 #include <vector>
@@ -507,7 +509,7 @@ public:
     }
 
 // 714. Best Time to Buy and Sell Stock with Transaction Fee (Medium)
-    int maxProfit(vector<int>& prices, int fee) {
+    int maxProfit(vector<int> &prices, int fee) {
 // 状态1：无股票
 // 状态2：有股票
         int n = prices.size();
@@ -517,6 +519,55 @@ public:
             dp_1 = max(dp_0 - prices[i], dp_1);
         }
         return dp_0;
+    }
+
+// 123. Best Time to Buy and Sell Stock III (Hard)
+    int maxProfit_3(vector<int> &prices) {
+// 状态0：卖出
+// 状态1：买入
+        int profitOne0 = 0, profitOne1 = -prices[0], profitTwo0 = 0, profitTwo1 = -prices[0];
+        int length = prices.size();
+        for (int i = 1; i < length; i++) {
+//第一次买入
+            profitOne0 = max(profitOne0, profitOne1 + prices[i]);
+            profitOne1 = max(profitOne1, -prices[i]);
+//第二次买入
+            profitTwo0 = max(profitTwo0, profitTwo1 + prices[i]);
+            profitTwo1 = max(profitTwo1, profitOne0 - prices[i]);
+        }
+        return profitTwo0;
+    }
+
+// 188. Best Time to Buy and Sell Stock IV (Hard)
+    int maxProfit(int k, vector<int> &prices) {
+        int n = prices.size();
+        //当k非常大时转为无限次交易
+        if (k >= n / 2) {
+            int dp0 = 0, dp1 = -prices[0];
+            for (int i = 1; i < n; ++i) {
+                int tmp = dp0;
+                dp0 = max(dp0, dp1 + prices[i]);
+                dp1 = max(dp1, dp0 - prices[i]);
+            }
+            return max(dp0, dp1);
+        }
+        //定义二维数组，交易了多少次、当前的买卖状态  
+        int dp [k + 1][2];
+        int res = 0;
+        for (int i = 0; i <= k; ++i) {
+            dp[i][0] = 0;
+            dp[i][1] = -prices[0];
+        }
+        for (int i = 1; i < n; ++i) {
+            for (int j = k; j > 0; --j) {
+                //处理第k次买入
+                dp[j - 1][1] = max(dp[j - 1][1], dp[j - 1][0] - prices[i]);
+                //处理第k次卖出
+                dp[j][0] = max(dp[j][0], dp[j - 1][1] + prices[i]);
+
+            }
+        }
+        return dp[k][0];
     }
 };
 
