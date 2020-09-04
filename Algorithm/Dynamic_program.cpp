@@ -540,35 +540,37 @@ public:
 
 // 188. Best Time to Buy and Sell Stock IV (Hard)
     int maxProfit(int k, vector<int> &prices) {
-        int n = prices.size();
-        //当k非常大时转为无限次交易
-        if (k >= n / 2) {
-            int dp0 = 0, dp1 = -prices[0];
-            for (int i = 1; i < n; ++i) {
-                int tmp = dp0;
-                dp0 = max(dp0, dp1 + prices[i]);
-                dp1 = max(dp1, dp0 - prices[i]);
-            }
-            return max(dp0, dp1);
-        }
-        //定义二维数组，交易了多少次、当前的买卖状态  
-        int dp [k + 1][2];
-        int res = 0;
-        for (int i = 0; i <= k; ++i) {
-            dp[i][0] = 0;
-            dp[i][1] = -prices[0];
-        }
-        for (int i = 1; i < n; ++i) {
-            for (int j = k; j > 0; --j) {
-                //处理第k次买入
-                dp[j - 1][1] = max(dp[j - 1][1], dp[j - 1][0] - prices[i]);
-                //处理第k次卖出
-                dp[j][0] = max(dp[j][0], dp[j - 1][1] + prices[i]);
-
+        int len_ = prices.size();
+        if (len_ == 0) return 0;
+//无限次交易
+        if (k > len_ / 2) return maxProfit_inf(prices);
+        int dp[k + 1][2];
+        dp[0][0] = 0; //0代表卖出状态、1代表买入状态
+        for (int i = 0; i < len_; i++) {
+            for (int j = k; j > 0; j--) {
+                if (i == 0) {
+                    dp[j][0] = 0;
+                    dp[j][1] = -prices[0];
+                    continue;
+                }
+                dp[j][0] = max(dp[j][0], dp[j][1] + prices[i]);
+                dp[j][1] = max(dp[j][1], dp[j - 1][0] - prices[i]);
             }
         }
         return dp[k][0];
     }
+
+    int maxProfit_inf(vector<int> &prices) {
+        int len_ = prices.size();
+        int dp_i_0 = 0;
+        int dp_i_1 = INT_MIN;
+        for (int i = 0; i < len_; i++) {
+            int tmp = dp_i_0;
+            dp_i_0 = max(dp_i_0, dp_i_1 + prices[i]);
+            dp_i_1 = max(dp_i_1, tmp - prices[i]);
+        }
+        return dp_i_0;
+    }//无限次交易
 };
 
 int main() {
