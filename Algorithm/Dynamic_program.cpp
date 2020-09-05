@@ -25,6 +25,7 @@
 // 714. Best Time to Buy and Sell Stock with Transaction Fee (Medium)
 // 123. Best Time to Buy and Sell Stock III (Hard)
 // 188. Best Time to Buy and Sell Stock IV (Hard)
+// 583. Delete Operation for Two Strings (Medium)
 
 #include <iostream>
 #include <vector>
@@ -291,6 +292,7 @@ public:
 
 // 1143. Longest Common Subsequence
     int longestCommonSubsequence(string text1, string text2) {
+// dp[i][j] 的含义是：对于 s1[1..i] 和 s2[1..j]，它们的 LCS 长度是 dp[i][j]。
         int n1 = text1.length(), n2 = text2.length();
         vector<int> temp(n2 + 1, 0);
         vector<vector<int>> dp(n1 + 1, temp);
@@ -571,6 +573,41 @@ public:
         }
         return dp_i_0;
     }//无限次交易
+
+// 583. Delete Operation for Two Strings (Medium)
+//1、dp[i][j]表示s1[1...i]和s2[1...j]的最长公共子序列长度
+    int minDistance(string word1, string word2) {
+        int n1 = word1.length(), n2 = word2.length();
+        vector<int> dp(n2 + 1, 0);
+        for (int i = 1; i <= n1; i++) {
+            vector<int> temp = dp;
+            for (int j = 1; j <= n2; ++j) {
+                if (word1[i - 1] == word2[j - 1]) {
+                    dp[j] = temp[j - 1] + 1;
+                } else {
+                    dp[j] = max(dp[j], dp[j - 1]);
+                }
+            }
+        }
+        return n1 + n2 - 2 * dp[n2];
+    }
+
+//2、dp[i][j]表示s1[1...i]和s2[1...j]的字符串匹配最少删除次数
+    int minDistance2(string word1, string word2) {
+        int len1 = word1.size();
+        int len2 = word2.size();
+        int i, j;
+        vector<int> temp(len2 + 1, 0);
+        vector<vector<int>> dp(len1 + 1, temp);
+        for (i = 0; i <= len1; ++i) {
+            for (j = 0; j <= len2; ++j) {
+                if (i == 0 || j == 0) dp[i][j] = i + j;
+                else if (word1[i - 1] == word2[j - 1]) dp[i][j] = dp[i - 1][j - 1];
+                else dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + 1;
+            }
+        }
+        return dp[len1][len2];
+    }
 };
 
 int main() {
