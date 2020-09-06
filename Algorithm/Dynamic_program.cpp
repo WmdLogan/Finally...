@@ -26,6 +26,9 @@
 // 123. Best Time to Buy and Sell Stock III (Hard)
 // 188. Best Time to Buy and Sell Stock IV (Hard)
 // 583. Delete Operation for Two Strings (Medium)
+// 72. Edit Distance (Hard)
+// 650. 2 Keys Keyboard (Medium)
+
 
 #include <iostream>
 #include <vector>
@@ -608,10 +611,32 @@ public:
         }
         return dp[len1][len2];
     }
+
+// 72. Edit Distance (Hard)
+    int EditDistance(string word1, string word2) {
+        int len1 = word1.size(), len2 = word2.size();
+        vector<int> temp(len2 + 1, 0);
+        vector<vector<int>> dp(len1 + 1, temp);
+        for (int i = 0; i <= len1; ++i) {
+            for (int j = 0; j <= len2; ++j) {
+                if (i == 0 || j == 0) dp[i][j] = i + j;
+                else if (word1[i - 1] == word2[j - 1])
+                    dp[i][j] = min(dp[i - 1][j], min(dp[i][j - 1], dp[i - 1][j - 1] - 1)) + 1;
+                else
+                    dp[i][j] = min(dp[i - 1][j], min(dp[i][j - 1], dp[i - 1][j - 1])) + 1;
+            }
+        }
+        return dp[len1][len2];
+    }
+
+// 650. 2 Keys Keyboard (Medium)
+    int minSteps(int n) {
+
+    }
 };
 
 int main() {
     vector<int> nums = {3, 33, 333};
     Solution s;
-    cout << s.combinationSum4(nums, 10000);
+    cout << s.EditDistance("a", "");
 }
