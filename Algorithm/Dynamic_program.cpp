@@ -631,12 +631,26 @@ public:
 
 // 650. 2 Keys Keyboard (Medium)
     int minSteps(int n) {
-
+    //  i 从 2 开始遍历找到 n - 1，判断 i 是不是 n 的因子，
+    //  如果 i 是 n 的因子，那么总的需要操作 minSteps(i) + n / i次。
+    //  如果从 2 到 n - 1 没有 n 的因子，那么 n 是个素数，必须操作 n 次。
+        vector<int> dp(n + 1, 0);
+        for (int i = 2; i < n + 1; i++) {
+            int minCount = INT_MAX;
+            for (int j = 1; j < i; j++) {
+                if (i % j == 0) {
+                    //min = min(i) + 1 + (j - 1) = min(i) + n/i
+                    minCount = min(dp[j] + i / j, minCount);
+                }
+            }
+            dp[i] = minCount;
+        }
+        return dp[n];
     }
 };
 
 int main() {
     vector<int> nums = {3, 33, 333};
     Solution s;
-    cout << s.EditDistance("a", "");
+    cout << s.minSteps(3);
 }
