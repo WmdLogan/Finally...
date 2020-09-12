@@ -195,6 +195,19 @@ graph/fast:
 .PHONY : graph/fast
 
 #=============================================================================
+# Target rules for targets named math
+
+# Build rule for target.
+math: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 math
+.PHONY : math
+
+# fast build rule for target.
+math/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\math.dir\build.make CMakeFiles/math.dir/build
+.PHONY : math/fast
+
+#=============================================================================
 # Target rules for targets named stack_queue
 
 # Build rule for target.
@@ -513,6 +526,33 @@ Algorithm/double_pointer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\double_pointer.dir\build.make CMakeFiles/double_pointer.dir/Algorithm/double_pointer.cpp.s
 .PHONY : Algorithm/double_pointer.cpp.s
 
+Algorithm/math.obj: Algorithm/math.cpp.obj
+
+.PHONY : Algorithm/math.obj
+
+# target to build an object file
+Algorithm/math.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\math.dir\build.make CMakeFiles/math.dir/Algorithm/math.cpp.obj
+.PHONY : Algorithm/math.cpp.obj
+
+Algorithm/math.i: Algorithm/math.cpp.i
+
+.PHONY : Algorithm/math.i
+
+# target to preprocess a source file
+Algorithm/math.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\math.dir\build.make CMakeFiles/math.dir/Algorithm/math.cpp.i
+.PHONY : Algorithm/math.cpp.i
+
+Algorithm/math.s: Algorithm/math.cpp.s
+
+.PHONY : Algorithm/math.s
+
+# target to generate assembly for a file
+Algorithm/math.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\math.dir\build.make CMakeFiles/math.dir/Algorithm/math.cpp.s
+.PHONY : Algorithm/math.cpp.s
+
 DataStructure/Bit.obj: DataStructure/Bit.cpp.obj
 
 .PHONY : DataStructure/Bit.obj
@@ -748,6 +788,7 @@ help:
 	@echo ... graph
 	@echo ... greed
 	@echo ... hash
+	@echo ... math
 	@echo ... search
 	@echo ... sort
 	@echo ... stack_queue
@@ -773,6 +814,9 @@ help:
 	@echo ... Algorithm/double_pointer.obj
 	@echo ... Algorithm/double_pointer.i
 	@echo ... Algorithm/double_pointer.s
+	@echo ... Algorithm/math.obj
+	@echo ... Algorithm/math.i
+	@echo ... Algorithm/math.s
 	@echo ... DataStructure/Bit.obj
 	@echo ... DataStructure/Bit.i
 	@echo ... DataStructure/Bit.s

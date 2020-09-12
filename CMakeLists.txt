@@ -18,4 +18,5 @@ add_executable(binary_search Algorithm/BinarySearch.cpp)
 add_executable(search Algorithm/Search.cpp)
 add_executable(divide_conquer Algorithm/DevideConquer.cpp)
 add_executable(dp Algorithm/Dynamic_program.cpp)
+add_executable(math Algorithm/math.cpp)
 

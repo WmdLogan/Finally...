@@ -58,6 +58,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/List.dir/DependInfo.cmake"
   "CMakeFiles/Tree.dir/DependInfo.cmake"
   "CMakeFiles/graph.dir/DependInfo.cmake"
+  "CMakeFiles/math.dir/DependInfo.cmake"
   "CMakeFiles/stack_queue.dir/DependInfo.cmake"
   "CMakeFiles/bit.dir/DependInfo.cmake"
   "CMakeFiles/string.dir/DependInfo.cmake"
