@@ -8,6 +8,8 @@
 // 405. Convert a Number to Hexadecimal (Easy)
 // 168. Excel Sheet Column Title (Easy)
 // 172. Factorial Trailing Zeroes (Easy)
+// 67. Add Binary (Easy)
+// 415. Add Strings (Easy)
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -90,6 +92,54 @@ public:
 // 172. Factorial Trailing Zeroes (Easy)
     int trailingZeroes(int n) {
         return n == 0 ? 0 : n / 5 + trailingZeroes(n / 5);
+    }
+
+// 67. Add Binary (Easy)
+    string addBinary(string a, string b) {
+        int al = a.size(), bl = b.size();
+        while (al < bl) //让两个字符串等长，若不等长，在短的字符串前补零，否则之后的操作会超出索引
+        {
+            a = '0' + a;
+            ++al;
+        }
+        while (al > bl) {
+            b = '0' + b;
+            ++bl;
+        }
+        for (int j = a.size() - 1; j > 0; --j) //从后到前遍历所有的位数，同位相加
+        {
+            a[j] = a[j] - '0' + b[j];
+            if (a[j] >= '2') //若大于等于字符‘2’，需要进一
+            {
+                a[j] = (a[j] - '0') % 2 + '0';//有可能是1、2
+                a[j - 1] = a[j - 1] + 1;
+            }
+        }
+        a[0] = a[0] - '0' + b[0]; //将ab的第0位相加
+        if (a[0] >= '2') //若大于等于2，需要进一
+        {
+            a[0] = (a[0] - '0') % 2 + '0';
+            a = '1' + a;
+        }
+        return a;
+    }
+
+// 415. Add Strings (Easy)
+    string addStrings(string num1, string num2) {
+        int i = num1.length() - 1, j = num2.length() - 1, add = 0;
+        string ans = "";
+        while (i >= 0 || j >= 0 || add != 0) {
+            int x = i >= 0 ? num1[i] - '0' : 0;
+            int y = j >= 0 ? num2[j] - '0' : 0;
+            int result = x + y + add;
+            ans.push_back('0' + result % 10);
+            add = result / 10;
+            i -= 1;
+            j -= 1;
+        }
+        // 计算完以后的答案需要翻转过来
+        reverse(ans.begin(), ans.end());
+        return ans;
     }
 };
 
