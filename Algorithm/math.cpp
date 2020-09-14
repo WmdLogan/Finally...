@@ -10,9 +10,16 @@
 // 172. Factorial Trailing Zeroes (Easy)
 // 67. Add Binary (Easy)
 // 415. Add Strings (Easy)
+// 462. Minimum Moves to Equal Array Elements II (Medium)
+// 169. Majority Element (Easy)
+// 367. Valid Perfect Square (Easy)
+// 326. Power of Three (Easy)
+// 238. Product of Array Except Self (Medium)
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <algorithm>
+#include <map>
 
 using namespace std;
 
@@ -140,6 +147,71 @@ public:
         // 计算完以后的答案需要翻转过来
         reverse(ans.begin(), ans.end());
         return ans;
+    }
+
+// 462. Minimum Moves to Equal Array Elements II (Medium)
+    int minMoves2(vector<int> &nums) {
+        int len = nums.size();
+        sort(nums.begin(), nums.end());
+        int mid = nums[len / 2];
+        int ans = 0;
+        for (int a:nums) {
+            ans += abs(a - mid);
+        }
+        return ans;
+    }
+
+// 169. Majority Element (Easy)
+    int majorityElement(vector<int> &nums) {
+        int ans = 0, len = nums.size() / 2;
+        map<int, int> m;
+        for (int a:nums) m[a]++;
+        for (auto a:m) {
+            if (a.second > len) {
+                ans = a.first;
+            }
+        }
+        return ans;
+    }
+
+// 367. Valid Perfect Square (Easy)
+    bool isPerfectSquare(int num) {
+//平方数1,4,9,16间隔为（3、5、7），为等差数列
+        int root = 1;
+        while (num > 0) {
+            num -= root;
+            root += 2;
+        }
+        return num == 0;
+    }
+
+// 326. Power of Three (Easy)
+    bool isPowerOfThree(int n) {
+        return n > 0 && 1162261467 % n == 0;        //1162261467为int型范围内最大的3的幂
+    }
+
+// 238. Product of Array Except Self (Medium)
+    vector<int> productExceptSelf(vector<int> &nums) {
+        int length = nums.size();
+        vector<int> answer(length);
+
+        // answer[i] 表示索引 i 左侧所有元素的乘积
+        // 因为索引为 '0' 的元素左侧没有元素， 所以 answer[0] = 1
+        answer[0] = 1;
+        for (int i = 1; i < length; i++) {
+            answer[i] = nums[i - 1] * answer[i - 1];
+        }
+
+        // R 为右侧所有元素的乘积
+        // 刚开始右边没有元素，所以 R = 1
+        int R = 1;
+        for (int i = length - 1; i >= 0; i--) {
+            // 对于索引 i，左边的乘积为 answer[i]，右边的乘积为 R
+            answer[i] = answer[i] * R;
+            // R 需要包含右边所有的乘积，所以计算下一个结果时需要将当前值乘到 R 上
+            R *= nums[i];
+        }
+        return answer;
     }
 };
 
