@@ -156,6 +156,19 @@ hash/fast:
 .PHONY : hash/fast
 
 #=============================================================================
+# Target rules for targets named List2
+
+# Build rule for target.
+List2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 List2
+.PHONY : List2
+
+# fast build rule for target.
+List2/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List2.dir\build.make CMakeFiles/List2.dir/build
+.PHONY : List2/fast
+
+#=============================================================================
 # Target rules for targets named List
 
 # Build rule for target.
@@ -221,19 +234,6 @@ stack_queue/fast:
 .PHONY : stack_queue/fast
 
 #=============================================================================
-# Target rules for targets named bit
-
-# Build rule for target.
-bit: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 bit
-.PHONY : bit
-
-# fast build rule for target.
-bit/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/build
-.PHONY : bit/fast
-
-#=============================================================================
 # Target rules for targets named string
 
 # Build rule for target.
@@ -258,6 +258,19 @@ array: cmake_check_build_system
 array/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/build
 .PHONY : array/fast
+
+#=============================================================================
+# Target rules for targets named bit
+
+# Build rule for target.
+bit: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 bit
+.PHONY : bit
+
+# fast build rule for target.
+bit/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/build
+.PHONY : bit/fast
 
 #=============================================================================
 # Target rules for targets named double_pointer
@@ -634,6 +647,33 @@ DataStructure/List.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\List.dir\build.make CMakeFiles/List.dir/DataStructure/List.cpp.s
 .PHONY : DataStructure/List.cpp.s
 
+DataStructure/List_2.obj: DataStructure/List_2.cpp.obj
+
+.PHONY : DataStructure/List_2.obj
+
+# target to build an object file
+DataStructure/List_2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List2.dir\build.make CMakeFiles/List2.dir/DataStructure/List_2.cpp.obj
+.PHONY : DataStructure/List_2.cpp.obj
+
+DataStructure/List_2.i: DataStructure/List_2.cpp.i
+
+.PHONY : DataStructure/List_2.i
+
+# target to preprocess a source file
+DataStructure/List_2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List2.dir\build.make CMakeFiles/List2.dir/DataStructure/List_2.cpp.i
+.PHONY : DataStructure/List_2.cpp.i
+
+DataStructure/List_2.s: DataStructure/List_2.cpp.s
+
+.PHONY : DataStructure/List_2.s
+
+# target to generate assembly for a file
+DataStructure/List_2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\List2.dir\build.make CMakeFiles/List2.dir/DataStructure/List_2.cpp.s
+.PHONY : DataStructure/List_2.cpp.s
+
 DataStructure/String.obj: DataStructure/String.cpp.obj
 
 .PHONY : DataStructure/String.obj
@@ -778,6 +818,7 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... List
+	@echo ... List2
 	@echo ... Tree
 	@echo ... array
 	@echo ... binary_search
@@ -826,6 +867,9 @@ help:
 	@echo ... DataStructure/List.obj
 	@echo ... DataStructure/List.i
 	@echo ... DataStructure/List.s
+	@echo ... DataStructure/List_2.obj
+	@echo ... DataStructure/List_2.i
+	@echo ... DataStructure/List_2.s
 	@echo ... DataStructure/String.obj
 	@echo ... DataStructure/String.i
 	@echo ... DataStructure/String.s

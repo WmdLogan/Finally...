@@ -4,6 +4,7 @@ project(Leetcode)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(List DataStructure/List.cpp)
+add_executable(List2 DataStructure/List_2.cpp)
 add_executable(Tree DataStructure/Tree.cpp)
 add_executable(stack_queue DataStructure/stack_queue.cpp)
 add_executable(hash DataStructure/hash.cpp)
