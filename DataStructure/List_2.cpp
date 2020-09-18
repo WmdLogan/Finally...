@@ -5,6 +5,7 @@
 // 206. Reverse Linked List (Easy)
 // 21. Merge Two Sorted Lists (Easy)
 // 83. Remove Duplicates from Sorted List (Easy)
+// 19. Remove Nth Node From End of List (Medium)
 struct ListNode {
     int val;
     ListNode *next;
@@ -46,9 +47,9 @@ public:
 
 // 21. Merge Two Sorted Lists (Easy)
     ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
-        auto* preHead = new ListNode(-1);
+        auto *preHead = new ListNode(-1);
 //维护preHead的next。调整其指向
-        ListNode* prev = preHead;
+        ListNode *prev = preHead;
         while (l1 != nullptr && l2 != nullptr) {
             if (l1->val < l2->val) {
                 prev->next = l1;
@@ -80,6 +81,23 @@ public:
                 cur = cur->next;
             }
         }
+        return head;
+    }
+
+// 19. Remove Nth Node From End of List (Medium)
+    ListNode *removeNthFromEnd(ListNode *head, int n) {
+        auto pre = head;
+        auto cur = head->next;
+        while (n != 1) {
+            cur = cur->next;
+            n--;
+        }
+        while (cur != nullptr) {
+            pre = pre->next;
+            cur = cur->next;
+        }
+        if (pre == nullptr) return pre;
+        pre->next = pre->next->next;
         return head;
     }
 };
