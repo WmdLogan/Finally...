@@ -6,6 +6,8 @@
 // 21. Merge Two Sorted Lists (Easy)
 // 83. Remove Duplicates from Sorted List (Easy)
 // 19. Remove Nth Node From End of List (Medium)
+// 24. Swap Nodes in Pairs (Medium)
+
 struct ListNode {
     int val;
     ListNode *next;
@@ -87,17 +89,38 @@ public:
 // 19. Remove Nth Node From End of List (Medium)
     ListNode *removeNthFromEnd(ListNode *head, int n) {
         auto pre = head;
-        auto cur = head->next;
-        while (n != 1) {
+        auto cur = head;
+        while (n != 0) {//拉开距离
             cur = cur->next;
             n--;
         }
-        while (cur != nullptr) {
-            pre = pre->next;
+        if (cur == nullptr) return pre->next;
+        while (cur->next != nullptr) {
             cur = cur->next;
+            pre = pre->next;
         }
-        if (pre == nullptr) return pre;
         pre->next = pre->next->next;
         return head;
+    }
+
+// 24. Swap Nodes in Pairs (Medium)
+    ListNode *swapPairs(ListNode *head) {
+        if (head == nullptr || head->next == nullptr) return head;
+        auto ans = head->next;
+        swapPairs_help(nullptr, head);
+        return ans;
+    }
+
+    void swapPairs_help(ListNode *pre, ListNode *head) {
+        if (head == nullptr) return;
+        auto cur = head;
+        auto aft = head->next;
+        if (aft == nullptr) return;
+        cur->next = aft->next;
+        aft->next = cur;
+        if (pre != nullptr) {//不是首节点
+            pre->next = aft;
+        }
+        swapPairs_help(cur, cur->next);
     }
 };
