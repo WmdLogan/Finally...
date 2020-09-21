@@ -7,6 +7,14 @@
 // 83. Remove Duplicates from Sorted List (Easy)
 // 19. Remove Nth Node From End of List (Medium)
 // 24. Swap Nodes in Pairs (Medium)
+// 445. Add Two Numbers II (Medium)
+// 234. Palindrome Linked List (Easy)
+// 725. Split Linked List in Parts(Medium)
+#include <iostream>
+#include <stack>
+#include <vector>
+
+using namespace std;
 
 struct ListNode {
     int val;
@@ -123,4 +131,111 @@ public:
         }
         swapPairs_help(cur, cur->next);
     }
+
+// 445. Add Two Numbers II (Medium)
+    ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+        stack<int> s1, s2;
+        while (l1 != nullptr) {
+            s1.push(l1->val);
+            l1 = l1->next;
+        }
+        while (l2 != nullptr) {
+            s2.push(l2->val);
+            l2 = l2->next;
+        }
+        ListNode *ans = nullptr;
+        int add = 0, ref1 = 0, ref2 = 0;
+        while (!s1.empty() || !s2.empty() || add != 0) {
+            if (!s1.empty()) {
+                ref1 = s1.top();
+                s1.pop();
+            } else ref1 = 0;
+            if (!s2.empty()) {
+                ref2 = s2.top();
+                s2.pop();
+            } else ref2 = 0;
+            //求和
+            int node_value = ref1 + ref2 + add;
+            add = node_value / 10;
+            auto *temp = new ListNode(node_value % 10);
+            //尾插
+            temp->next = ans;
+            ans = temp;
+        }
+        return ans;
+    }
+
+// 234. Palindrome Linked List (Easy)
+    bool isPalindrome(ListNode *head) {
+        if (!head || !head->next) return true;
+        ListNode *slow = head, *fast = head;
+        // 将slow指针移动到链表中间位置
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        // 反转后半部分
+        ListNode *curNode = slow, *nextNode = slow->next;
+        while (nextNode) {
+            ListNode *tmp = nextNode->next;
+            nextNode->next = curNode;
+            curNode = nextNode;
+            nextNode = tmp;
+        }
+        slow->next = nullptr;
+        // 开始比较是否相等
+        while (head && curNode) {
+            if (head->val != curNode->val)
+                return false;
+            head = head->next;
+            curNode = curNode->next;
+        }
+        return true;
+    }
+
+// 725. Split Linked List in Parts(Medium)
+    vector<ListNode *> splitListToParts(ListNode *root, int k) {
+        vector<ListNode *> ans(k);
+        int size = 0;
+        auto *l1 = root;
+        while (l1 != nullptr) {
+            size++;
+            l1 = l1->next;
+        }
+        ListNode *vec_list = root;//每个vector的元素
+        int aver_len = size / k;//平均长度
+        int bonus = size % k;//有余数，长度+1
+        while (k != 0) {
+            auto *temp = vec_list;
+            int final_len = aver_len + bonus;
+            while (final_len >= 1) {
+                temp = temp->next;
+                final_len--;
+            }
+            //temp不为空，断链
+            if (temp != nullptr) {
+                auto *next = temp->next;
+                temp->next = nullptr;
+                ans.push_back(vec_list);
+                vec_list = next;
+            } else{
+
+            }
+            if (bonus != 0) bonus--;
+            k--;
+        }
+        return ans;
+    }
 };
+
+int main() {
+    Solution s;
+    auto root = new ListNode(1);
+    auto l1 = new ListNode(2);
+    auto l2 = new ListNode(2);
+    auto l3 = new ListNode(1);
+    root->next = l1;
+    l1->next = l2;
+    l2->next = l3;
+    s.isPalindrome(root);
+}
