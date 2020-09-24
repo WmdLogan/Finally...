@@ -155,7 +155,7 @@ public:
         queue<TreeNode *> q;
         q.push(root);
         q.push(root);
-    while (!q.empty()) {
+        while (!q.empty()) {
             auto u = q.front();
             q.pop();
             auto v = q.front();
