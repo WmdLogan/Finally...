@@ -76,16 +76,17 @@ all: CMakeFiles/sort.dir/all
 all: CMakeFiles/hash.dir/all
 all: CMakeFiles/List2.dir/all
 all: CMakeFiles/List.dir/all
+all: CMakeFiles/binary_search.dir/all
+all: CMakeFiles/Tree2.dir/all
 all: CMakeFiles/Tree.dir/all
-all: CMakeFiles/graph.dir/all
 all: CMakeFiles/math.dir/all
 all: CMakeFiles/stack_queue.dir/all
 all: CMakeFiles/string.dir/all
 all: CMakeFiles/array.dir/all
+all: CMakeFiles/graph.dir/all
 all: CMakeFiles/bit.dir/all
 all: CMakeFiles/double_pointer.dir/all
 all: CMakeFiles/greed.dir/all
-all: CMakeFiles/binary_search.dir/all
 all: CMakeFiles/search.dir/all
 all: CMakeFiles/divide_conquer.dir/all
 all: CMakeFiles/dp.dir/all
@@ -102,16 +103,17 @@ clean: CMakeFiles/sort.dir/clean
 clean: CMakeFiles/hash.dir/clean
 clean: CMakeFiles/List2.dir/clean
 clean: CMakeFiles/List.dir/clean
+clean: CMakeFiles/binary_search.dir/clean
+clean: CMakeFiles/Tree2.dir/clean
 clean: CMakeFiles/Tree.dir/clean
-clean: CMakeFiles/graph.dir/clean
 clean: CMakeFiles/math.dir/clean
 clean: CMakeFiles/stack_queue.dir/clean
 clean: CMakeFiles/string.dir/clean
 clean: CMakeFiles/array.dir/clean
+clean: CMakeFiles/graph.dir/clean
 clean: CMakeFiles/bit.dir/clean
 clean: CMakeFiles/double_pointer.dir/clean
 clean: CMakeFiles/greed.dir/clean
-clean: CMakeFiles/binary_search.dir/clean
 clean: CMakeFiles/search.dir/clean
 clean: CMakeFiles/divide_conquer.dir/clean
 clean: CMakeFiles/dp.dir/clean
@@ -125,7 +127,7 @@ clean: CMakeFiles/dp.dir/clean
 CMakeFiles/sort.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sort.dir\build.make CMakeFiles/sort.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sort.dir\build.make CMakeFiles/sort.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=29,30 "Built target sort"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=31,32 "Built target sort"
 .PHONY : CMakeFiles/sort.dir/all
 
 # Build rule for subdir invocation for target.
@@ -152,7 +154,7 @@ CMakeFiles/sort.dir/clean:
 CMakeFiles/hash.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\hash.dir\build.make CMakeFiles/hash.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\hash.dir\build.make CMakeFiles/hash.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=23,24 "Built target hash"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=25,26 "Built target hash"
 .PHONY : CMakeFiles/hash.dir/all
 
 # Build rule for subdir invocation for target.
@@ -227,6 +229,60 @@ CMakeFiles/List.dir/clean:
 .PHONY : CMakeFiles/List.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/binary_search.dir
+
+# All Build rule for target.
+CMakeFiles/binary_search.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\binary_search.dir\build.make CMakeFiles/binary_search.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\binary_search.dir\build.make CMakeFiles/binary_search.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=11,12 "Built target binary_search"
+.PHONY : CMakeFiles/binary_search.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/binary_search.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/binary_search.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/binary_search.dir/rule
+
+# Convenience name for target.
+binary_search: CMakeFiles/binary_search.dir/rule
+
+.PHONY : binary_search
+
+# clean rule for target.
+CMakeFiles/binary_search.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\binary_search.dir\build.make CMakeFiles/binary_search.dir/clean
+.PHONY : CMakeFiles/binary_search.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Tree2.dir
+
+# All Build rule for target.
+CMakeFiles/Tree2.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tree2.dir\build.make CMakeFiles/Tree2.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tree2.dir\build.make CMakeFiles/Tree2.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=7,8 "Built target Tree2"
+.PHONY : CMakeFiles/Tree2.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Tree2.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Tree2.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/Tree2.dir/rule
+
+# Convenience name for target.
+Tree2: CMakeFiles/Tree2.dir/rule
+
+.PHONY : Tree2
+
+# clean rule for target.
+CMakeFiles/Tree2.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tree2.dir\build.make CMakeFiles/Tree2.dir/clean
+.PHONY : CMakeFiles/Tree2.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/Tree.dir
 
 # All Build rule for target.
@@ -254,40 +310,13 @@ CMakeFiles/Tree.dir/clean:
 .PHONY : CMakeFiles/Tree.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/graph.dir
-
-# All Build rule for target.
-CMakeFiles/graph.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=19,20 "Built target graph"
-.PHONY : CMakeFiles/graph.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/graph.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/graph.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/graph.dir/rule
-
-# Convenience name for target.
-graph: CMakeFiles/graph.dir/rule
-
-.PHONY : graph
-
-# clean rule for target.
-CMakeFiles/graph.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/clean
-.PHONY : CMakeFiles/graph.dir/clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/math.dir
 
 # All Build rule for target.
 CMakeFiles/math.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\math.dir\build.make CMakeFiles/math.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\math.dir\build.make CMakeFiles/math.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=25,26 "Built target math"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=27,28 "Built target math"
 .PHONY : CMakeFiles/math.dir/all
 
 # Build rule for subdir invocation for target.
@@ -314,7 +343,7 @@ CMakeFiles/math.dir/clean:
 CMakeFiles/stack_queue.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\stack_queue.dir\build.make CMakeFiles/stack_queue.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\stack_queue.dir\build.make CMakeFiles/stack_queue.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=31,32 "Built target stack_queue"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=33,34 "Built target stack_queue"
 .PHONY : CMakeFiles/stack_queue.dir/all
 
 # Build rule for subdir invocation for target.
@@ -341,7 +370,7 @@ CMakeFiles/stack_queue.dir/clean:
 CMakeFiles/string.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\string.dir\build.make CMakeFiles/string.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\string.dir\build.make CMakeFiles/string.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=33,34 "Built target string"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=35,36 "Built target string"
 .PHONY : CMakeFiles/string.dir/all
 
 # Build rule for subdir invocation for target.
@@ -368,7 +397,7 @@ CMakeFiles/string.dir/clean:
 CMakeFiles/array.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=7,8 "Built target array"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=9,10 "Built target array"
 .PHONY : CMakeFiles/array.dir/all
 
 # Build rule for subdir invocation for target.
@@ -389,13 +418,40 @@ CMakeFiles/array.dir/clean:
 .PHONY : CMakeFiles/array.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/graph.dir
+
+# All Build rule for target.
+CMakeFiles/graph.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=21,22 "Built target graph"
+.PHONY : CMakeFiles/graph.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/graph.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/graph.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
+.PHONY : CMakeFiles/graph.dir/rule
+
+# Convenience name for target.
+graph: CMakeFiles/graph.dir/rule
+
+.PHONY : graph
+
+# clean rule for target.
+CMakeFiles/graph.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/clean
+.PHONY : CMakeFiles/graph.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/bit.dir
 
 # All Build rule for target.
 CMakeFiles/bit.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=11,12 "Built target bit"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=13,14 "Built target bit"
 .PHONY : CMakeFiles/bit.dir/all
 
 # Build rule for subdir invocation for target.
@@ -422,7 +478,7 @@ CMakeFiles/bit.dir/clean:
 CMakeFiles/double_pointer.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\double_pointer.dir\build.make CMakeFiles/double_pointer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\double_pointer.dir\build.make CMakeFiles/double_pointer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=15,16 "Built target double_pointer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=17,18 "Built target double_pointer"
 .PHONY : CMakeFiles/double_pointer.dir/all
 
 # Build rule for subdir invocation for target.
@@ -449,7 +505,7 @@ CMakeFiles/double_pointer.dir/clean:
 CMakeFiles/greed.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\greed.dir\build.make CMakeFiles/greed.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\greed.dir\build.make CMakeFiles/greed.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=21,22 "Built target greed"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=23,24 "Built target greed"
 .PHONY : CMakeFiles/greed.dir/all
 
 # Build rule for subdir invocation for target.
@@ -470,40 +526,13 @@ CMakeFiles/greed.dir/clean:
 .PHONY : CMakeFiles/greed.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/binary_search.dir
-
-# All Build rule for target.
-CMakeFiles/binary_search.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\binary_search.dir\build.make CMakeFiles/binary_search.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\binary_search.dir\build.make CMakeFiles/binary_search.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=9,10 "Built target binary_search"
-.PHONY : CMakeFiles/binary_search.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/binary_search.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/binary_search.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles 0
-.PHONY : CMakeFiles/binary_search.dir/rule
-
-# Convenience name for target.
-binary_search: CMakeFiles/binary_search.dir/rule
-
-.PHONY : binary_search
-
-# clean rule for target.
-CMakeFiles/binary_search.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\binary_search.dir\build.make CMakeFiles/binary_search.dir/clean
-.PHONY : CMakeFiles/binary_search.dir/clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/search.dir
 
 # All Build rule for target.
 CMakeFiles/search.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\search.dir\build.make CMakeFiles/search.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\search.dir\build.make CMakeFiles/search.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=27,28 "Built target search"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=29,30 "Built target search"
 .PHONY : CMakeFiles/search.dir/all
 
 # Build rule for subdir invocation for target.
@@ -530,7 +559,7 @@ CMakeFiles/search.dir/clean:
 CMakeFiles/divide_conquer.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\divide_conquer.dir\build.make CMakeFiles/divide_conquer.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\divide_conquer.dir\build.make CMakeFiles/divide_conquer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=13,14 "Built target divide_conquer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=15,16 "Built target divide_conquer"
 .PHONY : CMakeFiles/divide_conquer.dir/all
 
 # Build rule for subdir invocation for target.
@@ -557,7 +586,7 @@ CMakeFiles/divide_conquer.dir/clean:
 CMakeFiles/dp.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\dp.dir\build.make CMakeFiles/dp.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\dp.dir\build.make CMakeFiles/dp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=17,18 "Built target dp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=D:\CLionProjects\Leetcode\cmake-build-debug\CMakeFiles --progress-num=19,20 "Built target dp"
 .PHONY : CMakeFiles/dp.dir/all
 
 # Build rule for subdir invocation for target.

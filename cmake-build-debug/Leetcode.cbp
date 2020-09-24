@@ -185,6 +185,90 @@
 					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="binary_search">
+				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/binary_search.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 binary_search"/>
+					<CompileFile command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="binary_search/fast">
+				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/binary_search.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 binary_search/fast"/>
+					<CompileFile command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Tree2">
+				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/Tree2.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 Tree2"/>
+					<CompileFile command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Tree2/fast">
+				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/Tree2.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 Tree2/fast"/>
+					<CompileFile command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="Tree">
 				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/Tree.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
@@ -222,48 +306,6 @@
 				</Compiler>
 				<MakeCommands>
 					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 Tree/fast"/>
-					<CompileFile command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="graph">
-				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/graph.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 graph"/>
-					<CompileFile command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="graph/fast">
-				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/graph.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 graph/fast"/>
 					<CompileFile command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -437,6 +479,48 @@
 					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="graph">
+				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/graph.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 graph"/>
+					<CompileFile command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="graph/fast">
+				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/graph.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include"/>
+					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 graph/fast"/>
+					<CompileFile command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="bit">
 				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/bit.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
@@ -558,48 +642,6 @@
 				</Compiler>
 				<MakeCommands>
 					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 greed/fast"/>
-					<CompileFile command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="binary_search">
-				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/binary_search.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 binary_search"/>
-					<CompileFile command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="binary_search/fast">
-				<Option output="D:/CLionProjects/Leetcode/cmake-build-debug/binary_search.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="D:/CLionProjects/Leetcode/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/mingw32"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include/c++/backward"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/../../../../include"/>
-					<Add directory="d:\mingw\bin\../lib/gcc/mingw32/8.2.0/include-fixed"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 binary_search/fast"/>
 					<CompileFile command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
 					<Clean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 					<DistClean command="D:/Mingw/bin/mingw32-make.exe -f &quot;D:/CLionProjects/Leetcode/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
@@ -793,6 +835,9 @@
 		</Unit>
 		<Unit filename="D:/CLionProjects/Leetcode/DataStructure/Tree.cpp">
 			<Option target="Tree"/>
+		</Unit>
+		<Unit filename="D:/CLionProjects/Leetcode/DataStructure/Tree_2.cpp">
+			<Option target="Tree2"/>
 		</Unit>
 		<Unit filename="D:/CLionProjects/Leetcode/DataStructure/array.cpp">
 			<Option target="array"/>

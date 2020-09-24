@@ -182,6 +182,32 @@ List/fast:
 .PHONY : List/fast
 
 #=============================================================================
+# Target rules for targets named binary_search
+
+# Build rule for target.
+binary_search: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 binary_search
+.PHONY : binary_search
+
+# fast build rule for target.
+binary_search/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\binary_search.dir\build.make CMakeFiles/binary_search.dir/build
+.PHONY : binary_search/fast
+
+#=============================================================================
+# Target rules for targets named Tree2
+
+# Build rule for target.
+Tree2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Tree2
+.PHONY : Tree2
+
+# fast build rule for target.
+Tree2/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tree2.dir\build.make CMakeFiles/Tree2.dir/build
+.PHONY : Tree2/fast
+
+#=============================================================================
 # Target rules for targets named Tree
 
 # Build rule for target.
@@ -193,19 +219,6 @@ Tree: cmake_check_build_system
 Tree/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tree.dir\build.make CMakeFiles/Tree.dir/build
 .PHONY : Tree/fast
-
-#=============================================================================
-# Target rules for targets named graph
-
-# Build rule for target.
-graph: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 graph
-.PHONY : graph
-
-# fast build rule for target.
-graph/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/build
-.PHONY : graph/fast
 
 #=============================================================================
 # Target rules for targets named math
@@ -260,6 +273,19 @@ array/fast:
 .PHONY : array/fast
 
 #=============================================================================
+# Target rules for targets named graph
+
+# Build rule for target.
+graph: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 graph
+.PHONY : graph
+
+# fast build rule for target.
+graph/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/build
+.PHONY : graph/fast
+
+#=============================================================================
 # Target rules for targets named bit
 
 # Build rule for target.
@@ -297,19 +323,6 @@ greed: cmake_check_build_system
 greed/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\greed.dir\build.make CMakeFiles/greed.dir/build
 .PHONY : greed/fast
-
-#=============================================================================
-# Target rules for targets named binary_search
-
-# Build rule for target.
-binary_search: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 binary_search
-.PHONY : binary_search
-
-# fast build rule for target.
-binary_search/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\binary_search.dir\build.make CMakeFiles/binary_search.dir/build
-.PHONY : binary_search/fast
 
 #=============================================================================
 # Target rules for targets named search
@@ -728,6 +741,33 @@ DataStructure/Tree.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tree.dir\build.make CMakeFiles/Tree.dir/DataStructure/Tree.cpp.s
 .PHONY : DataStructure/Tree.cpp.s
 
+DataStructure/Tree_2.obj: DataStructure/Tree_2.cpp.obj
+
+.PHONY : DataStructure/Tree_2.obj
+
+# target to build an object file
+DataStructure/Tree_2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tree2.dir\build.make CMakeFiles/Tree2.dir/DataStructure/Tree_2.cpp.obj
+.PHONY : DataStructure/Tree_2.cpp.obj
+
+DataStructure/Tree_2.i: DataStructure/Tree_2.cpp.i
+
+.PHONY : DataStructure/Tree_2.i
+
+# target to preprocess a source file
+DataStructure/Tree_2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tree2.dir\build.make CMakeFiles/Tree2.dir/DataStructure/Tree_2.cpp.i
+.PHONY : DataStructure/Tree_2.cpp.i
+
+DataStructure/Tree_2.s: DataStructure/Tree_2.cpp.s
+
+.PHONY : DataStructure/Tree_2.s
+
+# target to generate assembly for a file
+DataStructure/Tree_2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tree2.dir\build.make CMakeFiles/Tree2.dir/DataStructure/Tree_2.cpp.s
+.PHONY : DataStructure/Tree_2.cpp.s
+
 DataStructure/array.obj: DataStructure/array.cpp.obj
 
 .PHONY : DataStructure/array.obj
@@ -820,6 +860,7 @@ help:
 	@echo ... List
 	@echo ... List2
 	@echo ... Tree
+	@echo ... Tree2
 	@echo ... array
 	@echo ... binary_search
 	@echo ... bit
@@ -876,6 +917,9 @@ help:
 	@echo ... DataStructure/Tree.obj
 	@echo ... DataStructure/Tree.i
 	@echo ... DataStructure/Tree.s
+	@echo ... DataStructure/Tree_2.obj
+	@echo ... DataStructure/Tree_2.i
+	@echo ... DataStructure/Tree_2.s
 	@echo ... DataStructure/array.obj
 	@echo ... DataStructure/array.i
 	@echo ... DataStructure/array.s

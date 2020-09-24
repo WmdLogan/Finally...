@@ -10,6 +10,7 @@
 // 445. Add Two Numbers II (Medium)
 // 234. Palindrome Linked List (Easy)
 // 725. Split Linked List in Parts(Medium)
+// 328. Odd Even Linked List (Medium)
 #include <iostream>
 #include <stack>
 #include <vector>
@@ -225,6 +226,32 @@ public:
             k--;
         }
         return ans;
+    }
+
+// 328. Odd Even Linked List (Medium)
+    ListNode* oddEvenList(ListNode* head) {
+        auto *odd = new ListNode(1);
+        auto odd_head = odd;
+        auto *even = new  ListNode(1);
+        auto even_head = even;
+        int flag = 1;
+        while(head != nullptr){
+            if(flag == 1){//奇数节点插入奇数链表
+                odd->next = head;
+                odd = head;
+                head = head->next;
+                odd->next = nullptr;
+                flag = 0;
+            }else {//偶数节点插入偶数链表
+                even->next = head;
+                even = head;
+                head = head->next;
+                even->next = nullptr;
+                flag = 1;
+            }
+        }
+        odd->next = even_head->next;
+        return odd_head->next;
     }
 };
 
