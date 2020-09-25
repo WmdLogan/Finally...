@@ -10,6 +10,9 @@
 // 437. Path Sum III (Medium)
 // 572. Subtree of Another Tree (Easy)
 // 101. Symmetric Tree (Easy)
+// 111. Minimum Depth of Binary Tree (Easy)
+// 404. Sum of Left Leaves (Easy)
+// 687. Longest Univalue Path (Easy)
 #include <iostream>
 #include <queue>
 
@@ -170,5 +173,51 @@ public:
             q.push(v->left);
         }
         return true;
+    }
+
+// 111. Minimum Depth of Binary Tree (Easy)
+    int minDepth(TreeNode *root) {
+        if (root == nullptr) return 0;
+        int ans_depth = 0;
+        queue<TreeNode *> q;
+        q.emplace(root);
+        while (!q.empty()) {
+            ans_depth++;
+            int size = q.size();
+            while (size > 0) {
+                size--;
+                auto temp = q.front();
+                q.pop();
+                if (temp == nullptr) continue;
+                if (temp->left == nullptr && temp->right == nullptr) return ans_depth;
+
+                q.emplace(temp->left);
+                q.emplace(temp->right);
+            }
+        }
+        return ans_depth;
+    }
+
+// 404. Sum of Left Leaves (Easy)
+    int left_sum = 0;
+
+    int sumOfLeftLeaves(TreeNode *root) {
+        if (root == nullptr) return 0;
+        //输出
+        if (root->left) {
+            if (root->left->left == nullptr && root->left->right == nullptr)//左叶子节点
+            {
+                left_sum += root->left->val;
+            } else {
+                sumOfLeftLeaves(root->left);
+            }
+        }
+        if (root->right) sumOfLeftLeaves(root->right);
+        return left_sum;
+    }
+
+// 687. Longest Univalue Path (Easy)
+    int longestUnivaluePath(TreeNode* root) {
+
     }
 };
