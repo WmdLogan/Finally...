@@ -14,9 +14,11 @@
 // 404. Sum of Left Leaves (Easy)
 // 687. Longest Univalue Path (Easy)
 // 337. House Robber III (Medium)
+// 671. Second Minimum Node In a Binary Tree (Easy)
 #include <iostream>
 #include <queue>
 #include <map>
+#include <set>
 
 using namespace std;
 
@@ -255,4 +257,20 @@ public:
         rob_map[root] = ans;
         return ans;
     }
+
+// 671. Second Minimum Node In a Binary Tree (Easy)
+    int findSecondMinimumValue(TreeNode *root) {
+//根节点是最小值，找到第一个大于最小值的节点
+        if (root == nullptr) return -1;
+        if (root->left == nullptr) return -1;
+        int leftVal = root->left->val;//根节点左孩子值
+        int rightVal = root->right->val;//根节点右孩子值
+//左孩子和跟相等，找到左子树中第二小的和右孩子比
+        if (leftVal == root->val) leftVal = findSecondMinimumValue(root->left);
+//右孩子和跟相等，找到右子树中第二小的和右孩子比
+        if (rightVal == root->val) rightVal = findSecondMinimumValue(root->right);
+        if (leftVal != -1 && rightVal != -1) return min(leftVal, rightVal);
+        return leftVal == -1 ? rightVal : leftVal;
+    }
+
 };
