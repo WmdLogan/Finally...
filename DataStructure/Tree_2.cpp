@@ -13,8 +13,10 @@
 // 111. Minimum Depth of Binary Tree (Easy)
 // 404. Sum of Left Leaves (Easy)
 // 687. Longest Univalue Path (Easy)
+// 337. House Robber III (Medium)
 #include <iostream>
 #include <queue>
+#include <map>
 
 using namespace std;
 
@@ -217,7 +219,40 @@ public:
     }
 
 // 687. Longest Univalue Path (Easy)
-    int longestUnivaluePath(TreeNode* root) {
+    int longest_ans = 0;
 
+    int longestUnivaluePath(TreeNode *root) {
+        help_longest(root);
+        return longest_ans;
+    }
+
+    int help_longest(TreeNode *root) {
+        if (root == nullptr) return 0;
+        int left = help_longest(root->left);//root左子树的最长同值路径
+        int right = help_longest(root->right);;//root右子树的最长同值路径
+        int leftPath = root->left != nullptr && root->left->val == root->val ? left + 1 : 0;
+        int rightPath = root->right != nullptr && root->right->val == root->val ? right + 1 : 0;
+        longest_ans = max(longest_ans, leftPath + rightPath);
+        return max(leftPath, rightPath);//！！返回单向最长路径
+    }
+
+// 337. House Robber III (Medium)
+    map<TreeNode *, int> rob_map;
+
+    int rob(TreeNode *root) {
+        if (root == nullptr) return 0;
+//利用备忘录消除子问题
+        if (rob_map.count(root) != 0) {
+            return rob_map[root];
+        }
+//抢，然后去下下家
+        int val1 = root->val;
+        if (root->left != nullptr) val1 += rob(root->left->left) + rob(root->left->right);
+        if (root->right != nullptr) val1 += rob(root->right->left) + rob(root->right->right);
+//不抢，然后去下家
+        int val2 = rob(root->left) + rob(root->right);
+        int ans = max(val1, val2);
+        rob_map[root] = ans;
+        return ans;
     }
 };
