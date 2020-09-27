@@ -15,6 +15,9 @@
 // 687. Longest Univalue Path (Easy)
 // 337. House Robber III (Medium)
 // 671. Second Minimum Node In a Binary Tree (Easy)
+// 637. Average of Levels in Binary Tree (Easy)
+// 513. Find Bottom Left Tree Value (Medium)
+// 144. Binary Tree Preorder Traversal (Medium)
 #include <iostream>
 #include <queue>
 #include <map>
@@ -272,5 +275,49 @@ public:
         if (leftVal != -1 && rightVal != -1) return min(leftVal, rightVal);
         return leftVal == -1 ? rightVal : leftVal;
     }
+
+// 637. Average of Levels in Binary Tree (Easy)
+    vector<double> averageOfLevels(TreeNode* root) {
+        queue<TreeNode*> q;
+        vector<double> ans;
+        q.emplace(root);
+        while (!q.empty()) {
+            int size = q.size();
+            double sum = 0;
+            for (int i = 0; i < size; ++i) {
+                auto *temp = q.front();
+                q.pop();
+                sum += temp->val;
+                if (temp->left) q.emplace(temp->left);
+                if (temp->right) q.emplace(temp->right);
+            }
+            ans.emplace_back(sum / size);
+        }
+        return ans;
+    }
+
+// 513. Find Bottom Left Tree Value (Medium)
+    int findBottomLeftValue(TreeNode* root) {
+        queue<TreeNode*> q;
+        q.emplace(root);
+        int ans;
+        while (!q.empty()) {
+            int size = q.size();
+            auto *temp = q.front();
+            q.pop();
+            ans = temp->val;
+            if (temp->left) q.emplace(temp->left);
+            if (temp->right) q.emplace(temp->right);
+            for (int i = 1; i < size; ++i) {
+                auto *temp = q.front();
+                q.pop();
+                if (temp->left) q.emplace(temp->left);
+                if (temp->right) q.emplace(temp->right);
+            }
+        }
+        return ans;
+    }
+
+// 144. Binary Tree Preorder Traversal (Medium)
 
 };
