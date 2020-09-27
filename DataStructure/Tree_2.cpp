@@ -18,10 +18,12 @@
 // 637. Average of Levels in Binary Tree (Easy)
 // 513. Find Bottom Left Tree Value (Medium)
 // 144. Binary Tree Preorder Traversal (Medium)
+// 145. Binary Tree Postorder Traversal (Medium)
+// 94. Binary Tree Inorder Traversal (Medium)
 #include <iostream>
 #include <queue>
 #include <map>
-#include <set>
+#include <stack>
 
 using namespace std;
 
@@ -319,5 +321,60 @@ public:
     }
 
 // 144. Binary Tree Preorder Traversal (Medium)
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        stack<TreeNode *> st;
+        if (root) st.push(root);
+        while (!st.empty()) {
+            auto *temp = st.top();
+            st.pop();
+            ans.emplace_back(temp->val);
+            if (temp->right) st.emplace(temp->right);
+            if (temp->left) st.emplace(temp->left);
+        }
+        return ans;
+    }
 
+// 145. Binary Tree Postorder Traversal (Medium)
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        stack<TreeNode *> st;
+        if (root) st.emplace(root);
+        while (!st.empty()) {
+            auto *temp = st.top();
+            st.pop();
+            if (temp != nullptr) {
+                st.emplace(temp);
+                st.emplace(nullptr);
+                if (temp->right) st.emplace(temp->right);
+                if (temp->left) st.emplace(temp->left);
+            } else {
+                ans.emplace_back(st.top()->val);
+                st.pop();
+            }
+        }
+        return ans;
+    }
+
+// 94. Binary Tree Inorder Traversal (Medium)
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        stack<TreeNode *> st;
+        if (root) st.emplace(root);
+        while (!st.empty()) {
+            auto *temp = st.top();
+            st.pop();
+            if (temp != nullptr) {
+                st.emplace(temp);
+                st.emplace(nullptr);
+                if (temp->left) st.emplace(temp->left);
+            } else {
+                auto *r_node = st.top();
+                st.pop();
+                ans.push_back(r_node->val);
+                if (r_node->right) st.emplace(r_node->right);
+            }
+        }
+        return ans;
+    }
 };
