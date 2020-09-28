@@ -20,6 +20,9 @@
 // 144. Binary Tree Preorder Traversal (Medium)
 // 145. Binary Tree Postorder Traversal (Medium)
 // 94. Binary Tree Inorder Traversal (Medium)
+// 669. Trim a Binary Search Tree (Easy)
+// 230. Kth Smallest Element in a BST (Medium)
+// 538. Convert BST to Greater Tree (Medium)
 #include <iostream>
 #include <queue>
 #include <map>
@@ -140,6 +143,7 @@ public:
 
 // 572. Subtree of Another Tree (Easy)
     bool isSubtree(TreeNode *s, TreeNode *t) {
+//遍历s，每个节点判断是否包含t
         if (s == nullptr) return false;
         return help_isSubtree(s, t) || isSubtree(s->left, t) || isSubtree(s->right, t);
     }
@@ -279,8 +283,8 @@ public:
     }
 
 // 637. Average of Levels in Binary Tree (Easy)
-    vector<double> averageOfLevels(TreeNode* root) {
-        queue<TreeNode*> q;
+    vector<double> averageOfLevels(TreeNode *root) {
+        queue<TreeNode *> q;
         vector<double> ans;
         q.emplace(root);
         while (!q.empty()) {
@@ -299,8 +303,8 @@ public:
     }
 
 // 513. Find Bottom Left Tree Value (Medium)
-    int findBottomLeftValue(TreeNode* root) {
-        queue<TreeNode*> q;
+    int findBottomLeftValue(TreeNode *root) {
+        queue<TreeNode *> q;
         q.emplace(root);
         int ans;
         while (!q.empty()) {
@@ -321,7 +325,7 @@ public:
     }
 
 // 144. Binary Tree Preorder Traversal (Medium)
-    vector<int> preorderTraversal(TreeNode* root) {
+    vector<int> preorderTraversal(TreeNode *root) {
         vector<int> ans;
         stack<TreeNode *> st;
         if (root) st.push(root);
@@ -336,7 +340,7 @@ public:
     }
 
 // 145. Binary Tree Postorder Traversal (Medium)
-    vector<int> postorderTraversal(TreeNode* root) {
+    vector<int> postorderTraversal(TreeNode *root) {
         vector<int> ans;
         stack<TreeNode *> st;
         if (root) st.emplace(root);
@@ -357,7 +361,7 @@ public:
     }
 
 // 94. Binary Tree Inorder Traversal (Medium)
-    vector<int> inorderTraversal(TreeNode* root) {
+    vector<int> inorderTraversal(TreeNode *root) {
         vector<int> ans;
         stack<TreeNode *> st;
         if (root) st.emplace(root);
@@ -377,4 +381,48 @@ public:
         }
         return ans;
     }
+
+// 669. Trim a Binary Search Tree (Easy)
+    TreeNode *trimBST(TreeNode *root, int low, int high) {
+        if (root == nullptr) {
+            return root;
+        }
+        if (root->val > high) {
+            return trimBST(root->left, low, high); //只处理左子树，相当于剪掉了root及其右子树
+        }
+
+        if (root->val < low) {
+            return trimBST(root->right, low, high); //只处理右子树，相当于剪掉了root及其左子树
+        }
+
+        root->left = trimBST(root->left, low, high);
+        root->right = trimBST(root->right, low, high);
+
+        return root;
+    }
+
+// 230. Kth Smallest Element in a BST (Medium)
+    int kthSmallest(TreeNode *root, int k) {
+        stack<TreeNode *> st;
+        if (root) st.emplace(root);
+        while (!st.empty()) {
+            auto *temp = st.top();
+            st.pop();
+            if (temp != nullptr) {
+                st.emplace(temp);
+                st.emplace(nullptr);
+                if (temp->left) st.emplace(temp->left);
+            } else {
+                auto *r_node = st.top();
+                st.pop();
+                k--;
+                if (k == 0) return r_node->val;
+                if (r_node->right) st.emplace(r_node->right);
+            }
+        }
+        return 0;
+    }
+
+// 538. Convert BST to Greater Tree (Medium)
+
 };
