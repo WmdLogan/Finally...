@@ -25,6 +25,8 @@
 // 538. Convert BST to Greater Tree (Medium)
 // 235. Lowest Common Ancestor of a Binary Search Tree (Easy)
 // 236. Lowest Common Ancestor of a Binary Tree (Medium)
+// 108. Convert Sorted Array to Binary Search Tree (Easy)
+// 109. Convert Sorted List to Binary Search Tree (Medium)
 #include <iostream>
 #include <queue>
 #include <map>
@@ -431,23 +433,48 @@ public:
         return root;
     }
 
-        int add_BST(TreeNode *root, int sum){
-            if (root->right) sum = add_BST(root->right, sum);
-            root->val += sum;
-            if (root->left) sum = add_BST(root->left, root->val);
-            return sum;
-        }
+    int add_BST(TreeNode *root, int sum) {
+        if (root->right) sum = add_BST(root->right, sum);
+        root->val += sum;
+        if (root->left) sum = add_BST(root->left, root->val);
+        return sum;
+    }
 
 // 235. Lowest Common Ancestor of a Binary Search Tree (Easy)
-    TreeNode* lowestCommonAncestor_BST(TreeNode* root, TreeNode* p, TreeNode* q) {
+    TreeNode *lowestCommonAncestor_BST(TreeNode *root, TreeNode *p, TreeNode *q) {
         if (root->val > p->val && root->val > q->val) return lowestCommonAncestor(root->left, p, q);
         if (root->val < p->val && root->val < q->val) return lowestCommonAncestor(root->right, p, q);
         return root;
     }
 
 // 236. Lowest Common Ancestor of a Binary Tree (Medium)
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-
+    TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
+        if (root == nullptr || root == p || root == q) return root;
+        TreeNode *left = lowestCommonAncestor(root->left, p, q);
+        TreeNode *right = lowestCommonAncestor(root->right, p, q);
+        return left == nullptr ? right : right == nullptr ? left : root;
     }
+
+// 108. Convert Sorted Array to Binary Search Tree (Easy)
+    TreeNode *sortedArrayToBST(vector<int> &nums) {
+        return helper(nums, 0, nums.size() - 1);
+    }
+
+    TreeNode *helper(vector<int> &nums, int left, int right) {
+        if (left > right) {
+            return nullptr;
+        }
+
+        // 总是选择中间位置左边的数字作为根节点
+        int mid = (left + right) / 2;
+
+        auto *root = new TreeNode(nums[mid]);
+        root->left = helper(nums, left, mid - 1);
+        root->right = helper(nums, mid + 1, right);
+        return root;
+    }
+
+// 109. Convert Sorted List to Binary Search Tree (Medium)
+
 };
 
