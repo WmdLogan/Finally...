@@ -27,6 +27,7 @@
 // 236. Lowest Common Ancestor of a Binary Tree (Medium)
 // 108. Convert Sorted Array to Binary Search Tree (Easy)
 // 109. Convert Sorted List to Binary Search Tree (Medium)
+// 653. Two Sum IV - Input is a BST (Easy)
 #include <iostream>
 #include <queue>
 #include <map>
@@ -39,7 +40,9 @@ struct TreeNode {
     TreeNode *left;
     TreeNode *right;
 
-    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
 class Solution {
@@ -475,6 +478,60 @@ public:
     }
 
 // 109. Convert Sorted List to Binary Search Tree (Medium)
+     struct ListNode {
+             int val;
+             ListNode *next;
+             ListNode() : val(0), next(nullptr) {}
+             ListNode(int x) : val(x), next(nullptr) {}
+             ListNode(int x, ListNode *next) : val(x), next(next) {}
+         };
 
+    TreeNode *helper_a(vector<int> &nums, int left, int right) {
+        if (left > right) {
+            return nullptr;
+        }
+
+        // 总是选择中间位置左边的数字作为根节点
+        int mid = (left + right) / 2;
+
+        TreeNode *root = new TreeNode(nums[mid]);
+        root->left = helper_a(nums, left, mid - 1);
+        root->right = helper_a(nums, mid + 1, right);
+        return root;
+    }
+    TreeNode* sortedListToBST(ListNode* head) {
+        vector<int> nums;
+        while (head) {
+            nums.push_back(head->val);
+            head = head->next;
+        }
+        return helper_a(nums, 0, nums.size() - 1);
+    }
+
+// 653. Two Sum IV - Input is a BST (Easy)
+    bool findTarget(TreeNode *root, int k) {
+        vector<int> tree;
+        InOrderTraverse(root, tree);
+        int first = 0;
+        int last = tree.size() - 1;
+        while (first < last) {
+            int result = tree[first] + tree[last];
+            if (result == k) return true;
+            else if (result > k) last--;
+            else first++;
+        }
+        return false;
+    }
+
+    void InOrderTraverse(TreeNode *node, vector<int>& nums) {
+        {
+            if (node == nullptr)
+                return;
+
+            InOrderTraverse(node->left, nums);
+            nums.push_back(node->val);
+            InOrderTraverse(node->right, nums);
+        }
+    }
 };
 
