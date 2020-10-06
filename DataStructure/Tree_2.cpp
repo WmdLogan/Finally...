@@ -28,6 +28,9 @@
 // 108. Convert Sorted Array to Binary Search Tree (Easy)
 // 109. Convert Sorted List to Binary Search Tree (Medium)
 // 653. Two Sum IV - Input is a BST (Easy)
+// 530. Minimum Absolute Difference in BST (Easy)
+// 501. Find Mode in Binary Search Tree (Easy)
+
 #include <iostream>
 #include <queue>
 #include <map>
@@ -532,6 +535,51 @@ public:
             nums.push_back(node->val);
             InOrderTraverse(node->right, nums);
         }
+    }
+
+// 530. Minimum Absolute Difference in BST (Easy)
+    int minDiffInBST(TreeNode* root) {
+        vector<int> tree;
+        InOrderTraverse(root, tree);
+        auto it = tree.begin();
+        auto it_next = it + 1;
+        int min = *it_next - *it;
+        it_next++;
+        while (it_next != tree.end()) {
+            it++;
+            int temp = *it_next - *it;
+            min = min - temp > 0 ? temp : min;
+            it_next++;
+        }
+        return min;
+    }
+
+// 501. Find Mode in Binary Search Tree (Easy)
+    vector<int> findMode_ans;
+    int max_count, count;
+    int cur;
+    void update(int value){
+        if (value == cur) count++;
+        else count = 1;
+
+        if (count == max_count) findMode_ans.emplace_back(value);
+        else if (count > max_count) {
+            max_count = count;
+            findMode_ans = vector<int>{value};
+        }
+        cur = value;
+    }
+
+    void find_mode_dfs(TreeNode* root){
+        if (root == nullptr) return;
+        find_mode_dfs(root->left);
+        update(root->val);
+        find_mode_dfs(root->right);
+    }
+
+    vector<int> findMode(TreeNode* root) {
+        find_mode_dfs(root);
+        return findMode_ans;
     }
 };
 
