@@ -12,6 +12,7 @@
 #include <map>
 #include <algorithm>
 #include <iostream>
+#include <unordered_map>
 
 using namespace std;
 
@@ -132,19 +133,42 @@ public:
         }
         return max(longest, ans);
     }
+
+    int twoSum_2(vector<int>& nums) {
+        if (nums.empty()) return 0;
+        map<int, int> m;
+        int ans = 1;
+        int longest = 1;
+        for (int & num : nums) {
+            m[num] = 1;
+        }
+        auto m_it = m.begin();
+        int last = m_it->first;
+        m_it++;
+        for (; m_it != m.end(); m_it++) {
+            if ((m_it->first - last) == 1) {
+                ans++;
+            } else {
+                longest = max(longest, ans);
+                ans = 1;
+            }
+            last = m_it->first;
+        }
+        return max(longest, ans);
+    }
 };
 
 int main() {
     vector<int> vec;
-    vec.push_back(1);
-    vec.push_back(2);
-    vec.push_back(1);
     vec.push_back(3);
+    vec.push_back(2);
+    vec.push_back(4);
+//    vec.push_back(3);
 /*    vec.push_back(5);
     vec.push_back(2);
     vec.push_back(3);
     vec.push_back(7);*/
     Solution solution;
-    cout << solution.findLHS(vec);
+    solution.twoSum_2(vec, 6);
 
 }
