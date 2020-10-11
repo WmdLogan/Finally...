@@ -99,11 +99,14 @@ public:
         return s.substr(result[0], result[1] - result[0] + 1);
     }
 
-// 647. Palindromic Substrings (Medium)C
+// 647. Palindromic Substrings (Medium)
     int countSubstrings_zxkzf(string s) {
         int n = s.size(), ans = 0;
+//长度为n的字符串，有（2*n -1）个中心
         for (int i = 0; i < 2 * n - 1; ++i) {
+//确定左右中心，字符串有奇数和偶数两种情况
             int l = i / 2, r = i / 2 + i % 2;
+//中心扩展
             while (l >= 0 && r < n && s[l] == s[r]) {
                 --l;
                 ++r;
