@@ -163,7 +163,7 @@ public:
 
 // 696. Count Binary Substrings (Easy)
     int countBinarySubstrings(string s) {
-/* 方法一
+ //方法一
         int len = s.length();
         int vec[len];
         int t = 0;
@@ -179,8 +179,9 @@ public:
         for (int j = 1; j <= t; ++j) {
             ans += min(vec[j - 1], vec[j]);
         }
-        return ans;*/
-        int ans = 0, prev = 0, cur = 1;
+        return ans;
+//对于方法一的优化：用prev变量记录上一个位置相同元素的个数，节省空间
+/*        int ans = 0, prev = 0, cur = 1;
         for (int i = 1; i < s.length(); ++i) {
             if (s[i] != s[i - 1]) {
                 ans += min(prev, cur);
@@ -190,7 +191,7 @@ public:
                 cur++;
             }
         }
-        return ans + min(prev, cur);
+        return ans + min(prev, cur);*/
     }
 };
 
