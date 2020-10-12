@@ -115,6 +115,7 @@ public:
         }
         return ans;
     }
+
     int countSubstrings(string s) {
         int len = s.size();
         if (s.empty()) return 0;
