@@ -768,32 +768,32 @@ DataStructure/Tree_2.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tree2.dir\build.make CMakeFiles/Tree2.dir/DataStructure/Tree_2.cpp.s
 .PHONY : DataStructure/Tree_2.cpp.s
 
-DataStructure/array.obj: DataStructure/array.cpp.obj
+DataStructure/array_2.obj: DataStructure/array_2.cpp.obj
 
-.PHONY : DataStructure/array.obj
+.PHONY : DataStructure/array_2.obj
 
 # target to build an object file
-DataStructure/array.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/DataStructure/array.cpp.obj
-.PHONY : DataStructure/array.cpp.obj
+DataStructure/array_2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/DataStructure/array_2.cpp.obj
+.PHONY : DataStructure/array_2.cpp.obj
 
-DataStructure/array.i: DataStructure/array.cpp.i
+DataStructure/array_2.i: DataStructure/array_2.cpp.i
 
-.PHONY : DataStructure/array.i
+.PHONY : DataStructure/array_2.i
 
 # target to preprocess a source file
-DataStructure/array.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/DataStructure/array.cpp.i
-.PHONY : DataStructure/array.cpp.i
+DataStructure/array_2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/DataStructure/array_2.cpp.i
+.PHONY : DataStructure/array_2.cpp.i
 
-DataStructure/array.s: DataStructure/array.cpp.s
+DataStructure/array_2.s: DataStructure/array_2.cpp.s
 
-.PHONY : DataStructure/array.s
+.PHONY : DataStructure/array_2.s
 
 # target to generate assembly for a file
-DataStructure/array.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/DataStructure/array.cpp.s
-.PHONY : DataStructure/array.cpp.s
+DataStructure/array_2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/DataStructure/array_2.cpp.s
+.PHONY : DataStructure/array_2.cpp.s
 
 DataStructure/hash.obj: DataStructure/hash.cpp.obj
 
@@ -920,9 +920,9 @@ help:
 	@echo ... DataStructure/Tree_2.obj
 	@echo ... DataStructure/Tree_2.i
 	@echo ... DataStructure/Tree_2.s
-	@echo ... DataStructure/array.obj
-	@echo ... DataStructure/array.i
-	@echo ... DataStructure/array.s
+	@echo ... DataStructure/array_2.obj
+	@echo ... DataStructure/array_2.i
+	@echo ... DataStructure/array_2.s
 	@echo ... DataStructure/hash.obj
 	@echo ... DataStructure/hash.i
 	@echo ... DataStructure/hash.s

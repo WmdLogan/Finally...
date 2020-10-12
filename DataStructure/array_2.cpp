@@ -1,0 +1,127 @@
+//
+// Created by logan on 2020/7/25.
+//
+// 283. Move Zeroes (Easy)
+// 566. Reshape the Matrix (Easy)
+// 485. Max Consecutive Ones (Easy)
+// 240. Search a 2D Matrix II (Medium)
+// 378. Kth Smallest Element in a Sorted Matrix ((Medium))
+// 645. Set Mismatch (Easy)
+// 287. Find the Duplicate Number (Medium)
+// 667. Beautiful Arrangement II (Medium)
+// 697. Degree of an Array (Easy)
+// 766. Toeplitz Matrix (Easy)
+// 565. Array Nesting (Medium)
+// 769. Max Chunks To Make Sorted (Medium)
+
+#include <stack>
+#include <deque>
+#include <vector>
+#include <set>
+#include <map>
+#include <algorithm>
+#include <iostream>
+#include <string>
+#include <unordered_map>
+
+using namespace std;
+
+class Solution {
+public:
+// 283. Move Zeroes (Easy)
+    void moveZeroes(vector<int> &nums) {
+        int num = 0;
+        auto it = nums.begin();
+        for (; it != nums.end(); it++) {
+            if (*it == 0) {
+                num++;
+                nums.erase(it);
+                it--;
+            }
+        }
+        for (int i = 0; i < num; ++i) {
+            nums.emplace_back(0);
+        }
+    }
+
+// 566. Reshape the Matrix (Easy)
+    vector<vector<int>> matrixReshape(vector<vector<int>> &nums, int r, int c) {
+
+    }
+
+// 485. Max Consecutive Ones (Easy)
+    int findMaxConsecutiveOnes(vector<int> &nums) {
+
+    }
+
+// 240. Search a 2D Matrix II (Medium)
+    bool searchMatrix(vector<vector<int>> &matrix, int target) {
+        if (matrix.empty()) return false;
+        if (matrix[0].empty()) return false;
+        int m = matrix.size();
+        int n = matrix[0].size();
+        int row = 0, col = n - 1;
+        while (row < m && col >= 0) {
+            if (target == matrix[row][col]) return true;
+            else if (target < matrix[row][col]) col--;
+            else row++;
+        }
+        return false;
+    }
+
+// 378. Kth Smallest Element in a Sorted Matrix ((Medium))
+    int numbers_less_than_or_equal(const vector<vector<int>> &matrix, int m) {
+
+    }
+
+    int kthSmallest(vector<vector<int>> &matrix, int k) {
+
+    }
+
+// 645. Set Mismatch (Easy)
+    vector<int> findErrorNums(vector<int> &nums) {
+
+    }
+
+// 287. Find the Duplicate Number (Medium)
+    int findDuplicate(vector<int> &nums) {
+
+    }
+
+// 667. Beautiful Arrangement II (Medium)
+    vector<int> constructArray(int n, int k) {
+
+    }
+
+// 697. Degree of an Array (Easy)
+    int findShortestSubArray(vector<int> &nums) {
+    }
+
+// 766. Toeplitz Matrix (Easy)
+    bool isToeplitzMatrix(vector<vector<int>> &matrix) {
+
+    }
+
+    // 565. Array Nesting (Medium)
+    int arrayNesting(vector<int> &nums) {
+
+    }
+// 769. Max Chunks To Make Sorted (Medium)
+    int maxChunksToSorted(vector<int>& arr) {
+
+    }
+};
+
+int main() {
+    vector<int> vec;
+    vec.push_back(1);
+    vec.push_back(0);
+    vec.push_back(4);
+    vec.push_back(3);
+    vec.push_back(2);
+    vec.push_back(6);
+    vec.push_back(5);
+
+    Solution s;
+    cout << s.maxChunksToSorted(vec);
+}

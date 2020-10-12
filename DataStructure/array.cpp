@@ -32,8 +32,8 @@ public:
     void moveZeroes(vector<int> &nums) {
         int len = nums.size();
         int num = 0;
-        vector<int>::iterator it = nums.begin();
-        for (it; it != nums.end(); it++) {
+        auto it = nums.begin();
+        for (; it != nums.end(); it++) {
             if (*it == 0) {
                 num++;
                 nums.erase(it);
