@@ -71,11 +71,30 @@ public:
 
 // 378. Kth Smallest Element in a Sorted Matrix ((Medium))
     int numbers_less_than_or_equal(const vector<vector<int>> &matrix, int m) {
-
+        int count = 0, i = 0, j = matrix[0].size() - 1;
+        while (i < matrix.size() && j >= 0) {
+            if (matrix[i][j] > m) {
+                j--;
+            } else {
+                count += j + 1;
+                i++;
+            }
+        }
+        return count;
     }
 
     int kthSmallest(vector<vector<int>> &matrix, int k) {
-
+        if (matrix.empty() || matrix[0].empty()) return -1;
+        int l = matrix[0][0], r = matrix.back().back();
+        while (l < r) {
+            int m = (l + r) >> 1;//(l + r)/2
+            if (numbers_less_than_or_equal(matrix, m) >= k) {
+                r = m;
+            } else {
+                l = m + 1;
+            }
+        }
+        return l;
     }
 
 // 645. Set Mismatch (Easy)

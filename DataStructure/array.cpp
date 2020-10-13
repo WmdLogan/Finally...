@@ -117,7 +117,7 @@ public:
 
         int l = matrix[0][0], r = matrix.back().back();
         while (l < r) {
-            int m = l + r >> 1;//(l + r)/2
+            int m = (l + r) >> 1;//(l + r)/2
             if (numbers_less_than_or_equal(matrix, m) >= k)
                 r = m;
             else
