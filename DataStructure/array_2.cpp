@@ -99,7 +99,16 @@ public:
 
 // 645. Set Mismatch (Easy)
     vector<int> findErrorNums(vector<int> &nums) {
-
+        sort(nums.begin(), nums.end());
+        vector<int> ans(2);
+        for (int i = 0; i < nums.size(); ++i) {
+            if ((i + 1) != nums[i]) {
+                ans[1] = i + 1;
+                ans[0] = nums[i];
+                return ans;
+            }
+        }
+        return ans;
     }
 
 // 287. Find the Duplicate Number (Medium)
@@ -121,13 +130,38 @@ public:
 
     }
 
-    // 565. Array Nesting (Medium)
+// 565. Array Nesting (Medium)
     int arrayNesting(vector<int> &nums) {
-
+        int ans = 0;
+        int count = 0;
+        int len = nums.size();
+        int first;
+        for (int i = 0; i < len; i++) {
+            if (nums[i] != 30000) {
+//未被标记过
+                first = nums[i];
+                nums[i] = 30000;
+                count = 0;
+                do {
+                    int temp = nums[first];
+                    nums[first] = 30000;
+                    first = temp;
+                    count++;
+                } while (nums[i] != first);
+                ans = max(ans, count);
+            }
+        }
+        return ans;
     }
-// 769. Max Chunks To Make Sorted (Medium)
-    int maxChunksToSorted(vector<int>& arr) {
 
+// 769. Max Chunks To Make Sorted (Medium)
+    int maxChunksToSorted(vector<int> &arr) {
+        int ans = 0, max_n = 0;
+        for (int i = 0; i < arr.size(); ++i) {
+            max_n = max(max_n, arr[i]);
+            if (max_n == i) ans++;
+        }
+        return ans;
     }
 };
 
