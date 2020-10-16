@@ -15,9 +15,11 @@ class Solution {
 public:
 // 785. Is Graph Bipartite? (Medium)
     bool isBipartite(vector<vector<int>> &graph) {
+//每个节点都是0到graph.size()-1之间的整数
         vector<int> color(graph.size(), -1);
         stack<int> color_stack;
         for (int i = 0; i < graph.size(); ++i) {
+//图着色
             if (color[i] == -1) {
                 color_stack.push(i);
                 color[i] = 0;
@@ -26,11 +28,14 @@ public:
                     int index = color_stack.top();
                     color_stack.pop();
                     int j;
+//相邻节点着色
                     for (j = 0; j < graph[index].size(); j++) {
                         if (color[graph[index][j]] == -1) {
+//相邻节点着色与当前节点不同
                             color[graph[index][j]] = color[index] ^ 1;
                             color_stack.push(graph[index][j]);
                         } else {
+//着色相同，失败
                             if (color[graph[index][j]] != color[index] ^ 1) {
                                 return false;
                             }

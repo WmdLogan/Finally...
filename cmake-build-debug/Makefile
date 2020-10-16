@@ -234,6 +234,19 @@ math/fast:
 .PHONY : math/fast
 
 #=============================================================================
+# Target rules for targets named graph2
+
+# Build rule for target.
+graph2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 graph2
+.PHONY : graph2
+
+# fast build rule for target.
+graph2/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph2.dir\build.make CMakeFiles/graph2.dir/build
+.PHONY : graph2/fast
+
+#=============================================================================
 # Target rules for targets named stack_queue
 
 # Build rule for target.
@@ -633,6 +646,33 @@ DataStructure/Graph.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph.dir\build.make CMakeFiles/graph.dir/DataStructure/Graph.cpp.s
 .PHONY : DataStructure/Graph.cpp.s
 
+DataStructure/Graph_2.obj: DataStructure/Graph_2.cpp.obj
+
+.PHONY : DataStructure/Graph_2.obj
+
+# target to build an object file
+DataStructure/Graph_2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph2.dir\build.make CMakeFiles/graph2.dir/DataStructure/Graph_2.cpp.obj
+.PHONY : DataStructure/Graph_2.cpp.obj
+
+DataStructure/Graph_2.i: DataStructure/Graph_2.cpp.i
+
+.PHONY : DataStructure/Graph_2.i
+
+# target to preprocess a source file
+DataStructure/Graph_2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph2.dir\build.make CMakeFiles/graph2.dir/DataStructure/Graph_2.cpp.i
+.PHONY : DataStructure/Graph_2.cpp.i
+
+DataStructure/Graph_2.s: DataStructure/Graph_2.cpp.s
+
+.PHONY : DataStructure/Graph_2.s
+
+# target to generate assembly for a file
+DataStructure/Graph_2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\graph2.dir\build.make CMakeFiles/graph2.dir/DataStructure/Graph_2.cpp.s
+.PHONY : DataStructure/Graph_2.cpp.s
+
 DataStructure/List.obj: DataStructure/List.cpp.obj
 
 .PHONY : DataStructure/List.obj
@@ -868,6 +908,7 @@ help:
 	@echo ... double_pointer
 	@echo ... dp
 	@echo ... graph
+	@echo ... graph2
 	@echo ... greed
 	@echo ... hash
 	@echo ... math
@@ -905,6 +946,9 @@ help:
 	@echo ... DataStructure/Graph.obj
 	@echo ... DataStructure/Graph.i
 	@echo ... DataStructure/Graph.s
+	@echo ... DataStructure/Graph_2.obj
+	@echo ... DataStructure/Graph_2.i
+	@echo ... DataStructure/Graph_2.s
 	@echo ... DataStructure/List.obj
 	@echo ... DataStructure/List.i
 	@echo ... DataStructure/List.s
