@@ -49,13 +49,13 @@ public:
 
 // 207. Course Schedule (Medium)
     bool canFinish(int numCourses, vector<vector<int>> &prerequisites) {
-//拓扑排序
+//广度优先搜索
         vector<int> indegree(numCourses, 0);//每个点的入度值
         vector<vector<int>> graph(numCourses);//入度表
 //构造入度表
-        for (int i = 0; i < prerequisites.size(); i++) {
-            indegree[prerequisites[i][0]]++;
-            graph[prerequisites[i][1]].push_back(prerequisites[i][0]);
+        for (auto & prerequisite : prerequisites) {
+            indegree[prerequisite[0]]++;
+            graph[prerequisite[1]].push_back(prerequisite[0]);
         }
 //将入度为0的顶点入队
         queue<int> myqueue;
@@ -63,7 +63,7 @@ public:
             if (indegree[i] == 0)
                 myqueue.push(i);
         }
-        int cnt = 0;
+        int cnt = 0;//满足条件课程数
         while (!myqueue.empty()) {
             int temp = myqueue.front();
             myqueue.pop();
