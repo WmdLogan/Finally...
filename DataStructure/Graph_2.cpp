@@ -8,6 +8,7 @@
 #include <stack>
 #include <vector>
 #include <queue>
+#include <algorithm>
 
 using namespace std;
 
@@ -28,7 +29,7 @@ public:
 //相邻节点着色
                     for (int j = 0; j < graph[cur_node].size(); ++j) {
                         if (vec[graph[cur_node][j]] == -1) {
-//当前相邻节点未被着色
+//当前相邻节点未被着色，着色并入栈
                             vec[graph[cur_node][j]] = vec[cur_node] ^ 1;
                             s.push(graph[cur_node][j]);
                         } else {
@@ -76,43 +77,37 @@ public:
     }
 
 private:
-    vector<vector<int>> edges;//出度表
-    vector<int> visited;//每个节点的出度数
+    vector<vector<int>> out_degree;//出度表
+    vector<int> visited;//课程标记数组
     bool valid = true;
 
 public:
     void dfs(int u) {
-        visited[u] = 1;
-        for (int v: edges[u]) {
+        visited[u] = 1;//标记该节点状态为搜索中
+//遍历该课程的出度表，即该课程之前的课程
+        for (int &v: out_degree[u]) {
             if (visited[v] == 0) {
                 dfs(v);
                 if (!valid) {
                     return;
                 }
-            }
-            else if (visited[v] == 1) {
+            } else if (visited[v] == 1) {
                 valid = false;
                 return;
             }
         }
-        visited[u] = 2;
+        visited[u] = 2;//标记该节点状态为已完成
     }
 
     bool canFinish_dfs(int numCourses, vector<vector<int>> &prerequisites) {
-/*        1. 首先构造出度表
-        2. 用数组记录每个节点（每门课）的入度值以及每个节点（每门课）的出度表
-        3. 遍历入度值数组，将入度为0的节点入队
-        4. 若队列不为空，出队，设置变量记录出队数（符合条件的课程数）并加一
-        5. 遍历出队节点的入度表，每个值的入度数减一，若减完后为0，加入队列
-        6. 比较出队数和课程数是否相同       */
-        edges.resize(numCourses);
+        out_degree.resize(numCourses);
         visited.resize(numCourses);
-//构造出度表
-        for (const auto& info: prerequisites) {
-            edges[info[1]].push_back(info[0]);
+//构造出度表，出度表中每个节点有三种状态：未访问、已搜索、搜索中
+        for (const auto &info: prerequisites) {
+            out_degree[info[1]].push_back(info[0]);
         }
         for (int i = 0; i < numCourses && valid; ++i) {
-            if (!visited[i]) {
+            if (!visited[i]) {//该节点未访问，深搜
                 dfs(i);
             }
         }
@@ -121,8 +116,37 @@ public:
     }
 
 // 210. Course Schedule II (Medium)
-    vector<int> findOrder(int numCourses, vector<vector<int>> &prerequisites) {
+    vector<int> ans;
+    bool find_valid = true;
 
+    void dfs_findOrder(int course) {
+        visited[course] = 1;
+        for (auto &last_course:out_degree[course]) {
+            if (visited[last_course] == 0) {
+                dfs_findOrder(last_course);
+            } else if (visited[last_course] == 1) {
+                find_valid = false;
+                return;
+            }
+        }
+        visited[course] = 2;
+        ans.emplace_back(course);
+    }
+
+    vector<int> findOrder(int numCourses, vector<vector<int>> &prerequisites) {
+        visited.resize(numCourses);
+        out_degree.resize(numCourses);
+        for (auto prerequisite : prerequisites) {
+            out_degree[prerequisite[1]].emplace_back(prerequisite[0]);
+        }
+        for (int i = 0; i < numCourses && find_valid; ++i) {
+            if (visited[i] == 0) {
+                dfs_findOrder(i);
+            }
+        }
+        if (ans.size() != numCourses) return {};
+        reverse(ans.begin(), ans.end());
+        return ans;
     }
 // 684. Redundant Connection (Medium)
 
