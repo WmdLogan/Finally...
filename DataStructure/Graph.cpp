@@ -53,7 +53,7 @@ public:
         vector<int> indegree(numCourses, 0);//每个点的入度值
         vector<vector<int>> graph(numCourses);//入度表
 //构造入度表
-        for (auto & prerequisite : prerequisites) {
+        for (auto &prerequisite : prerequisites) {
             indegree[prerequisite[0]]++;
             graph[prerequisite[1]].push_back(prerequisite[0]);
         }
@@ -115,18 +115,20 @@ public:
         }
         return {};
     }
+
 // 684. Redundant Connection (Medium)
     vector<int> rp;
-    vector<int> findRedundantConnection(vector<vector<int>>& edges) {
+
+    vector<int> findRedundantConnection(vector<vector<int>> &edges) {
         int sz = edges.size();
         // 初始化各元素为单独的集合，代表节点就是其本身
         for (int i = 0; i < sz; i++)
             rp.push_back(-1);
-        for(int j=0;j<sz;j++){
+        for (int j = 0; j < sz; j++) {
             // 找到边上两个节点所在集合的代表节点
             int set1 = find(edges[j][0]);
             int set2 = find(edges[j][1]);
-            if(set1 == set2)  // 两个集合代表节点相同，说明出现环，返回答案
+            if (set1 == set2)  // 两个集合代表节点相同，说明出现环，返回答案
                 return edges[j];
             else    // 两个集合独立，合并集合。将前一个集合代表节点戳到后一个集合代表节点上
                 rp[set1] = set2;
@@ -134,7 +136,7 @@ public:
         return {0, 0};
     }
 
-    int find(int n){
+    int find(int n) {
         if (rp[n] < 0) return n;
         return find(rp[n]);
     }

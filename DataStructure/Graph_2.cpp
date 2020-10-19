@@ -148,12 +148,59 @@ public:
         reverse(ans.begin(), ans.end());
         return ans;
     }
-// 684. Redundant Connection (Medium)
 
-    vector<int> findRedundantConnection(vector<vector<int>> &edges) {
-
+    vector<int> findOrder_bfs(int numCourses, vector<vector<int>> &prerequisites) {
+        vector<int> indegree(numCourses, 0);
+        vector<vector<int>> indegree_list(numCourses);
+        queue<int> indegree_queue;
+//        vector<int> ans;
+//构建入度表、入度值数组
+        for (auto prerequisite : prerequisites) {
+            indegree_list[prerequisite[1]].emplace_back(prerequisite[0]);
+            indegree[prerequisite[0]]++;
+        }
+//入度值为空，进队列
+        for (int i = 0; i < numCourses; ++i) {
+            if (indegree[i] == 0) {
+                indegree_queue.push(i);
+            }
+        }
+        while (!indegree_queue.empty()) {
+            auto temp = indegree_queue.front();
+            indegree_queue.pop();
+            ans.emplace_back(temp);//修课程
+            for (int i = 0; i < indegree_list[temp].size(); ++i) {
+                indegree[indegree_list[temp][i]]--;
+                if (indegree[indegree_list[temp][i]] == 0) indegree_queue.push(indegree_list[temp][i]);
+            }
+        }
+        if (ans.size() != numCourses) return {};
+        return ans;
     }
 
+// 684. Redundant Connection (Medium)
+    vector<int> pre;//代表节点值数组
+    vector<int> findRedundantConnection(vector<vector<int>> &edges) {
+        int node_num = edges.size();
+        for (int i = 0; i < node_num; i++)
+            pre.push_back(-1);
+        for (int i = 0; i < node_num; ++i) {
+//找到两个节点的代表节点
+            int represent_1 = find_represent(edges[i][0]);
+            int represent_2 = find_represent(edges[i][1]);
+            if (represent_1 == represent_2) {
+                return edges[i];//出现环
+            } else {
+                pre[represent_1] = represent_2;
+            }
+        }
+        return {0, 0};
+    }
+
+//返回节点i所在集合的代表节点
+    int find_represent(int i) {
+        return pre[i] < 0 ? i :find_represent(pre[i]);
+    }
 
 };
 
