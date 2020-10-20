@@ -15,7 +15,7 @@ using namespace std;
 class Solution {
 public:
 // 785. Is Graph Bipartite? (Medium)
-    bool isBipartite(vector<vector<int>> &graph) {
+    bool isBipartite(vector <vector<int>> &graph) {
         vector<int> vec(graph.size(), -1);
         stack<int> s;
         for (int i = 0; i < graph.size(); ++i) {
@@ -44,10 +44,10 @@ public:
     }
 
 // 207. Course Schedule (Medium)
-    bool canFinish_bfs(int numCourses, vector<vector<int>> &prerequisites) {
+    bool canFinish_bfs(int numCourses, vector <vector<int>> &prerequisites) {
 //有向图是否存在环
         vector<int> indegree(numCourses, 0);//每个节点(每门课)的入度值
-        vector<vector<int>> graph(numCourses);//入度表
+        vector <vector<int>> graph(numCourses);//入度表
 //记录每个节点的入度值以及每个节点的入度表
         for (auto it:prerequisites) {
             indegree[it[0]]++;
@@ -77,7 +77,7 @@ public:
     }
 
 private:
-    vector<vector<int>> out_degree;//出度表
+    vector <vector<int>> out_degree;//出度表
     vector<int> visited;//课程标记数组
     bool valid = true;
 
@@ -99,7 +99,7 @@ public:
         visited[u] = 2;//标记该节点状态为已完成
     }
 
-    bool canFinish_dfs(int numCourses, vector<vector<int>> &prerequisites) {
+    bool canFinish_dfs(int numCourses, vector <vector<int>> &prerequisites) {
         out_degree.resize(numCourses);
         visited.resize(numCourses);
 //构造出度表，出度表中每个节点有三种状态：未访问、已搜索、搜索中
@@ -133,7 +133,7 @@ public:
         ans.emplace_back(course);
     }
 
-    vector<int> findOrder(int numCourses, vector<vector<int>> &prerequisites) {
+    vector<int> findOrder(int numCourses, vector <vector<int>> &prerequisites) {
         visited.resize(numCourses);
         out_degree.resize(numCourses);
         for (auto prerequisite : prerequisites) {
@@ -149,9 +149,9 @@ public:
         return ans;
     }
 
-    vector<int> findOrder_bfs(int numCourses, vector<vector<int>> &prerequisites) {
+    vector<int> findOrder_bfs(int numCourses, vector <vector<int>> &prerequisites) {
         vector<int> indegree(numCourses, 0);
-        vector<vector<int>> indegree_list(numCourses);
+        vector <vector<int>> indegree_list(numCourses);
         queue<int> indegree_queue;
 //        vector<int> ans;
 //构建入度表、入度值数组
@@ -201,12 +201,11 @@ public:
     int find_represent(int i) {
         return pre[i] < 0 ? i :find_represent(pre[i]);
     }
-
 };
 
 int main() {
     Solution s;
-    vector<vector<int>> test;
+    vector <vector<int>> test;
     vector<int> a;
     vector<int> b;
     a.push_back(0);
