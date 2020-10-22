@@ -592,32 +592,32 @@ Algorithm/math.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\math.dir\build.make CMakeFiles/math.dir/Algorithm/math.cpp.s
 .PHONY : Algorithm/math.cpp.s
 
-DataStructure/Bit.obj: DataStructure/Bit.cpp.obj
+DataStructure/Bit_2.obj: DataStructure/Bit_2.cpp.obj
 
-.PHONY : DataStructure/Bit.obj
+.PHONY : DataStructure/Bit_2.obj
 
 # target to build an object file
-DataStructure/Bit.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/DataStructure/Bit.cpp.obj
-.PHONY : DataStructure/Bit.cpp.obj
+DataStructure/Bit_2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/DataStructure/Bit_2.cpp.obj
+.PHONY : DataStructure/Bit_2.cpp.obj
 
-DataStructure/Bit.i: DataStructure/Bit.cpp.i
+DataStructure/Bit_2.i: DataStructure/Bit_2.cpp.i
 
-.PHONY : DataStructure/Bit.i
+.PHONY : DataStructure/Bit_2.i
 
 # target to preprocess a source file
-DataStructure/Bit.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/DataStructure/Bit.cpp.i
-.PHONY : DataStructure/Bit.cpp.i
+DataStructure/Bit_2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/DataStructure/Bit_2.cpp.i
+.PHONY : DataStructure/Bit_2.cpp.i
 
-DataStructure/Bit.s: DataStructure/Bit.cpp.s
+DataStructure/Bit_2.s: DataStructure/Bit_2.cpp.s
 
-.PHONY : DataStructure/Bit.s
+.PHONY : DataStructure/Bit_2.s
 
 # target to generate assembly for a file
-DataStructure/Bit.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/DataStructure/Bit.cpp.s
-.PHONY : DataStructure/Bit.cpp.s
+DataStructure/Bit_2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\bit.dir\build.make CMakeFiles/bit.dir/DataStructure/Bit_2.cpp.s
+.PHONY : DataStructure/Bit_2.cpp.s
 
 DataStructure/Graph.obj: DataStructure/Graph.cpp.obj
 
@@ -940,9 +940,9 @@ help:
 	@echo ... Algorithm/math.obj
 	@echo ... Algorithm/math.i
 	@echo ... Algorithm/math.s
-	@echo ... DataStructure/Bit.obj
-	@echo ... DataStructure/Bit.i
-	@echo ... DataStructure/Bit.s
+	@echo ... DataStructure/Bit_2.obj
+	@echo ... DataStructure/Bit_2.i
+	@echo ... DataStructure/Bit_2.s
 	@echo ... DataStructure/Graph.obj
 	@echo ... DataStructure/Graph.i
 	@echo ... DataStructure/Graph.s

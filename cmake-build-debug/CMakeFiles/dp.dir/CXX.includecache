@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/CLionProjects/Leetcode/Algorithm/Dynamic_program.cpp
+iostream
+-
+vector
+-
+algorithm
+-
+climits
+-
+cstring
+-
+queue
+-
+

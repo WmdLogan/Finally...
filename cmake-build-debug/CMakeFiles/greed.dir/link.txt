@@ -1,0 +1,3 @@
+"D:\Program Files\JetBrains\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\greed.dir/objects.a
+D:\Mingw\bin\ar.exe cr CMakeFiles\greed.dir/objects.a @CMakeFiles\greed.dir\objects1.rsp
+D:\Mingw\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\greed.dir/objects.a -Wl,--no-whole-archive  -o greed.exe -Wl,--out-implib,libgreed.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\greed.dir\linklibs.rsp

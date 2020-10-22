@@ -1,0 +1,3 @@
+"D:\Program Files\JetBrains\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\divide_conquer.dir/objects.a
+D:\Mingw\bin\ar.exe cr CMakeFiles\divide_conquer.dir/objects.a @CMakeFiles\divide_conquer.dir\objects1.rsp
+D:\Mingw\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\divide_conquer.dir/objects.a -Wl,--no-whole-archive  -o divide_conquer.exe -Wl,--out-implib,libdivide_conquer.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\divide_conquer.dir\linklibs.rsp

@@ -35,6 +35,7 @@
 #include <algorithm>
 #include <climits>
 #include <cstring>
+#include <queue>
 
 using namespace std;
 
@@ -181,15 +182,46 @@ public:
     }
 
 // 279. Perfect Squares (Medium)
-    int numSquares_dp(int n) {
-        vector<int> result(n + 1, 0x7FFFFFFF); // 每个数的最优解都存在result数组里
-        result[0] = 0;
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; i - j * j >= 0; j++) {  // 观察比N小的数，且符合N = IxI + N'的数值
-                result[i] = min(result[i], result[i - j * j] + 1); // 把最优解（最小值）+ 1 写入result
+    vector<int> getSquares(int n) {
+        vector<int> res;
+        for (int i = 1; i * i <= n; ++i) {
+            res.emplace_back(i * i);
+        }
+        return res;
+    }
+
+    int numSquares(int n) {
+        vector<int> squares = getSquares(n);
+        vector<bool> zhu(n + 1);    //记录已访问过的节点
+        queue<int> q;
+
+        q.push(n);
+        int res = 0;//层数
+        zhu[n] = true;
+        while (!q.empty()) {
+            int size = q.size();
+            res++;//层数
+            while (size--) {
+                int curr = q.front();
+                q.pop();
+                /*每次跨越的间隔为平方数*/
+                for (int num: squares) {
+                    int next = curr - num;
+                    if (next < 0) {
+                        break;
+                    }
+                    if (next == 0) {
+                        return res;
+                    }
+                    if (zhu[next]) {
+                        continue;
+                    }
+                    zhu[next] = true;
+                    q.push(next);
+                }
             }
         }
-        return result[n];
+        return n;
     }
 
 // 91. Decode Ways (Medium)
@@ -652,5 +684,5 @@ public:
 int main() {
     vector<int> nums = {3, 33, 333};
     Solution s;
-    cout << s.minSteps(3);
+    cout << s.numSquares(12);
 }

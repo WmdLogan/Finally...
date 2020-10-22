@@ -1,0 +1,3 @@
+"D:\Program Files\JetBrains\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\graph2.dir/objects.a
+D:\Mingw\bin\ar.exe cr CMakeFiles\graph2.dir/objects.a @CMakeFiles\graph2.dir\objects1.rsp
+D:\Mingw\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\graph2.dir/objects.a -Wl,--no-whole-archive  -o graph2.exe -Wl,--out-implib,libgraph2.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\graph2.dir\linklibs.rsp

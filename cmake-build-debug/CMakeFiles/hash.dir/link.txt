@@ -1,0 +1,3 @@
+"D:\Program Files\JetBrains\CLion 2019.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\hash.dir/objects.a
+D:\Mingw\bin\ar.exe cr CMakeFiles\hash.dir/objects.a @CMakeFiles\hash.dir\objects1.rsp
+D:\Mingw\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\hash.dir/objects.a -Wl,--no-whole-archive  -o hash.exe -Wl,--out-implib,libhash.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\hash.dir\linklibs.rsp
