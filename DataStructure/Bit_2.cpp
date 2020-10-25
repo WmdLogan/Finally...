@@ -26,7 +26,7 @@ public:
     int hammingDistance(int x, int y) {
         bit_and<int> b_and;
         int ans = 0;
-        while (x || y){
+        while (x || y) {
             if (b_and.operator()(x, 1) != b_and.operator()(y, 1)) {
                 ans++;
             }
@@ -65,7 +65,7 @@ public:
         }
         temp &= (-temp);
         for (int &num : nums) {
-            if ( (num & temp) == 0) {
+            if ((num & temp) == 0) {
                 ans[0] ^= num;
             } else {
                 ans[1] ^= num;
@@ -76,22 +76,31 @@ public:
 
 // 190. Reverse Bits (Easy)
     uint32_t reverseBits(uint32_t n) {
-
+        uint32_t ans = 0;
+        for (int i = 0; i < 32; ++i) {
+            ans <<= 1;
+            ans += n & 1;
+            n >>= 1;
+        }
+        return ans;
     }
 
 // 231. Power of Two (Easy)
     bool isPowerOfTwo(int n) {
-
+        return n > 0 && (n & (n - 1)) == 0;
     }
 
 // 342. Power of Four (Easy)
     bool isPowerOfFour(int num) {
-
+        return num > 0 && (num & (num - 1)) == 0 && (num & 0xaaaaaaaa) == 0;
     }
 
 // 693. Binary Number with Alternating Bits (Easy)
     bool hasAlternatingBits(int n) {
-
+//如果是交替二进制，则错位异或为全1
+        uint32_t temp = n ^(n >> 1);
+        temp++;
+        return (temp & (temp - 1)) == 0;
     }
 
 // 476. Number Complement (Easy)
@@ -115,10 +124,9 @@ public:
     }
 
 
-
 };
 
 int main() {
     Solution s;
-    cout << s.hammingDistance(1,4) << endl;
+    cout << s.hasAlternatingBits(10) << endl;
 }
