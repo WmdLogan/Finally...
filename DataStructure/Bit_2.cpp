@@ -105,24 +105,52 @@ public:
 
 // 476. Number Complement (Easy)
     int findComplement(int num) {
-
+        int ans = num;
+        int temp = 0;
+        while (num != 0) {
+            temp <<= 1;
+            temp++;
+            num >>= 1;
+        }
+        return ans ^ temp;
     }
 
 // 371. Sum of Two Integers (Easy)
     int getSum(int a, int b) {
-
+//a ^ b 表示没有考虑进位情况下两数的和，（a & b）<< 1表示进位
+//a + b = (a ^ b) + （a & b）<< 1
+        return b == 0 ? a : getSum((a ^ b), (uint32_t)(a & b) << 1);
     }
 
 // 318. Maximum Product of Word Lengths (Medium)
     int maxProduct(vector<string> &words) {
-
+        int n = words.size();
+        vector<int> pre(n);
+//用32位整数记录每个单词中出现的字母
+        for (int i = 0; i < n; ++i) {
+            for (auto c:words[i]) {
+                pre[i] |= 1 << (c - 'a');
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i < n; ++i) {
+            for (int j = i + 1; j < n; ++j) {
+                if ( (pre[i] & pre[j]) == 0) {
+                    ans = max(ans, (int)words[i].size() * (int)words[j].size());
+                }
+            }
+        }
+        return ans;
     }
 
 // 338. Counting Bits (Medium)
     vector<int> countBits(int num) {
-
+        vector<int> dp(num + 1, 0);
+        for (int i = 1; i <= num; ++i) {
+            dp[i] = dp[i & (i - 1)] + 1;
+        }
+        return dp;
     }
-
 
 };
 
