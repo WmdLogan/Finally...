@@ -4,6 +4,7 @@ project(Leetcode)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(List DataStructure/List.cpp)
+add_executable(inherit inherit.cpp)
 add_executable(List2 DataStructure/List_2.cpp)
 add_executable(Tree DataStructure/Tree.cpp)
 add_executable(Tree2 DataStructure/Tree_2.cpp)
@@ -22,4 +23,5 @@ add_executable(search Algorithm/Search.cpp)
 add_executable(divide_conquer Algorithm/DevideConquer.cpp)
 add_executable(dp Algorithm/Dynamic_program.cpp)
 add_executable(math Algorithm/math.cpp)
+add_executable(ds DataStructure/ds_triple.cpp)
 

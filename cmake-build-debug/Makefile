@@ -182,6 +182,45 @@ List/fast:
 .PHONY : List/fast
 
 #=============================================================================
+# Target rules for targets named string
+
+# Build rule for target.
+string: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 string
+.PHONY : string
+
+# fast build rule for target.
+string/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\string.dir\build.make CMakeFiles/string.dir/build
+.PHONY : string/fast
+
+#=============================================================================
+# Target rules for targets named ds
+
+# Build rule for target.
+ds: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 ds
+.PHONY : ds
+
+# fast build rule for target.
+ds/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ds.dir\build.make CMakeFiles/ds.dir/build
+.PHONY : ds/fast
+
+#=============================================================================
+# Target rules for targets named inherit
+
+# Build rule for target.
+inherit: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 inherit
+.PHONY : inherit
+
+# fast build rule for target.
+inherit/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\inherit.dir\build.make CMakeFiles/inherit.dir/build
+.PHONY : inherit/fast
+
+#=============================================================================
 # Target rules for targets named binary_search
 
 # Build rule for target.
@@ -258,19 +297,6 @@ stack_queue: cmake_check_build_system
 stack_queue/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\stack_queue.dir\build.make CMakeFiles/stack_queue.dir/build
 .PHONY : stack_queue/fast
-
-#=============================================================================
-# Target rules for targets named string
-
-# Build rule for target.
-string: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 string
-.PHONY : string
-
-# fast build rule for target.
-string/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\string.dir\build.make CMakeFiles/string.dir/build
-.PHONY : string/fast
 
 #=============================================================================
 # Target rules for targets named array
@@ -835,6 +861,33 @@ DataStructure/array_2.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\array.dir\build.make CMakeFiles/array.dir/DataStructure/array_2.cpp.s
 .PHONY : DataStructure/array_2.cpp.s
 
+DataStructure/ds_triple.obj: DataStructure/ds_triple.cpp.obj
+
+.PHONY : DataStructure/ds_triple.obj
+
+# target to build an object file
+DataStructure/ds_triple.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ds.dir\build.make CMakeFiles/ds.dir/DataStructure/ds_triple.cpp.obj
+.PHONY : DataStructure/ds_triple.cpp.obj
+
+DataStructure/ds_triple.i: DataStructure/ds_triple.cpp.i
+
+.PHONY : DataStructure/ds_triple.i
+
+# target to preprocess a source file
+DataStructure/ds_triple.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ds.dir\build.make CMakeFiles/ds.dir/DataStructure/ds_triple.cpp.i
+.PHONY : DataStructure/ds_triple.cpp.i
+
+DataStructure/ds_triple.s: DataStructure/ds_triple.cpp.s
+
+.PHONY : DataStructure/ds_triple.s
+
+# target to generate assembly for a file
+DataStructure/ds_triple.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ds.dir\build.make CMakeFiles/ds.dir/DataStructure/ds_triple.cpp.s
+.PHONY : DataStructure/ds_triple.cpp.s
+
 DataStructure/hash.obj: DataStructure/hash.cpp.obj
 
 .PHONY : DataStructure/hash.obj
@@ -889,6 +942,33 @@ DataStructure/stack_queue.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\stack_queue.dir\build.make CMakeFiles/stack_queue.dir/DataStructure/stack_queue.cpp.s
 .PHONY : DataStructure/stack_queue.cpp.s
 
+inherit.obj: inherit.cpp.obj
+
+.PHONY : inherit.obj
+
+# target to build an object file
+inherit.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\inherit.dir\build.make CMakeFiles/inherit.dir/inherit.cpp.obj
+.PHONY : inherit.cpp.obj
+
+inherit.i: inherit.cpp.i
+
+.PHONY : inherit.i
+
+# target to preprocess a source file
+inherit.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\inherit.dir\build.make CMakeFiles/inherit.dir/inherit.cpp.i
+.PHONY : inherit.cpp.i
+
+inherit.s: inherit.cpp.s
+
+.PHONY : inherit.s
+
+# target to generate assembly for a file
+inherit.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\inherit.dir\build.make CMakeFiles/inherit.dir/inherit.cpp.s
+.PHONY : inherit.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -907,10 +987,12 @@ help:
 	@echo ... divide_conquer
 	@echo ... double_pointer
 	@echo ... dp
+	@echo ... ds
 	@echo ... graph
 	@echo ... graph2
 	@echo ... greed
 	@echo ... hash
+	@echo ... inherit
 	@echo ... math
 	@echo ... search
 	@echo ... sort
@@ -967,12 +1049,18 @@ help:
 	@echo ... DataStructure/array_2.obj
 	@echo ... DataStructure/array_2.i
 	@echo ... DataStructure/array_2.s
+	@echo ... DataStructure/ds_triple.obj
+	@echo ... DataStructure/ds_triple.i
+	@echo ... DataStructure/ds_triple.s
 	@echo ... DataStructure/hash.obj
 	@echo ... DataStructure/hash.i
 	@echo ... DataStructure/hash.s
 	@echo ... DataStructure/stack_queue.obj
 	@echo ... DataStructure/stack_queue.i
 	@echo ... DataStructure/stack_queue.s
+	@echo ... inherit.obj
+	@echo ... inherit.i
+	@echo ... inherit.s
 .PHONY : help
 
 
