@@ -150,8 +150,44 @@ public:
         return flag == numCourses;
     }
 
-
+// 210. Course Schedule II
+    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
+        vector<int> in_degree(numCourses, 0);//入度表
+        vector<vector<int>> in_list(numCourses);
+        vector<int> ans;
+        queue<int> class_queue;
+//构造入度表
+        for (auto prerequisite:prerequisites) {
+            in_degree[prerequisite[0]]++;
+            in_list[prerequisite[1]].emplace_back(prerequisite[0]);
+        }
+//入度为0的课，入队列
+        for (int i = 0; i < numCourses; ++i) {
+            if (in_degree[i] == 0){
+                ans.emplace_back(i);
+                class_queue.push(i);
+            }
+        }
+        while (!class_queue.empty()) {
+            int size = class_queue.size();
+            while (size) {
+                int temp = class_queue.front();
+                class_queue.pop();
+                for (int i = 0; i < in_list[temp].size(); ++i) {
+                    in_degree[in_list[temp][i]]--;
+                    if (in_degree[in_list[temp][i]] == 0) {
+                        class_queue.push(in_list[temp][i]);
+                        ans.emplace_back(in_list[temp][i]);
+                    }
+                }
+                size--;
+            }
+        }
+        if (ans.size() !=numCourses) return {};
+        return ans;
+    }
 };
+
 int main(){
     Solution s;
     vector<vector<int>> vec = {{1, 0}};
