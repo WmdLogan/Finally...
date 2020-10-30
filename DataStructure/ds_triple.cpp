@@ -186,6 +186,41 @@ public:
         if (ans.size() !=numCourses) return {};
         return ans;
     }
+
+// 234. Palindrome Linked List
+    bool isPalindrome(ListNode* head) {
+        ListNode* fast = head;
+        ListNode* slow = head;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        // 反转后半部分
+        ListNode *curNode = slow , *nextNode = slow->next;
+        while (nextNode) {
+            ListNode *tmp = nextNode->next;
+            nextNode->next = curNode;
+            curNode = nextNode;
+            nextNode = tmp;
+
+        }
+        slow->next = nullptr;
+        // 开始比较是否相等
+        while (head && curNode) {
+            if (head->val != curNode->val)
+                return false;
+            head = head->next;
+            curNode = curNode->next;
+        }
+        return true;
+    }
+
+// 235. Lowest Common Ancestor of a Binary Search Tree
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if (root->val > p->val && root->val > q->val) return lowestCommonAncestor(root->left, p, q);
+        if (root->val < p->val && root->val < q->val) return lowestCommonAncestor(root->right, p, q);
+        return root;
+    }
 };
 
 int main(){
