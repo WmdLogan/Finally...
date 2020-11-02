@@ -7,6 +7,7 @@
 #include <stack>
 #include <unordered_map>
 #include <map>
+
 using namespace std;
 
 struct TreeNode {
@@ -84,15 +85,15 @@ public:
     }
 
 // 111. Minimum Depth of Binary Tree
-    int minDepth(TreeNode* root) {
+    int minDepth(TreeNode *root) {
         if (root == nullptr) return 0;
         int ans_depth = 0;
-        queue<TreeNode*> q;
+        queue<TreeNode *> q;
         q.emplace(root);
         while (!q.empty()) {
             ans_depth++;
             int size = q.size();
-            while (size > 0 ){
+            while (size > 0) {
                 size--;
                 auto temp = q.front();
                 q.pop();
@@ -115,7 +116,7 @@ public:
     }
 
 // 207. Course Schedule
-    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+    bool canFinish(int numCourses, vector<vector<int>> &prerequisites) {
         vector<int> in_degree(numCourses, 0);//入度表
         vector<vector<int>> in_list(numCourses);
         queue<int> class_queue;
@@ -127,7 +128,7 @@ public:
         }
 //入度为0的课，入队列
         for (int i = 0; i < numCourses; ++i) {
-            if (in_degree[i] == 0){
+            if (in_degree[i] == 0) {
                 flag++;
                 class_queue.push(i);
             }
@@ -151,7 +152,7 @@ public:
     }
 
 // 210. Course Schedule II
-    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
+    vector<int> findOrder(int numCourses, vector<vector<int>> &prerequisites) {
         vector<int> in_degree(numCourses, 0);//入度表
         vector<vector<int>> in_list(numCourses);
         vector<int> ans;
@@ -163,7 +164,7 @@ public:
         }
 //入度为0的课，入队列
         for (int i = 0; i < numCourses; ++i) {
-            if (in_degree[i] == 0){
+            if (in_degree[i] == 0) {
                 ans.emplace_back(i);
                 class_queue.push(i);
             }
@@ -183,20 +184,20 @@ public:
                 size--;
             }
         }
-        if (ans.size() !=numCourses) return {};
+        if (ans.size() != numCourses) return {};
         return ans;
     }
 
 // 234. Palindrome Linked List
-    bool isPalindrome(ListNode* head) {
-        ListNode* fast = head;
-        ListNode* slow = head;
+    bool isPalindrome(ListNode *head) {
+        ListNode *fast = head;
+        ListNode *slow = head;
         while (fast && fast->next) {
             slow = slow->next;
             fast = fast->next->next;
         }
         // 反转后半部分
-        ListNode *curNode = slow , *nextNode = slow->next;
+        ListNode *curNode = slow, *nextNode = slow->next;
         while (nextNode) {
             ListNode *tmp = nextNode->next;
             nextNode->next = curNode;
@@ -216,14 +217,56 @@ public:
     }
 
 // 235. Lowest Common Ancestor of a Binary Search Tree
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+    TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
         if (root->val > p->val && root->val > q->val) return lowestCommonAncestor(root->left, p, q);
         if (root->val < p->val && root->val < q->val) return lowestCommonAncestor(root->right, p, q);
         return root;
     }
+
+// 236. Lowest Common Ancestor of a Binary Tree
+    TreeNode *lowestCommonAncestor1(TreeNode *root, TreeNode *p, TreeNode *q) {
+        if (root == p || root == q || root == nullptr) return root;
+        TreeNode *left = lowestCommonAncestor1(root->left, p, q);
+        TreeNode *right = lowestCommonAncestor1(root->right, p, q);
+        return left == nullptr ? right : right == nullptr ? left : root;
+    }
+
+// 260. Single Number III
+    vector<int> singleNumber(vector<int> &nums) {
+        vector<int> ans(2, 0);
+        int flag = 0;
+        for (auto num : nums) {
+            flag ^= num;
+        }
+        flag &= -flag;
+        for (int &num : nums) {
+            if ((num & flag) == 0) {
+                ans[0] ^= num;
+            } else {
+                ans[1] ^= num;
+            }
+        }
+        return ans;
+    }
+
+// 287. Find the Duplicate Number
+    int findDuplicate(vector<int> &nums) {
+//龟兔赛跑
+        int slow = 0, fast = 0;
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+        slow = 0;
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
+    }
 };
 
-int main(){
+int main() {
     Solution s;
     vector<vector<int>> vec = {{1, 0}};
     cout << s.canFinish(2, vec);
