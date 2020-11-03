@@ -264,6 +264,34 @@ public:
         }
         return slow;
     }
+
+// 337. House Robber III
+    map<TreeNode *, int> rob_map;
+
+    int rob(TreeNode *root) {
+        if (root == nullptr) return 0;
+//利用备忘录消除子问题
+        if (rob_map.count(root) != 0) return rob_map[root];
+        int ans1 = root->val, ans2 = 0;
+//抢，然后去下下家
+        if (root->left) ans1 += rob(root->left->left) + rob(root->left->right);
+        if (root->right) ans1 += rob(root->right->left) + rob(root->right->right);
+//不抢，然后去下家
+        ans2 = rob(root->left) + rob(root->right);
+        ans1 = max(ans1, ans2);
+        rob_map[root] = ans1;
+        return ans1;
+    }
+
+// 342. 4的幂
+    bool isPowerOfFour(int num) {
+        return num > 0 && (num & (num - 1)) == 0 && (num & 0xaaaaaaaa) == 0;
+    }
+
+// 371. 两整数之和
+    int getSum(int a, int b) {
+        return b == 0 ? a : getSum(a ^ b, (uint32_t) (a & b) << 1);
+    }
 };
 
 int main() {
