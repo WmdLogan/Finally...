@@ -292,6 +292,48 @@ public:
     int getSum(int a, int b) {
         return b == 0 ? a : getSum(a ^ b, (uint32_t) (a & b) << 1);
     }
+
+// 378. 有序矩阵中第K小的元素
+    int numbers_less_than_or_equal(const vector<vector<int>> &matrix, int m) {
+        int count = 0, i = 0, j = matrix[0].size() - 1;
+//从右上角结点开始
+        while (i < matrix.size() && j >= 0) {
+//大于目标值，左移
+            if (matrix[i][j] > m) {
+                j--;
+            } else {
+//小于目标值，这一行左侧的值全计算；下移
+                count += j + 1;
+                i++;
+            }
+        }
+        return count;
+    }
+
+    int kthSmallest(vector<vector<int>> &matrix, int k) {
+        if (matrix.empty() || matrix[0].empty()) return -1;
+        int l = matrix[0][0], r = matrix.back().back();
+        while (l < r) {
+            int m = (l + r) >> 1;//(l + r)/2
+            if (numbers_less_than_or_equal(matrix, m) >= k) {
+                r = m;
+            } else {
+                l = m + 1;
+            }
+        }
+        return l;
+    }
+
+// 404. 左叶子之和
+    int ans = 0;
+
+    int sumOfLeftLeaves(TreeNode *root) {
+        if (!root->left && root->right) return 0;
+        if (!root->left && !root->right) ans += root->val;
+        if (root->left) sumOfLeftLeaves(root->left);
+        if (root->right) sumOfLeftLeaves(root->right);
+        return ans;
+    }
 };
 
 int main() {
