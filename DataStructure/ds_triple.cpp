@@ -325,14 +325,59 @@ public:
     }
 
 // 404. 左叶子之和
-    int ans = 0;
-
     int sumOfLeftLeaves(TreeNode *root) {
-        if (!root->left && root->right) return 0;
-        if (!root->left && !root->right) ans += root->val;
-        if (root->left) sumOfLeftLeaves(root->left);
-        if (root->right) sumOfLeftLeaves(root->right);
+        if (!root) return 0;
+        int ans = 0;
+        queue<TreeNode *> queue_t;
+        queue_t.push(root);
+        while (!queue_t.empty()) {
+            TreeNode *temp = queue_t.front();
+            queue_t.pop();
+            if (temp->left) {
+                if (!temp->left->left && !temp->left->right) ans += temp->left->val;
+                else queue_t.push(temp->left);
+            }
+            if (temp->right) {
+                if (!temp->right->left && !temp->right->right) continue;
+                queue_t.push(temp->right);
+            }
+
+        }
         return ans;
+    }
+
+// 501. 二叉搜索树中的众数
+    vector<int> findMode_ans;
+    int max_count, count;
+    int cur;
+
+    void update(int value){
+        if (value == cur) count++;
+        else count = 1;
+
+        if (count == max_count) findMode_ans.emplace_back(value);
+        else if (count > max_count) {
+            max_count = count;
+            findMode_ans = vector<int>{value};
+        }
+        cur = value;
+    }
+//中序遍历
+    void find_mode_dfs(TreeNode* root){
+        if (root == nullptr) return;
+        find_mode_dfs(root->left);
+        update(root->val);
+        find_mode_dfs(root->right);
+    }
+
+    vector<int> findMode(TreeNode* root) {
+        find_mode_dfs(root);
+        return findMode_ans;
+    }
+
+// 565. 数组嵌套
+    int arrayNesting(vector<int>& nums) {
+
     }
 };
 
