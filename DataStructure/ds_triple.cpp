@@ -351,7 +351,7 @@ public:
     int max_count, count;
     int cur;
 
-    void update(int value){
+    void update(int value) {
         if (value == cur) count++;
         else count = 1;
 
@@ -362,22 +362,105 @@ public:
         }
         cur = value;
     }
+
 //中序遍历
-    void find_mode_dfs(TreeNode* root){
+    void find_mode_dfs(TreeNode *root) {
         if (root == nullptr) return;
         find_mode_dfs(root->left);
         update(root->val);
         find_mode_dfs(root->right);
     }
 
-    vector<int> findMode(TreeNode* root) {
+    vector<int> findMode(TreeNode *root) {
         find_mode_dfs(root);
         return findMode_ans;
     }
 
 // 565. 数组嵌套
-    int arrayNesting(vector<int>& nums) {
+    int arrayNesting(vector<int> &nums) {
+        int ans = 0;
+        int count = 0;
+        int len = nums.size();
+        int first;
+        for (int i = 0; i < len; i++) {
+            if (nums[i] != 30000) {
+//未被标记过
+                first = nums[i];
+                nums[i] = 30000;
+                count = 0;
+                do {
+                    int temp = nums[first];
+                    nums[first] = 30000;
+                    first = temp;
+                    count++;
+                } while (nums[i] != first);
+                ans = max(ans, count);
+            }
+        }
+        return ans;
+    }
 
+// 572. 另一个树的子树
+    bool isSubtree(TreeNode *s, TreeNode *t) {
+        stack<TreeNode *> st;
+        st.push(s);
+        while (!st.empty()) {
+            int size = st.size();
+            while (size) {
+                TreeNode *temp = st.top();
+                st.pop();
+                if (temp->val == t->val) {
+                    bool ans = isSubtree_help(temp, t);
+                    if (ans) return true;
+                }
+                if (temp->left) st.push(temp->left);
+                if (temp->right) st.push(temp->right);
+                size--;
+            }
+        }
+        return false;
+    }
+
+    bool isSubtree_help(TreeNode *s, TreeNode *t) {
+        if (s == nullptr && t == nullptr) return true;
+        if (!(s && t)) return false;
+        if (s->val == t->val) return isSubtree_help(s->left, t->left) && isSubtree_help(s->right, t->right);
+        return false;
+    }
+
+// 617. 合并二叉树
+    TreeNode *mergeTrees(TreeNode *t1, TreeNode *t2) {
+        if (t1 == nullptr) return t2;
+        if (t2 == nullptr) return t1;
+        merge_help(t1, t2);
+        return t1;
+    }
+
+    void merge_help(TreeNode *t1, TreeNode *t2) {
+        t1->val += t2->val;
+        if (t1->left == nullptr && t2->left != nullptr) t1->left = t2->left;
+        else if (t1->left != nullptr && t2->left != nullptr) merge_help(t1->left, t2->left);
+
+        if (t1->right == nullptr && t2->right != nullptr) t1->right = t2->right;
+        else if (t1->right == nullptr && t2->right == nullptr) return;
+        else if (t1->right != nullptr && t2->right != nullptr) merge_help(t1->right, t2->right);
+    }
+
+// 647. 回文子串
+    int countSubstrings(string s) {
+        int n = s.size(), ans = 0;
+//长度为n的字符串，有（2*n -1）个中心
+        for (int i = 0; i < 2 * n - 1; ++i) {
+//确定左右中心，字符串有奇数和偶数两种情况
+            int l = i / 2, r = i / 2 + i % 2;
+//中心扩展
+            while (l >= 0 && r < n && s[l] == s[r]) {
+                --l;
+                ++r;
+                ++ans;
+            }
+        }
+        return ans;
     }
 };
 
