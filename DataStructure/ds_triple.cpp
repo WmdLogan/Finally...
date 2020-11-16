@@ -462,6 +462,52 @@ public:
         }
         return ans;
     }
+
+// 667. 优美的排列 II
+    vector<int> constructArray(int n, int k) {
+        vector<int> ans(n, 1);
+        for (int i = 1; i < n; ++i) {
+            if (k > 0) {
+                ans[i] = i % 2 == 1 ? ans[i - 1] + k : ans[i - 1] - k;
+                k--;
+            } else {
+                ans[i] = i + 1;
+            }
+        }
+        return ans;
+    }
+
+// 669. 修剪二叉搜索树
+    TreeNode *trimBST(TreeNode *root, int low, int high) {
+        if (root == nullptr) return root;
+        if (root->val > high) {
+            return trimBST(root->left, low, high);//剪掉右子树
+        }
+        if (root->val < low) {
+            return trimBST(root->right, low, high);//剪掉左子树
+        }
+        root->left = trimBST(root->left, low, high);
+        root->right = trimBST(root->right, low, high);
+        return root;
+    }
+
+// 671. 二叉树中第二小的节点
+    int findSecondMinimumValue(TreeNode *root) {
+        if (!root || !root->left || !root->right) return -1;//空节点或不满足题意
+
+        int left = root->left->val, right = root->right->val;
+        //若根节点和左节点值相同，则递归找左子树的第二小节点，与右节点比谁小
+        if (root->val == left) left = findSecondMinimumValue(root->left);
+        //若根节点和右节点值相同，则递归找右子树的第二小节点，与左节点比谁小
+        if (root->val == right) right = findSecondMinimumValue(root->right);
+
+        //根据当前的根、左右节点的值继续判断
+        int min_lr = min(left, right);
+
+        if (root->val < min_lr) return min_lr;//根节点小于最小值，返回最小值
+        else return max(left, right);//根节点等于最小值，返回最大值
+
+    }
 };
 
 int main() {
