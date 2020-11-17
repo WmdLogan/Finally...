@@ -506,6 +506,60 @@ public:
 
         if (root->val < min_lr) return min_lr;//根节点小于最小值，返回最小值
         else return max(left, right);//根节点等于最小值，返回最大值
+    }
+
+// 684. 冗余连接
+    vector<int> findRedundantConnection(vector<vector<int>> &edges) {
+        vector<int> father_set(edges.size() + 1);
+//每个顶点的默认代表节点是自己
+        for (int i = 0; i < edges.size(); ++i) {
+            father_set[i] = i;
+        }
+        for (auto &edge:edges) {
+            int left_re = find(father_set[edge[0]], father_set);
+            int right_re = find(father_set[edge[1]], father_set);
+            if (left_re == right_re) return edge;
+            father_set[left_re] = right_re;
+        }
+        return {0, 0};
+    }
+//找代表节点
+    int find(int n, vector<int> &rp) {
+        int num = n;
+        while (rp[num] != num)
+            num = rp[num];
+        return num;
+    }
+
+// 687. 最长同值路径
+    int longest_ans = 0;
+    int longestUnivaluePath(TreeNode *root) {
+        help_longest(root);
+        return longest_ans;
+    }
+
+    int help_longest(TreeNode *root){
+        if (root == nullptr) return 0;
+        int left = help_longest(root->left);//root左子树的最长同值路径
+        int right = help_longest(root->right);;//root右子树的最长同值路径
+
+        int leftPath = root->left != nullptr && root->left->val == root->val ? left + 1 : 0;
+        int rightPath = root->right != nullptr && root->right->val == root->val ? right + 1 : 0;
+
+        longest_ans = max(longest_ans, leftPath + rightPath);
+        return max(leftPath, rightPath);//！！返回单向最长路径
+    }
+
+// 693. 交替位二进制数
+    bool hasAlternatingBits(int n) {
+//如果是交替二进制，则错位异或为全1
+        uint32_t temp = n ^(n >> 1);
+        temp++;
+        return (temp & (temp - 1)) == 0;
+    }
+
+// 696. 计数二进制子串
+    int countBinarySubstrings(string s) {
 
     }
 };
