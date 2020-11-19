@@ -560,7 +560,68 @@ public:
 
 // 696. 计数二进制子串
     int countBinarySubstrings(string s) {
+//将字符串按照0和1的连续段分组，每组记录连续的个数
+        int len = s.length();
+        vector<int> vec(len);
+        int t = 0, ans = 0;
+        vec[0] = 1;
+        for (int i = 1; i < len; ++i) {
+            if (s[i] != s[i - 1]) {
+                vec[++t] = 1;
+            } else {
+                vec[t]++;
+            }
+        }
+//共t组连续的0和1
+        for (int i = 1; i <= t; ++i) {
+            ans += min(vec[i - 1], vec[i]);
+        }
+        return ans;
+    }
 
+// 725. 分隔链表
+    vector<ListNode*> splitListToParts(ListNode* root, int k) {
+        vector<ListNode *> ans(k);
+        int size = 0;
+        auto l1 = root;
+//求链表长度
+        while(l1 != nullptr){
+            size++;
+            l1 = l1->next;
+        }
+        int aver_len = size / k;//平均长度
+        int bonus = size % k;//有余数，长度+1
+        auto *cur = root;
+//i代表第i组
+        for (int i = 0; i < k; ++i) {
+            auto *head = cur;
+            for (int j = 0; j < aver_len + (i < bonus ? 1 : 0) - 1; ++j) {
+                if (cur != nullptr) cur = cur->next;
+            }
+            if (cur != nullptr) {
+                auto* prev = cur;
+                cur = cur->next;
+                prev->next = nullptr;
+            }
+            ans[i] = head;
+        }
+        return ans;
+    }
+
+// 739. 每日温度
+    vector<int> dailyTemperatures(vector<int>& T) {
+        int size = T.size();
+        vector<int> ans(size,0);
+        stack<int> stack;
+        stack.push(0);
+        for (int i = 1; i < size; ++i) {
+            while (!stack.empty() && T[i] > T[stack.top()]) {
+                ans[stack.top()] = i - stack.top();
+                stack.pop();
+            }
+            stack.push(i);
+        }
+        return ans;
     }
 };
 
