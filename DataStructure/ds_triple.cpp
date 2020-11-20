@@ -523,6 +523,7 @@ public:
         }
         return {0, 0};
     }
+
 //找代表节点
     int find(int n, vector<int> &rp) {
         int num = n;
@@ -533,12 +534,13 @@ public:
 
 // 687. 最长同值路径
     int longest_ans = 0;
+
     int longestUnivaluePath(TreeNode *root) {
         help_longest(root);
         return longest_ans;
     }
 
-    int help_longest(TreeNode *root){
+    int help_longest(TreeNode *root) {
         if (root == nullptr) return 0;
         int left = help_longest(root->left);//root左子树的最长同值路径
         int right = help_longest(root->right);;//root右子树的最长同值路径
@@ -580,12 +582,12 @@ public:
     }
 
 // 725. 分隔链表
-    vector<ListNode*> splitListToParts(ListNode* root, int k) {
+    vector<ListNode *> splitListToParts(ListNode *root, int k) {
         vector<ListNode *> ans(k);
         int size = 0;
         auto l1 = root;
 //求链表长度
-        while(l1 != nullptr){
+        while (l1 != nullptr) {
             size++;
             l1 = l1->next;
         }
@@ -599,7 +601,7 @@ public:
                 if (cur != nullptr) cur = cur->next;
             }
             if (cur != nullptr) {
-                auto* prev = cur;
+                auto *prev = cur;
                 cur = cur->next;
                 prev->next = nullptr;
             }
@@ -609,9 +611,9 @@ public:
     }
 
 // 739. 每日温度
-    vector<int> dailyTemperatures(vector<int>& T) {
+    vector<int> dailyTemperatures(vector<int> &T) {
         int size = T.size();
-        vector<int> ans(size,0);
+        vector<int> ans(size, 0);
         stack<int> stack;
         stack.push(0);
         for (int i = 1; i < size; ++i) {
@@ -623,10 +625,50 @@ public:
         }
         return ans;
     }
+
+// 769. 最多能完成排序的块
+    int maxChunksToSorted(vector<int> &arr) {
+        int size = arr.size();
+        int ans = 0, max_n = 0;
+        for (int i = 0; i < size; ++i) {
+            max_n = max(max_n, arr[i]);
+            if (max_n == i) ans++;
+        }
+        return ans;
+    }
+
+// 785. 判断二分图
+    bool isBipartite(vector<vector<int>> &graph) {
+        int length = graph.size();
+        vector<int> visited(length, 0);//标记数组
+        stack<int> stack;
+        for (int i = 0; i < length; ++i) {
+            if (visited[i] == 0) {
+//该节点未着色，入栈
+                stack.push(i);
+                while (!stack.empty()) {
+                    int temp = stack.top();
+                    stack.pop();
+//相邻节点着色
+                    for (int j = 0; j < graph[temp].size(); ++j) {
+                        if (visited[graph[temp][j]] == 0) {
+//相邻节点未被着色
+                            visited[graph[temp][j]] = visited[temp] ^ 1;
+                            stack.push(graph[temp][j]);
+                        } else {
+//相邻节点着色，判断是否符合要求
+                            if (visited[graph[temp][j]] != (visited[temp] ^ 1)) return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
 };
 
 int main() {
     Solution s;
     vector<vector<int>> vec = {{1, 0}};
-    cout << s.canFinish(2, vec);
+    cout << (-1 ^ 1) ;
 }
