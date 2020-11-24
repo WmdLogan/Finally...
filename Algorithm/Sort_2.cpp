@@ -66,7 +66,7 @@ public:
             map[i]++;
         }
 //维护长度为k的优先队列，升序序列（小顶堆）
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>> > q;
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
         for (auto it:map) {
             if (q.size() == k) {//队列中有k个元素
                 if (it.second > q.top().first) {
@@ -84,6 +84,39 @@ public:
             k--;
         }
         return ans;
+    }
+
+// 451. 根据字符出现频率排序
+    string frequencySort(string s) {
+        unordered_map<char, int> map;
+        string ans;
+        for (char i: s) {
+            map[i]++;
+        }
+        vector<pair<char, int>> vec;
+        for (auto m:map) {
+            vec.emplace_back(m);
+        }
+        sort(vec.begin(), vec.end(), [&](pair<char, int> &p1, pair<char, int> &p2) { return p1.second > p2.second; });
+        for (auto v:vec) {
+            ans += string(v.second, v.first);
+        }
+        return ans;
+    }
+
+// 75. 颜色分类
+    void sortColors(vector<int>& nums) {
+        vector<int> ans(3, 0);
+        int k = 0;
+        for (int &n : nums) {
+            ans[n]++;
+        }
+        for (int i = 0; i < 3; ++i) {
+            while (ans[i] != 0) {
+                nums[k++] = i;
+                ans[i]--;
+            }
+        }
     }
 };
 
