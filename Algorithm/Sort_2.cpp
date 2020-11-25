@@ -106,18 +106,30 @@ public:
 
 // 75. 颜色分类
     void sortColors(vector<int>& nums) {
-        vector<int> ans(3, 0);
-        int k = 0;
-        for (int &n : nums) {
-            ans[n]++;
-        }
-        for (int i = 0; i < 3; ++i) {
-            while (ans[i] != 0) {
-                nums[k++] = i;
-                ans[i]--;
+        int len = nums.size();
+        if (len < 2) return;
+// all in [0, p0) == 0
+// all in [p0, i) == 1
+// all in (p2, len - 1] == 2
+        int p0 = 0;
+        int i = 0;
+        int p2 = len - 1;
+        while (i <= p2) {
+            if (nums[i] == 0) {
+                swap(nums, i, p0);
+                p0++;
+                i++;
+            } else if (nums[i] == 1) {
+                i++;
+            } else {
+                //nums[i]==2
+                swap(nums, i, p2);
+                p2--;
             }
         }
     }
+
+}
 };
 
 int main() {
