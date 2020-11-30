@@ -58,8 +58,18 @@ public:
         return ans;
     }
 
-// 452. 用最少数量的箭引爆气球
-    int findMinArrowShots(vector<vector<int>>& points) {
-
+// 406. 根据身高重建队列
+    vector<vector<int>> reconstructQueue(vector<vector<int>>& people) {
+        sort(people.begin(), people.end(), [](vector<int> &a, vector<int> &b) {
+            return a[0] == b[0] ? a[1] < b[1] : a[0] > b[0];
+        });
+        list<vector<int>> ans;
+        list<vector<int>>::iterator loc;
+        for (auto m:people) {
+            loc = ans.begin();
+            advance(loc, m[1]);
+            ans.insert(loc, m);
+        }
+        return vector<vector<int>>(ans.begin(), ans.end());
     }
 };
