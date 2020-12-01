@@ -59,7 +59,7 @@ public:
     }
 
 // 406. 根据身高重建队列
-    vector<vector<int>> reconstructQueue(vector<vector<int>>& people) {
+    vector<vector<int>> reconstructQueue(vector<vector<int>> &people) {
         sort(people.begin(), people.end(), [](vector<int> &a, vector<int> &b) {
             return a[0] == b[0] ? a[1] < b[1] : a[0] > b[0];
         });
@@ -71,5 +71,80 @@ public:
             ans.insert(loc, m);
         }
         return vector<vector<int>>(ans.begin(), ans.end());
+    }
+
+// 121. 买卖股票的最佳时机
+    int maxProfit(vector<int> &prices) {
+        if (prices.empty()) return 0;
+        int ans = 0;
+        int lowest = prices[0];
+        for (int i = 1; i < prices.size(); ++i) {
+            if (prices[i] > lowest) ans = max(ans, prices[i] - lowest);
+            else lowest = prices[i];
+        }
+        return ans;
+    }
+
+// 122. 买卖股票的最佳时机 II
+    int maxProfit_2(vector<int> &prices) {
+        int len = prices.size();
+        int ans = 0;
+        int single_profit = prices[0];
+        for (int i = 0; i < len - 1; ++i) {
+            if (prices[i] >= prices[i + 1]) {
+                //下一天价格低于今天，卖出
+                ans += (prices[i] - single_profit);
+                single_profit = prices[i + 1];
+            }
+        }
+        return prices[len - 1] > single_profit ? ans + prices[len - 1] - single_profit : ans;
+    }
+
+// 605. 种花问题
+    bool canPlaceFlowers(vector<int> &flowerbed, int n) {
+        int left = 0;//当前位置左侧是否有花
+        int len = flowerbed.size();
+        for (int i = 0; i < (len - 1) && n > 0; ++i) {
+            if (left == 0 && flowerbed[i] == 0 && flowerbed[i + 1] == 0) {
+                n--;
+                left = 1;//种花
+                continue;
+            }
+            left = flowerbed[i];
+        }
+        if (left == 0 && flowerbed[len] == 0) n--;
+        return n < 1;
+    }
+
+// 392. 判断子序列
+    bool isSubsequence(string s, string t) {
+        int s_len = s.size();
+        int t_len = t.size();
+        int i = 0, j = 0;
+        while (i < s_len && j < t_len) {
+            if (s[i] == t[j]) {
+                i++;
+                j++;
+            } else {
+                j++;
+            }
+        }
+        return i == s_len;
+    }
+
+// 665. 非递减数列
+    bool checkPossibility(vector<int> &nums) {
+        int count = 0;
+        for (int i = 0; i < nums.size() - 1; ++i) {
+            if (nums[i] > nums[i + 1]) {//降序
+                if (i == 0 || nums[i - 1] <= nums[i + 1]) {
+                    count++;
+                    if (count == 2) return false;
+                } else {
+
+                }
+            }
+        }
+        return true;
     }
 };
