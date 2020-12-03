@@ -137,14 +137,16 @@ public:
         int count = 0;
         for (int i = 0; i < nums.size() - 1; ++i) {
             if (nums[i] > nums[i + 1]) {//降序
+                //下一个结点值不需要改变
                 if (i == 0 || nums[i - 1] <= nums[i + 1]) {
                     count++;
-                    if (count == 2) return false;
                 } else {
-
+                    //下一个结点值等于当前结点
+                    count++;
+                    nums[i + 1] = nums[i];
                 }
             }
         }
-        return true;
+        return count < 2;
     }
 };
