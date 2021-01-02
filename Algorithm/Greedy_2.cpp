@@ -141,12 +141,28 @@ public:
                 if (i == 0 || nums[i - 1] <= nums[i + 1]) {
                     count++;
                 } else {
-                    //下一个结点值等于当前结点
+                //下一个结点值等于当前结点
                     count++;
                     nums[i + 1] = nums[i];
                 }
             }
         }
         return count < 2;
+    }
+
+// 53. 最大子序和
+    int maxSubArray(vector<int>& nums) {
+        int temp = nums[0];
+        int ans = nums[0];
+        for (int i = 1; i < nums.size(); ++i) {
+            temp = max(nums[i] + temp, nums[i]);
+            ans = max(temp, ans);
+        }
+        return ans;
+    }
+
+// 763. 划分字母区间
+    vector<int> partitionLabels(string S) {
+        
     }
 };

@@ -54,9 +54,10 @@ class Solution {
 
 // 278. 第一个错误的版本
     bool isBadVersion(int version);
+
     int firstBadVersion(int n) {
 //寻找左侧边界
-        int l = 1, r = n ;
+        int l = 1, r = n;
         while (l < r) {
             int mid = l + (r - l) / 2;
             if (isBadVersion(mid) == false) l = mid + 1;
@@ -80,7 +81,27 @@ class Solution {
     }
 
 // 34. 在排序数组中查找元素的第一个和最后一个位置
-    vector<int> searchRange(vector<int>& nums, int target) {
-
+    vector<int> searchRange(vector<int> &nums, int target) {
+        vector<int> ans(2, -1);
+        int first = findFirst(nums, target);
+        if (first == nums.size() || nums[first] != target) return ans;
+        ans[0] = first;
+        ans[1] = findFirst(nums, target + 1) - 1;
+        return ans;
     }
+
+    int findFirst(vector<int> &nums, int target) {
+        int l = 0, r = nums.size();
+        while (l < r) {
+            int m = l + (r - l) / 2;
+            if (nums[m] >= target) {
+                r = m;
+            } else {
+                l = m + 1;
+            }
+        }
+        return l;
+    }
+}
+
 };
